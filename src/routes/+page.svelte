@@ -1,2 +1,5 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<div class="relative flex flex-col items-center">
+	<h1>Welcome to SELS</h1>
+	<p>a fantasy game that will feed your gambling addiction.</p>
+	<p>Login or signup now.</p>
+</div>
