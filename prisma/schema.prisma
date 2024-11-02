@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,4 +5,72 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model account {
+  user_id     Int    @id @default(autoincrement())
+  role_id     Int?   @default(1)
+  username    String @unique(map: "username") @db.VarChar(20)
+  password    String @db.VarChar(20)
+  paradise_id Int?
+  currency    Int?
+
+  @@index([paradise_id], map: "paradise_id")
+  @@index([role_id], map: "role_id")
+}
+
+model gacha {
+  gacha_id    Int    @id @default(autoincrement())
+  paradise_id Int
+  name        String @db.VarChar(25)
+  tier_id     Int
+
+  @@index([paradise_id], map: "paradise_id")
+  @@index([tier_id], map: "tier_id")
+}
+
+model paradise {
+  paradise_id Int     @id @default(autoincrement())
+  name        String? @db.VarChar(30)
+  rating      Int?
+}
+
+model role {
+  role_id Int     @id @default(autoincrement())
+  name    String? @db.VarChar(20)
+  url     String? @db.VarChar(50)
+}
+
+model sel {
+  sel_id      Int      @id @default(autoincrement())
+  name        String?  @db.VarChar(25)
+  type_id     Int
+  colour      String   @db.VarChar(25)
+  sex_id      Int
+  dob         DateTime @db.Date
+  weight      Int
+  show_xp     Int?
+  price       Int
+  tier_id     Int
+  paradise_id Int?
+
+  @@index([paradise_id], map: "paradise_id")
+  @@index([sex_id], map: "sex_id")
+  @@index([tier_id], map: "tier_id")
+  @@index([type_id], map: "type_id")
+}
+
+model sex {
+  sex_id Int    @id @default(autoincrement())
+  name   String @db.VarChar(20)
+}
+
+model tier {
+  tier_id Int    @id @default(autoincrement())
+  name    String @db.VarChar(15)
+}
+
+model type {
+  type_id   Int     @id @default(autoincrement())
+  type_name String? @db.VarChar(25)
 }
