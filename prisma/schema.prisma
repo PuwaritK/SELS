@@ -8,51 +8,71 @@ datasource db {
 }
 
 model account {
-  user_id     Int    @id @default(autoincrement())
-  role_id     Int    @default(1)
-  username    String @unique(map: "username") @db.VarChar(20)
-  password    String @db.VarChar(20)
+  user_id     Int       @id @default(autoincrement())
+  role_id     Int       @default(1)
+  username    String    @unique(map: "username") @db.VarChar(20)
+  password    String    @db.VarChar(20)
   paradise_id Int?
-  currency    Int?
+  currency    Int       @default(0)
+  role        role      @relation(fields: [role_id], references: [role_id], onUpdate: Restrict, map: "account_ibfk_1")
+  paradise    paradise? @relation(fields: [paradise_id], references: [paradise_id], onDelete: Cascade, map: "account_ibfk_2")
+  sessions    Session[]
 
   @@index([paradise_id], map: "paradise_id")
   @@index([role_id], map: "role_id")
 }
 
+model Session {
+  id        String   @id
+  userId    Int
+  expiresAt DateTime
+  user      account  @relation(fields: [userId], references: [user_id], onDelete: Cascade)
+}
+
 model gacha {
-  gacha_id    Int    @id @default(autoincrement())
+  gacha_id    Int      @id @default(autoincrement())
   paradise_id Int
-  name        String @db.VarChar(25)
+  name        String   @db.VarChar(25)
   tier_id     Int
+  paradise    paradise @relation(fields: [paradise_id], references: [paradise_id], onUpdate: Restrict, map: "gacha_ibfk_1")
+  tier        tier     @relation(fields: [tier_id], references: [tier_id], onUpdate: Restrict, map: "gacha_ibfk_2")
 
   @@index([paradise_id], map: "paradise_id")
   @@index([tier_id], map: "tier_id")
 }
 
 model paradise {
-  paradise_id Int     @id @default(autoincrement())
-  name        String? @db.VarChar(30)
+  paradise_id Int       @id @default(autoincrement())
+  name        String?   @db.VarChar(30)
   rating      Int?
+  account     account[]
+  gacha       gacha[]
+  sel         sel[]
 }
 
 model role {
-  role_id Int     @id @default(autoincrement())
-  name    String? @db.VarChar(20)
-  url     String? @db.VarChar(50)
+  role_id Int       @id @default(autoincrement())
+  name    String?   @db.VarChar(20)
+  url     String?   @db.VarChar(50)
+  account account[]
 }
 
 model sel {
-  sel_id      Int      @id @default(autoincrement())
-  name        String?  @db.VarChar(25)
+  sel_id      Int       @id @default(autoincrement())
+  name        String?   @db.VarChar(25)
   type_id     Int
-  colour      String   @db.VarChar(25)
+  colour      String    @db.VarChar(25)
   sex_id      Int
-  dob         DateTime @db.Date
+  dob         DateTime  @db.Date
   weight      Int
   show_xp     Int?
   price       Int
   tier_id     Int
   paradise_id Int?
+  type        type      @relation(fields: [type_id], references: [type_id], onUpdate: Restrict, map: "sel_ibfk_1")
+  sex         sex       @relation(fields: [sex_id], references: [sex_id], onUpdate: Restrict, map: "sel_ibfk_2")
+  tier        tier      @relation(fields: [tier_id], references: [tier_id], onUpdate: Restrict, map: "sel_ibfk_3")
+  paradise    paradise? @relation(fields: [paradise_id], references: [paradise_id], onDelete: Cascade, map: "sel_ibfk_4")
 
   @@index([paradise_id], map: "paradise_id")
   @@index([sex_id], map: "sex_id")
@@ -63,14 +83,18 @@ model sel {
 model sex {
   sex_id Int    @id @default(autoincrement())
   name   String @db.VarChar(20)
+  sel    sel[]
 }
 
 model tier {
-  tier_id Int    @id @default(autoincrement())
-  name    String @db.VarChar(15)
+  tier_id Int     @id @default(autoincrement())
+  name    String  @db.VarChar(15)
+  gacha   gacha[]
+  sel     sel[]
 }
 
 model type {
   type_id   Int     @id @default(autoincrement())
   type_name String? @db.VarChar(25)
+  sel       sel[]
 }

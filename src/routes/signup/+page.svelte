@@ -28,7 +28,7 @@
 		<div>
 			<button type="submit" class=" rounded-lg bg-gray-200 text-blue-400"> Sign Up</button>
 		</div>
-		{#if data.created}
+		{#if form?.created}
 			<p class="text-green-500">Account Created! <br /> Please proceed to login page.</p>
 			<div
 				class=" relative w-max flex-col items-center rounded-lg bg-white text-2xl text-blue-500 drop-shadow-lg transition-transform hover:scale-125"
