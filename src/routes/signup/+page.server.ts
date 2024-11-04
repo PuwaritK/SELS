@@ -1,4 +1,4 @@
-import { isUserExist } from '$lib/server/database/account.js';
+import { isUsernameExist } from '$lib/server/database/account.js';
 import prisma from '$lib/server/database/client.js';
 import { fail } from '@sveltejs/kit';
 export const actions = {
@@ -12,7 +12,7 @@ export const actions = {
 			if (password != cpassword) {
 				throw new Error('Password mismatch');
 			}
-			let isExist = await isUserExist(username);
+			let isExist = await isUsernameExist(username);
 			if (isExist) {
 				throw new Error('Username already exists');
 			}
