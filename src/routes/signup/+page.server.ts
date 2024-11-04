@@ -6,7 +6,7 @@ export const actions = {
 		const formData = await request.formData();
 		const username = formData.get('username') as string;
 		const password = formData.get('password') as string;
-		const cpassword = formData.get('password') as string;
+		const cpassword = formData.get('confirm_password') as string;
 
 		try {
 			if (password != cpassword) {
