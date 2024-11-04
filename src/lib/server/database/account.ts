@@ -1,16 +1,22 @@
 import prisma from './client';
 
-export const isUserExist = async (username: string) => {
+export const isUsernameExist = async (username: string) => {
 	const exist = await prisma.account.findUnique({
 		where: {
-			username: username
+			username
 		}
 	});
-	if (exist) {
-		return true;
-	} else {
-		return false;
-	}
+	return exist != null;
+};
+
+export const isAccountExist = async (username: string, password: string) => {
+	const exist = await prisma.account.findUnique({
+		where: {
+			username,
+			password
+		}
+	});
+	return exist != null;
 };
 
 export const getRole = async (user_id: number) => {
