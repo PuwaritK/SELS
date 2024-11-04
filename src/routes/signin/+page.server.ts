@@ -3,6 +3,7 @@ import prisma from '$lib/server/database/client.js';
 import { fail } from '@sveltejs/kit';
 
 export const actions = {
+	// TODO: implement new auth
 	default: async ({ cookies, request }) => {
 		const formData = await request.formData();
 		const username = formData.get('username') as string;
