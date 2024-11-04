@@ -47,7 +47,7 @@ export async function validateSessionToken(token: string): Promise<SessionValida
 	}
 	if (Date.now() >= session.expiresAt.getTime() - 1000 * 60 * 60 * 24 * 3) {
 		// If there's less than 3 days before expiration, extends it.
-		session.expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30);
+		session.expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7);
 		await prisma.session.update({
 			where: {
 				id: session.id
