@@ -2,7 +2,7 @@ import type { account, Session } from '@prisma/client';
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
 import prisma from '../database/client';
 import { sha256 } from '@oslojs/crypto/sha2';
-import type { RequestEvent } from '@sveltejs/kit';
+import type { Cookies, RequestEvent } from '@sveltejs/kit';
 
 export function generateSessionToken(): string {
 	const bytes = new Uint8Array(20);
@@ -68,8 +68,8 @@ export type SessionValidationResult =
 	| { session: Session; user: account }
 	| { session: null; user: null };
 
-export function setSessionTokenCookie(event: RequestEvent, token: string, expiresAt: Date): void {
-	event.cookies.set('session', token, {
+export function setSessionTokenCookie(cookies: Cookies, token: string, expiresAt: Date): void {
+	cookies.set('session', token, {
 		httpOnly: true,
 		sameSite: 'lax',
 		expires: expiresAt,
@@ -77,8 +77,8 @@ export function setSessionTokenCookie(event: RequestEvent, token: string, expire
 	});
 }
 
-export function deleteSessionTokenCookie(event: RequestEvent): void {
-	event.cookies.set('session', '', {
+export function deleteSessionTokenCookie(cookies: Cookies): void {
+	cookies.set('session', '', {
 		httpOnly: true,
 		sameSite: 'lax',
 		maxAge: 0,

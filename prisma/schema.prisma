@@ -11,7 +11,7 @@ model account {
   user_id     Int       @id @default(autoincrement())
   role_id     Int       @default(1)
   username    String    @unique(map: "username") @db.VarChar(20)
-  password    String    @db.VarChar(20)
+  password    String    @db.VarChar(256)
   paradise_id Int?
   currency    Int       @default(0)
   role        role      @relation(fields: [role_id], references: [role_id], onUpdate: Restrict, map: "account_ibfk_1")

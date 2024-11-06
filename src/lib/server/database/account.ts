@@ -1,5 +1,5 @@
 import prisma from './client';
-
+import { verify } from 'argon2';
 export const isUsernameExist = async (username: string) => {
 	const exist = await prisma.account.findUnique({
 		where: {
@@ -10,13 +10,14 @@ export const isUsernameExist = async (username: string) => {
 };
 
 export const isAccountExist = async (username: string, password: string) => {
-	const exist = await prisma.account.findUnique({
+	const userExist = await prisma.account.findUnique({
 		where: {
-			username,
-			password
+			username
 		}
 	});
-	return exist != null;
+	if (!userExist) return false;
+	let dbpassword = userExist?.password;
+	return await verify(dbpassword, password);
 };
 
 export const getRole = async (user_id: number) => {
@@ -35,4 +36,13 @@ export const getCurrency = async (user_id: number) => {
 		}
 	});
 	return currency?.currency;
+};
+
+export const getAccount = async (username: string) => {
+	const account = await prisma.account.findUnique({
+		where: {
+			username
+		}
+	});
+	return account;
 };

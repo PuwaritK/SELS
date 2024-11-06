@@ -1,9 +1,10 @@
 import { isUsernameExist } from '$lib/server/database/account.js';
 import prisma from '$lib/server/database/client.js';
 import { fail } from '@sveltejs/kit';
+import { hash } from 'argon2';
+
 export const actions = {
-	// TODO: implement new auth
-	default: async ({ cookies, request }) => {
+	default: async ({ request }) => {
 		const formData = await request.formData();
 		const username = formData.get('username') as string;
 		const password = formData.get('password') as string;
@@ -20,7 +21,7 @@ export const actions = {
 			const account = await prisma.account.create({
 				data: {
 					username,
-					password
+					password: await hash(password, { hashLength: 32 })
 				}
 			});
 			return { created: true };
