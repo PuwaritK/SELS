@@ -5,8 +5,6 @@ import {
 	createSession,
 	setSessionTokenCookie
 } from '$lib/server/auth/auth.js';
-import { hash } from 'argon2';
-import { page } from '$app/stores';
 import type { account } from '@prisma/client';
 
 export const actions = {
