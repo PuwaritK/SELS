@@ -1,5 +1,5 @@
 <script>
-	let { data, form } = $props();
+	let { form } = $props();
 </script>
 
 <div class="relative flex flex-col items-center">
