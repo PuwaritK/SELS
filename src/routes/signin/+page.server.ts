@@ -33,9 +33,9 @@ export const actions = {
 		if (url.searchParams.get('from')) {
 			redirect(302, '/' + url.searchParams.get('from'));
 		} else if (!account!.paradise_id) {
-			redirect(302, '/game/newbie');
+			redirect(302, '/sels/newbie');
 		} else {
-			redirect(302, '/game/profile');
+			redirect(302, '/sels/profile');
 		}
 	}
 };
