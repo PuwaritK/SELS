@@ -17,7 +17,7 @@
 	>
 		<div>
 			<label for="paradise">What's your paradise name?</label>
-			<input type="text" name="paradise" bind:value={paradiseName} />
+			<input type="text" name="paradise" bind:value={paradiseName} required />
 		</div>
 		<div>
 			<button type="submit">Verify paradise name</button>
@@ -37,7 +37,7 @@
 	<form action="?/sel" method="post">
 		<div>
 			<label for="sel_name">Give your first sel a name: </label>
-			<input type="text" name="sel_name" />
+			<input type="text" name="sel_name" required />
 		</div>
 		<div>
 			<label for="sel_type">Choose your sel race: </label>
