@@ -59,8 +59,14 @@
 			</select>
 		</div>
 		<input type="hidden" name="paradise_name" bind:value={paradiseName} />
-		<div>
-			<button type="submit" class="outline outline-2">Confirm</button>
-		</div>
+		{#if form?.verified}
+			<div>
+				<button type="submit" class="outline outline-2">Confirm</button>
+			</div>
+		{:else}
+			<div>
+				<p class="text-red-500">Please verify your paradise name first!</p>
+			</div>
+		{/if}
 	</form>
 </div>

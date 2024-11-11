@@ -15,7 +15,7 @@ model account {
   paradise_id Int?
   currency    Int       @default(0)
   role        role      @relation(fields: [role_id], references: [role_id], onUpdate: Restrict, map: "account_ibfk_1")
-  paradise    paradise? @relation(fields: [paradise_id], references: [paradise_id], onDelete: Cascade, map: "account_ibfk_2")
+  paradise    paradise? @relation(fields: [paradise_id], references: [paradise_id], onDelete: Cascade, map: "account_ibfk_2", onUpdate: Cascade)
   sessions    Session[]
 
   @@index([paradise_id], map: "paradise_id")

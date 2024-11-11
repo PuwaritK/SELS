@@ -2,6 +2,7 @@ import { verifyParadiseName } from '$lib/server/database/paradise';
 import { getSelType } from '$lib/server/database/type';
 import { redirect, type Actions } from '@sveltejs/kit';
 import prisma from '$lib/server/database/client';
+import { getAccount } from '$lib/server/database/account';
 const NEWBIE_WEIGHT_KILOS = 8;
 
 export const load = async () => {
@@ -16,7 +17,7 @@ export const actions: Actions = {
 		const isPNameExist = await verifyParadiseName(paradiseName);
 		return { verified: true, isPNameExist };
 	},
-	sel: async ({ request }) => {
+	sel: async ({ request, locals }) => {
 		const selData = await request.formData();
 		const selName = selData.get('sel_name') as string;
 		const selType = parseInt(selData.get('sel_type') as string);
@@ -39,6 +40,14 @@ export const actions: Actions = {
 				weight: NEWBIE_WEIGHT_KILOS,
 				price: 0,
 				tier_id: 1,
+				paradise_id: paradise.paradise_id
+			}
+		});
+		await prisma.account.update({
+			where: {
+				user_id: locals.user?.user_id
+			},
+			data: {
 				paradise_id: paradise.paradise_id
 			}
 		});
