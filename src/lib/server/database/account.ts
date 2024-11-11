@@ -24,18 +24,24 @@ export const getRole = async (user_id: number) => {
 	const role = await prisma.account.findUnique({
 		where: {
 			user_id: user_id
+		},
+		select: {
+			role_id: true
 		}
 	});
 	return role?.role_id;
 };
 
 export const getCurrency = async (user_id: number) => {
-	const currency = await prisma.account.findUnique({
+	const accountCurrency = await prisma.account.findUnique({
 		where: {
 			user_id
+		},
+		select: {
+			currency: true
 		}
 	});
-	return currency?.currency;
+	return accountCurrency?.currency;
 };
 
 export const getAccount = async (username: string) => {

@@ -43,7 +43,7 @@ model gacha {
 
 model paradise {
   paradise_id Int       @id @default(autoincrement())
-  name        String?   @db.VarChar(30)
+  name        String    @unique(map: "name") @db.VarChar(30)
   rating      Int?
   account     account[]
   gacha       gacha[]
@@ -65,7 +65,7 @@ model sel {
   sex_id      Int
   dob         DateTime  @db.Date
   weight      Int
-  show_xp     Int?
+  show_xp     Int       @default(0)
   price       Int
   tier_id     Int
   paradise_id Int?
