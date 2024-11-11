@@ -20,7 +20,7 @@
 			<input type="text" name="paradise" bind:value={paradiseName} required />
 		</div>
 		<div>
-			<button type="submit">Verify paradise name</button>
+			<button type="submit" class="outline outline-2">Verify paradise name</button>
 		</div>
 	</form>
 	{#if form?.verified}

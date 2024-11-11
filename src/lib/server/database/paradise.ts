@@ -4,7 +4,6 @@ export const verifyParadiseName = async (paradiseName: string) => {
 	const isPNameExist = await prisma.paradise.findUnique({
 		where: { name: paradiseName }
 	});
-	console.log(isPNameExist);
 	return isPNameExist !== null;
 };
 
