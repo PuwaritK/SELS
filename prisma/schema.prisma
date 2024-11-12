@@ -15,18 +15,11 @@ model account {
   paradise_id Int?
   currency    Int       @default(0)
   role        role      @relation(fields: [role_id], references: [role_id], onUpdate: Restrict, map: "account_ibfk_1")
-  paradise    paradise? @relation(fields: [paradise_id], references: [paradise_id], onDelete: SetNull, map: "account_ibfk_2", onUpdate: Cascade)
-  sessions    Session[]
+  paradise    paradise? @relation(fields: [paradise_id], references: [paradise_id], map: "account_ibfk_2")
+  session     session[]
 
   @@index([paradise_id], map: "paradise_id")
   @@index([role_id], map: "role_id")
-}
-
-model Session {
-  id        String   @id
-  userId    Int
-  expiresAt DateTime
-  user      account  @relation(fields: [userId], references: [user_id], onDelete: Cascade)
 }
 
 model gacha {
@@ -97,4 +90,13 @@ model type {
   type_id   Int     @id @default(autoincrement())
   type_name String? @db.VarChar(25)
   sel       sel[]
+}
+
+model session {
+  id        String   @id
+  userId    Int
+  expiresAt DateTime
+  account   account  @relation(fields: [userId], references: [user_id], onDelete: Cascade, map: "Session_userId_fkey")
+
+  @@index([userId], map: "Session_userId_fkey")
 }
