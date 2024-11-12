@@ -1,4 +1,4 @@
-import type { account, Session } from '@prisma/client';
+import type { account, session } from '@prisma/client';
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
 import prisma from '../database/client';
 import { sha256 } from '@oslojs/crypto/sha2';
@@ -11,9 +11,9 @@ export function generateSessionToken(): string {
 	return token;
 }
 
-export async function createSession(token: string, userId: number): Promise<Session> {
+export async function createSession(token: string, userId: number): Promise<session> {
 	const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token))); // Sha256 hashing algorithm
-	const session: Session = {
+	const session: session = {
 		id: sessionId,
 		userId,
 		expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7) // 7 days life
@@ -32,18 +32,18 @@ export async function validateSessionToken(token: string): Promise<SessionValida
 			id: sessionId
 		},
 		include: {
-			user: true
+			account: true
 		}
 	});
 	if (result === null) {
 		// Session does not exists
-		return { session: null, user: null };
+		return { session: null, account: null };
 	}
-	const { user, ...session } = result;
+	const { account, ...session } = result;
 	if (Date.now() >= session.expiresAt.getTime()) {
 		// If session expired
 		await prisma.session.delete({ where: { id: sessionId } });
-		return { session: null, user: null };
+		return { session: null, account: null };
 	}
 	if (Date.now() >= session.expiresAt.getTime() - 1000 * 60 * 60 * 24 * 3) {
 		// If there's less than 3 days before expiration, extends it.
@@ -57,7 +57,7 @@ export async function validateSessionToken(token: string): Promise<SessionValida
 			}
 		});
 	}
-	return { session, user };
+	return { session, account };
 }
 
 export async function invalidateSession(sessionId: string): Promise<void> {
@@ -65,8 +65,8 @@ export async function invalidateSession(sessionId: string): Promise<void> {
 }
 
 export type SessionValidationResult =
-	| { session: Session; user: account }
-	| { session: null; user: null };
+	| { session: session; account: account }
+	| { session: null; account: null };
 
 export function setSessionTokenCookie(cookies: Cookies, token: string, expiresAt: Date): void {
 	cookies.set('session', token, {

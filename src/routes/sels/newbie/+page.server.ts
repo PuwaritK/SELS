@@ -45,7 +45,7 @@ export const actions: Actions = {
 		});
 		await prisma.account.update({
 			where: {
-				user_id: locals.user?.user_id
+				user_id: locals.account?.user_id
 			},
 			data: {
 				paradise_id: paradise.paradise_id
