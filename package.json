@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dbpush": "mariadb-dump -u root sels > sels.sql",
+		"dbpush": "mariadb-dump --no-create-info --compact -u root sels > sels.sql",
 		"dbpull": "mariadb -u root sels < sels.sql",
 		"dev": "vite dev",
 		"build": "vite build",
