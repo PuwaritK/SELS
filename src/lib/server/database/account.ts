@@ -52,3 +52,15 @@ export const getAccount = async (username: string) => {
 	});
 	return account;
 };
+
+export const addCurrency = async (user_id: number, amount: number) => {
+	//TODO: for patton
+};
+
+export const subtractCurrency = async (user_id: number, amount: number) => {
+	//TODO: for patton
+};
+
+export const transferCurrency = async (user1_id: number, user2_id: number, amount: number) => {
+	//TODO: for patton
+};
