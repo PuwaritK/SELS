@@ -1,6 +1,5 @@
 import type { Prisma, sel } from '@prisma/client';
 import prisma from './client';
-import type { searchOptions } from './searchOptions';
 
 export const createSel = async (
 	sel_name: string,
@@ -29,10 +28,21 @@ export const deleteSel = async (
 	//TODO: for patton
 };
 
-export const searchSel = async (searchOptions: searchOptions, username: string) => {
+export const searchSel = async (searchOptions: SearchOptions, username: string) => {
 	//TODO: for patton
 };
 
 export const getAllSel = async (username: string) => {
 	//TODO: for patton
+};
+
+export type SearchOptions = {
+	name: string | null;
+	type_id: number | null;
+	color: string | null;
+	sex_id: number | null;
+	weight: number | null;
+	show_xp: number | null;
+	price: number | null;
+	tier_id: number | null;
 };
