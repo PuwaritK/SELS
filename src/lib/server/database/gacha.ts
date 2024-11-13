@@ -1,7 +1,7 @@
-import { getAccount, getCurrency } from './account';
+import { getAccount, getCurrency, subtractCurrency } from './account';
 import type { account, paradise } from '@prisma/client';
 import prisma from './client';
-import { first } from 'random-name';
+import type { sel } from '@prisma/client';
 
 export const randomSel = async (paradise_id: number) => {
 	let randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -17,8 +17,19 @@ export const randomSel = async (paradise_id: number) => {
 		// female
 		randomSex = 2;
 	}
-	let randomName = first();
+	const nameArray: string[] = [
+		'Biku',
+		'Kite',
+		'Hanajiro',
+		'Daikichimaru',
+		'Hanako',
+		'Hiro',
+		'Magao',
+		'Kazuki'
+	];
+	let randomName = nameArray[Math.floor(Math.random() * nameArray.length)];
 	let randomTier = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+
 	if (randomTier >= 99) {
 		// legendary
 		randomTier = 5;
@@ -58,7 +69,7 @@ export const randomSel = async (paradise_id: number) => {
 			break;
 		}
 	}
-	await prisma.sel.create({
+	let generatedSel = await prisma.sel.create({
 		data: {
 			name: randomName,
 			type_id: randomType,
@@ -71,27 +82,34 @@ export const randomSel = async (paradise_id: number) => {
 			paradise_id
 		}
 	});
+	return generatedSel;
 };
 
 export const pullSel = async (account: account, pullAmount: number = 1) => {
 	const GACHACOST = 3000;
-	let currency = (await getCurrency(account.user_id)) as number;
+	let currency = (await getCurrency(account.user_id))!;
+	let pullCost;
+	let generatedSel: sel[] = [];
 	switch (pullAmount) {
 		case 1:
-			if (currency < GACHACOST * pullAmount) {
+			pullCost = GACHACOST * pullAmount;
+			if (currency < pullCost) {
 				throw new Error('Insufficient currency.');
 			} else {
-				await randomSel(account.paradise_id as number);
-				return;
+				await subtractCurrency(account.user_id, pullCost);
+				generatedSel.push(await randomSel(account.paradise_id!));
+				return generatedSel;
 			}
 		case 10:
-			if (currency < (GACHACOST * pullAmount * 9) / 10) {
+			pullCost = (GACHACOST * pullAmount * 9) / 10;
+			if (currency < pullCost) {
 				throw new Error('Insufficient currency.');
 			} else {
+				await subtractCurrency(account.user_id, pullCost);
 				for (let i = 0; i < 10; i++) {
-					await randomSel(account.paradise_id as number);
+					generatedSel.push(await randomSel(account.paradise_id!));
 				}
-				return;
+				return generatedSel;
 			}
 	}
 };
