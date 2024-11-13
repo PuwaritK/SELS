@@ -1,7 +1,22 @@
-<script>
+<script lang="ts">
 	let paradiseName = $state('');
 	let { form, data } = $props();
 	import { enhance } from '$app/forms';
+	let verifyForm: HTMLFormElement;
+	let verifyTimer: number | null = null;
+	const resetTimer = () => {
+		if (verifyTimer) {
+			clearTimeout(verifyTimer);
+		}
+
+		verifyTimer = setTimeout(() => {
+			const activeElement = document.activeElement;
+			const start = activeElement.selectionStart;
+			const end = activeElement.selectionEnd;
+
+			verifyForm.requestSubmit();
+		}, 2000);
+	};
 </script>
 
 <div class="mb-8 mt-8 flex flex-col items-center justify-center">
@@ -14,14 +29,21 @@
 				update({ reset: false });
 			};
 		}}
+		bind:this={verifyForm}
 	>
 		<div>
 			<label for="paradise">What's your paradise name?</label>
-			<input type="text" name="paradise" bind:value={paradiseName} required />
+			<input
+				type="text"
+				name="paradise"
+				bind:value={paradiseName}
+				required
+				onkeypress={resetTimer}
+			/>
 		</div>
-		<div>
+		<!-- <div>
 			<button type="submit" class="outline outline-2">Verify paradise name</button>
-		</div>
+		</div> -->
 	</form>
 	{#if form?.verified}
 		{#if form.isPNameExist}
