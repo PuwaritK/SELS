@@ -5,7 +5,9 @@ export const createSel = async (
 	sel_name: string,
 	sel_type: number,
 	sel_colour: string,
-	sel_sex: number
+	sel_sex: number,
+	sel_weight: number = 8,
+	sel_tier: number
 ) => {
 	//TODO: for patton
 };
