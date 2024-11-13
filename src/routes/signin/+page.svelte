@@ -18,7 +18,7 @@
 			<p class="error text-red-600">{form.error}</p>
 		{/if}
 		<div>
-			<button type="submit" class=" rounded-lg bg-gray-200 text-blue-400"> Sign Up</button>
+			<button type="submit" class=" rounded-lg bg-gray-200 text-blue-400"> Sign In</button>
 		</div>
 	</form>
 </div>
