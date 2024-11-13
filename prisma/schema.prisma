@@ -56,7 +56,7 @@ model sel {
   type_id     Int
   colour      String    @db.VarChar(25)
   sex_id      Int
-  dob         DateTime  @db.DateTime
+  dob         DateTime  @db.DateTime(0)
   weight      Int
   show_xp     Int       @default(0)
   price       Int
