@@ -1,4 +1,6 @@
-/*M!999999\- enable the sandbox mode */ 
+SET FOREIGN_KEY_CHECKS = 0;
+
+/*!999999\- enable the sandbox mode */ 
 INSERT INTO `account` VALUES
 (1,1,'sel','$argon2id$v=19$m=65536,t=3,p=4$HGoK6olcn1qSmEpTaNSwUQ$1CQInO9V42DcGvan36hODZZ90QRu7E7EuR58kp1t6tY',1,0);
 INSERT INTO `paradise` VALUES
@@ -29,3 +31,6 @@ INSERT INTO `type` VALUES
 (5,'Leopard seal'),
 (6,'Sea lion'),
 (7,'Walrus');
+
+SET FOREIGN_KEY_CHECKS = 1;
+

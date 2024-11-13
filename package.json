@@ -3,8 +3,10 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dbpush": "mariadb-dump --no-create-info --compact -u root sels > sels.sql",
-		"dbpull": "mariadb -u root sels < sels.sql",
+		"resetdb": "mariadb -u root -p -e 'DROP DATABASE IF EXISTS sels' && npx prisma db push",
+		"genprisma": "npx prisma db pull && npx prisma generate",
+		"dbpush": "echo 'SET FOREIGN_KEY_CHECKS = 0;\n' > sels.sql && mariadb-dump --no-create-info --compact -u root -p sels >> sels.sql && echo '\nSET FOREIGN_KEY_CHECKS = 1;\n' >> sels.sql && npm run genprisma",
+		"dbpull": "npm run resetdb && mariadb -u root -p sels < sels.sql",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
