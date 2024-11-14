@@ -20,8 +20,8 @@ export const randomSel = async (paradise_id: number) => {
 	const nameArray: string[] = [
 		'Biku',
 		'Kite',
-		'Hanajiro',
-		'Daikichimaru',
+		'Hana',
+		'Daiki',
 		'Hanako',
 		'Hiro',
 		'Magao',
@@ -126,7 +126,7 @@ export const randomSel = async (paradise_id: number) => {
 	}
 	let generatedSel = await prisma.sel.create({
 		data: {
-			name: randomName + ' The ' + selTypeName + ' ' + tierName,
+			name: randomName + ' The ' + selTypeName,
 			type_id: randomType,
 			colour: randomColor,
 			sex_id: randomSex,
