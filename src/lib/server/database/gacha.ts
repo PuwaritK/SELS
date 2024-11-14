@@ -25,7 +25,8 @@ export const randomSel = async (paradise_id: number) => {
 		'Hanako',
 		'Hiro',
 		'Magao',
-		'Kazuki'
+		'Kazuki',
+		'Mango'
 	];
 	let randomName = nameArray[Math.floor(Math.random() * nameArray.length)];
 	let randomTier = Math.floor(Math.random() * (100 - 1 + 1) + 1);
@@ -69,9 +70,63 @@ export const randomSel = async (paradise_id: number) => {
 			break;
 		}
 	}
+	let selTypeName = '';
+	switch (randomType) {
+		case 1: {
+			selTypeName = 'Harp seal';
+			break;
+		}
+		case 2: {
+			selTypeName = 'Grey seal';
+			break;
+		}
+		case 3: {
+			selTypeName = 'Baikal seal';
+			break;
+		}
+		case 4: {
+			selTypeName = 'Elephant seal';
+			break;
+		}
+		case 5: {
+			selTypeName = 'Leopard seal';
+			break;
+		}
+		case 6: {
+			selTypeName = 'Sea lion';
+			break;
+		}
+		case 7: {
+			selTypeName = 'Walrus';
+			break;
+		}
+	}
+	let tierName = '';
+	switch (randomTier) {
+		case 1: {
+			tierName = 'Common';
+			break;
+		}
+		case 2: {
+			tierName = 'Uncommon';
+			break;
+		}
+		case 3: {
+			tierName = 'Rare';
+			break;
+		}
+		case 4: {
+			tierName = 'Epic';
+			break;
+		}
+		case 5: {
+			tierName = 'Legendary';
+			break;
+		}
+	}
 	let generatedSel = await prisma.sel.create({
 		data: {
-			name: randomName,
+			name: randomName + ' The ' + selTypeName + ' ' + tierName,
 			type_id: randomType,
 			colour: randomColor,
 			sex_id: randomSex,
