@@ -21,9 +21,9 @@ export const createParadise = async (paradiseName: string) => {
 	const newParadise = await prisma.paradise.create({
 		data: {
 			name: paradiseName,
-			rating: 1
+			rating: null
 		}
-	})
+	});
 };
 
 export const addSelToParadise = async (sel_id: number, paradise_id: number) => {
@@ -34,7 +34,7 @@ export const addSelToParadise = async (sel_id: number, paradise_id: number) => {
 		data: {
 			paradise_id: paradise_id
 		}
-	})
+	});
 };
 
 export const removeSelFromParadise = async (sel_id: number) => {
@@ -42,7 +42,7 @@ export const removeSelFromParadise = async (sel_id: number) => {
 		where: {
 			sel_id: sel_id
 		}
-	})
+	});
 };
 
 export const transferSelToParadise = async (sel_id: number, from_pid: number, to_pid: number) => {
