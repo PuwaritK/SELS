@@ -54,13 +54,37 @@ export const getAccount = async (username: string) => {
 };
 
 export const addCurrency = async (user_id: number, amount: number) => {
-	//TODO: for patton
+	const currentCurrency = (await getCurrency(user_id)) as number;
+	const plusCurrency = await prisma.account.update({
+		where: {
+			user_id: user_id
+		},
+		data: {
+			currency: currentCurrency + amount
+		}
+	});
+	return plusCurrency;
 };
 
 export const subtractCurrency = async (user_id: number, amount: number) => {
-	//TODO: for patton
+	const currentCurrency = (await getCurrency(user_id)) as number;
+	if (currentCurrency >= amount) {
+		const minusCurrency = await prisma.account.update({
+			where: {
+				user_id: user_id
+			},
+			data: {
+				currency: currentCurrency - amount
+			}
+		});
+		return minusCurrency;
+	}
 };
 
-export const transferCurrency = async (user1_id: number, user2_id: number, amount: number) => {
-	//TODO: for patton
+export const transferCurrency = async (from_id: number, to_id: number, amount: number) => {
+	const fromCurrency = (await getCurrency(from_id)) as number;
+	if (fromCurrency >= amount) {
+		await subtractCurrency(from_id, amount);
+		await addCurrency(to_id, amount);
+	}
 };
