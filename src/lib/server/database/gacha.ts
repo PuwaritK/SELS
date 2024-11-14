@@ -2,6 +2,7 @@ import { getAccount, getCurrency, subtractCurrency } from './account';
 import type { account, paradise } from '@prisma/client';
 import prisma from './client';
 import type { sel } from '@prisma/client';
+import { fail } from '@sveltejs/kit';
 
 export const randomSel = async (paradise_id: number) => {
 	let randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -128,7 +129,7 @@ export const randomSel = async (paradise_id: number) => {
 		data: {
 			name: randomName + ' The ' + selTypeName,
 			type_id: randomType,
-			colour: randomColor,
+			colour: '#' + randomColor,
 			sex_id: randomSex,
 			dob: new Date(Date.now()),
 			weight: 8,
@@ -145,26 +146,27 @@ export const pullSel = async (account: account, pullAmount: number = 1) => {
 	let currency = (await getCurrency(account.user_id))!;
 	let pullCost;
 	let generatedSel: sel[] = [];
+	let result;
 	switch (pullAmount) {
 		case 1:
 			pullCost = GACHACOST * pullAmount;
 			if (currency < pullCost) {
-				throw new Error('Insufficient currency.');
+				return (result = 'Insufficient currency.');
 			} else {
 				await subtractCurrency(account.user_id, pullCost);
 				generatedSel.push(await randomSel(account.paradise_id!));
-				return generatedSel;
+				return (result = generatedSel);
 			}
 		case 10:
 			pullCost = (GACHACOST * pullAmount * 9) / 10;
 			if (currency < pullCost) {
-				throw new Error('Insufficient currency.');
+				return (result = 'Insufficient currency.');
 			} else {
 				await subtractCurrency(account.user_id, pullCost);
 				for (let i = 0; i < 10; i++) {
 					generatedSel.push(await randomSel(account.paradise_id!));
 				}
-				return generatedSel;
+				return (result = generatedSel);
 			}
 	}
 };
