@@ -25,7 +25,7 @@ export const createSel = async (
 			sex_id: sel_sex,
 			paradise_id: sel_paradise
 		}
-	})
+	});
 };
 
 // export const updateSel = async (
@@ -50,14 +50,12 @@ export const createSel = async (
 // 	})
 // };
 
-export const deleteSel = async (
-	sel_id: number
-) => {
+export const deleteSel = async (sel_id: number) => {
 	const killSel = await prisma.sel.delete({
 		where: {
 			sel_id: sel_id
 		}
-	})
+	});
 };
 
 export const searchSel = async (searchOptions: SearchOptions, username: string) => {
@@ -66,6 +64,15 @@ export const searchSel = async (searchOptions: SearchOptions, username: string) 
 
 export const getAllSel = async (userID: number) => {
 	//TODO: for patton
+};
+
+export const getFirstSelWithTier = async (paradise_id: number, tier_id: number) => {
+	return await prisma.sel.findFirst({
+		where: {
+			paradise_id,
+			tier_id
+		}
+	});
 };
 
 export type SearchOptions = {
