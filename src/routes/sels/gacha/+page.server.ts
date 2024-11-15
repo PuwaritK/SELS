@@ -6,14 +6,12 @@ import type { account, sel } from '@prisma/client';
 export const load: PageServerLoad = async () => {};
 
 export const actions: Actions = {
-	one: async (event) => {
+	default: async (event) => {
 		let result;
-		result = await pullSel(event.locals.account as account, 1);
-		return { result };
-	},
-	ten: async (event) => {
-		let result;
-		result = await pullSel(event.locals.account as account, 10);
+		result = await pullSel(
+			event.locals.account as account,
+			parseInt((await event.request.formData()).get('pullCount') as string)
+		);
 		return { result };
 	}
 };

@@ -18,14 +18,14 @@ export const actions = {
 			if (isExist) {
 				throw new Error('Username already exists');
 			}
-			console.log(username, password, cpassword);
+
 			const account = await prisma.account.create({
 				data: {
 					username,
 					password: await hash(password, { hashLength: 32 })
 				}
 			});
-			console.log(account);
+
 			return { created: true };
 		} catch (error) {
 			return fail(422, {

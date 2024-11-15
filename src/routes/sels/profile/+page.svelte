@@ -2,7 +2,6 @@
 	let { data } = $props();
 	let sex: string = $state('');
 	let type: string = $state('');
-	const images = import.meta.glob('$lib/sprites/*.png', { eager: true });
 	if (data.shownSel != null) {
 		switch (data.shownSel?.sex_id) {
 			case 1: {
@@ -57,7 +56,12 @@
 		<div>
 			<div>
 				{#await import(`$lib/sprites/sx-${sex}.png`) then { default: src }}
-					<img {src} alt="" class="z-1 absolute" />
+					<img
+						{src}
+						alt=""
+						class="z-1 absolute"
+						style="background-color: {data.shownSel.colour};"
+					/>
 				{/await}
 			</div>
 			<div>
