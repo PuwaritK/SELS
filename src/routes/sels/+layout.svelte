@@ -1,27 +1,23 @@
 <script>
 	import { page } from '$app/stores';
 	let { children } = $props();
-	let currentPage = $state('sels/profile');
 </script>
 
 <nav class="flex h-12 w-screen flex-row justify-center bg-gray-600">
 	<a
 		href="./profile"
 		class="ml-10 mr-10 mt-3 hover:scale-125 hover:underline hover:underline-offset-2"
-		class:active={currentPage === 'sels/profile'}
-		onclick={() => (currentPage = 'sels/profile')}>Profile</a
+		class:active={$page.url.pathname === '/sels/profile'}>Profile</a
 	>
 	<a
 		href="./gacha"
 		class="ml-10 mr-10 mt-3 hover:scale-125 hover:underline hover:underline-offset-2"
-		class:active={currentPage === 'sels/gacha'}
-		onclick={() => (currentPage = 'sels/gacha')}>Gacha</a
+		class:active={$page.url.pathname === '/sels/gacha'}>Gacha</a
 	>
 	<a
 		href="./trade"
 		class="ml-10 mr-10 mt-3 hover:scale-125 hover:underline hover:underline-offset-2"
-		class:active={currentPage === 'sels/trade'}
-		onclick={() => (currentPage = 'sels/trade')}>Trade</a
+		class:active={$page.url.pathname === '/sels/trade'}>Trade</a
 	>
 	<a
 		href={$page.url.pathname}

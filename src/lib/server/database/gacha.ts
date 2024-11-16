@@ -142,31 +142,45 @@ export const randomSel = async (paradise_id: number) => {
 };
 
 export const pullSel = async (account: account, pullAmount: number = 1) => {
+	if (isNaN(pullAmount)) {
+		return;
+	}
 	const GACHACOST = 3000;
 	let currency = (await getCurrency(account.user_id))!;
-	let pullCost;
+
+	pullAmount -= Math.floor(pullAmount / 10);
+	let pullCost = GACHACOST * pullAmount;
 	let generatedSel: sel[] = [];
 	let result;
-	switch (pullAmount) {
-		case 1:
-			pullCost = GACHACOST * pullAmount;
-			if (currency < pullCost) {
-				return (result = 'Insufficient currency.');
-			} else {
-				await subtractCurrency(account.user_id, pullCost);
-				generatedSel.push(await randomSel(account.paradise_id!));
-				return (result = generatedSel);
-			}
-		case 10:
-			pullCost = (GACHACOST * pullAmount * 9) / 10;
-			if (currency < pullCost) {
-				return (result = 'Insufficient currency.');
-			} else {
-				await subtractCurrency(account.user_id, pullCost);
-				for (let i = 0; i < 10; i++) {
-					generatedSel.push(await randomSel(account.paradise_id!));
-				}
-				return (result = generatedSel);
-			}
+	if (currency < pullCost) {
+		return (result = 'Insufficient currency.');
+	} else {
+		await subtractCurrency(account.user_id, pullCost);
+		for (let i = 0; i < pullAmount; i++) {
+			generatedSel.push(await randomSel(account.paradise_id!));
+		}
+		return (result = generatedSel);
 	}
+	// switch (pullAmount) {
+	// 	case 1:
+	// 		pullCost = GACHACOST * pullAmount;
+	// 		if (currency < pullCost) {
+	// 			return (result = 'Insufficient currency.');
+	// 		} else {
+	// 			await subtractCurrency(account.user_id, pullCost);
+	// 			generatedSel.push(await randomSel(account.paradise_id!));
+	// 			return (result = generatedSel);
+	// 		}
+	// 	case 10:
+	// 		pullCost = (GACHACOST * pullAmount * 9) / 10;
+	// 		if (currency < pullCost) {
+	// 			return (result = 'Insufficient currency.');
+	// 		} else {
+	// 			await subtractCurrency(account.user_id, pullCost);
+	// 			for (let i = 0; i < 10; i++) {
+	// 				generatedSel.push(await randomSel(account.paradise_id!));
+	// 			}
+	// 			return (result = generatedSel);
+	// 		}
+	// }
 };

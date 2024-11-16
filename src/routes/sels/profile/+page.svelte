@@ -2,7 +2,6 @@
 	let { data } = $props();
 	let sex: string = $state('');
 	let type: string = $state('');
-	const images = import.meta.glob('$lib/sprites/*.png', { eager: true });
 	if (data.shownSel != null) {
 		switch (data.shownSel?.sex_id) {
 			case 1: {
