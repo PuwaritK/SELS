@@ -677,9 +677,6 @@
           border-right-style: groove;
           border-bottom-style: groove;
           border-left-style: groove;
-      }
-
-      #ifdk5o {
           background-color: rgba(190, 190, 190, 1);
       }
 
@@ -687,16 +684,24 @@
           flex-direction: column;
           align-items: flex-end;
           gap: 5px;
-          align-self: center;
           display: flex;
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          justify-content: space-around;
       }
 
       #i6addv {
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
           gap: 5px;
-          align-self: center;
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          justify-content: space-around;
+          align-items: flex-start;
       }
 
       #izkads {
@@ -707,21 +712,9 @@
           text-align: center;
       }
 
-      #ixmlac {
-          background-color: rgba(190, 190, 190, 1);
-      }
-
       #io9ldo {
           display: flex;
           justify-content: space-around;
-      }
-
-      #ib0jk8 {
-          position: fixed;
-          top: auto;
-          right: 0%;
-          bottom: 0%;
-          left: 0%;
       }
 
       #iojh5j {
@@ -755,6 +748,268 @@
 
       #selamnt_show {
           padding: 10px;
+      }
+
+      #itdoz2 {
+          background-color: rgba(190, 190, 190, 1);
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-top: 0px;
+          min-height: 50px;
+      }
+
+      #irwezo {
+          padding: 10px;
+          text-align: center;
+      }
+
+      #iqdukq {
+          background-image: url("https://placehold.co/150/777/white.png?text=IMAGE");
+          background-position: 0px 0px;
+          background-size: 150px 150px;
+          background-repeat: repeat;
+          background-attachment: scroll;
+          background-origin: padding-box;
+      }
+
+      * {
+          box-sizing: border-box;
+      }
+
+      body {
+          margin: 0;
+      }
+
+      #ilw2j-2 {
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik04LjUgMTMuNWwyLjUgMyAzLjUtNC41IDQuNSA2SDVtMTYgMVY1YTIgMiAwIDAgMC0yLTJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMnoiPjwvcGF0aD4KICAgICAgPC9zdmc+');
+          background-size: contain;
+          background-position: center center;
+          background-attachment: scroll;
+          background-repeat: no-repeat;
+          border-top-color: rgba(0, 0, 0, 1);
+          border-right-color: rgba(0, 0, 0, 1);
+          border-bottom-color: rgba(0, 0, 0, 1);
+          border-left-color: rgba(0, 0, 0, 1);
+          border-top-style: groove;
+          border-right-style: groove;
+          border-bottom-style: groove;
+          border-left-style: groove;
+      }
+
+      #is70z-2 {
+          border-top-color: rgba(0, 0, 0, 1);
+          border-right-color: rgba(0, 0, 0, 1);
+          border-bottom-color: rgba(0, 0, 0, 1);
+          border-left-color: rgba(0, 0, 0, 1);
+          border-top-style: groove;
+          border-right-style: groove;
+          border-bottom-style: groove;
+          border-left-style: groove;
+          background-color: rgba(190, 190, 190, 1);
+      }
+
+      #ivmp0j-2 {
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 5px;
+          display: flex;
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          justify-content: space-around;
+      }
+
+      #i6addv-2 {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          justify-content: space-around;
+      }
+
+      #izkads-2 {
+          text-align: center;
+      }
+
+      #iaqogc-2 {
+          text-align: center;
+      }
+
+      #io9ldo-2 {
+          display: flex;
+          justify-content: space-around;
+      }
+
+      #itdoz2-2 {
+          background-color: rgba(190, 190, 190, 1);
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-top: 0px;
+          min-height: 50px;
+      }
+
+      #irwezo-2 {
+          padding: 10px;
+          text-align: center;
+      }
+
+      #i5r0m {
+          background-image: url("https://placehold.co/150/777/white.png?text=IMAGE");
+          background-position: 0px 0px;
+          background-size: 150px 150px;
+          background-repeat: repeat;
+          background-attachment: scroll;
+          background-origin: padding-box;
+      }
+
+      #i7yb5m {
+          text-align: center;
+      }
+
+      #i63ytn {
+          text-align: center;
+      }
+
+      #igck37 {
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          min-height: 50px;
+      }
+
+      #ioigrj {
+          background-color: rgba(190, 190, 190, 1);
+      }
+
+      #textoutput {
+          padding: 10px;
+          text-align: center;
+      }
+
+      #if6st2 {
+          padding: 10px;
+          text-align: center;
+      }
+
+      #ig4w4m {
+          background-color: rgba(190, 190, 190, 1);
+      }
+
+      #ihkgv1 {
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          min-height: 50px;
+      }
+
+      #iujupk {
+          border-top-color: rgba(0, 0, 0, 1);
+          border-right-color: rgba(0, 0, 0, 1);
+          border-bottom-color: rgba(0, 0, 0, 1);
+          border-left-color: rgba(0, 0, 0, 1);
+          border-top-style: groove;
+          border-right-style: groove;
+          border-bottom-style: groove;
+          border-left-style: groove;
+          background-color: rgba(190, 190, 190, 1);
+      }
+
+      #ihq9s2 {
+          padding: 10px;
+          text-align: center;
+      }
+
+      #i29kmi {
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik04LjUgMTMuNWwyLjUgMyAzLjUtNC41IDQuNSA2SDVtMTYgMVY1YTIgMiAwIDAgMC0yLTJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMnoiPjwvcGF0aD4KICAgICAgPC9zdmc+');
+          background-size: contain;
+          background-position: center center;
+          background-attachment: scroll;
+          background-repeat: no-repeat;
+          border-top-style: groove;
+          border-right-style: groove;
+          border-bottom-style: groove;
+          border-left-style: groove;
+          border-top-color: rgba(0, 0, 0, 1);
+          border-right-color: rgba(0, 0, 0, 1);
+          border-bottom-color: rgba(0, 0, 0, 1);
+          border-left-color: rgba(0, 0, 0, 1);
+          width: 200px;
+      }
+
+      #iyx96j {
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          justify-content: space-around;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      #i9i3qv {
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+      }
+
+      #im9mga {
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          display: flex;
+          justify-content: space-around;
+          align-self: stretch;
+          flex: 0 0 auto;
+      }
+
+      #ihu1so {
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik04LjUgMTMuNWwyLjUgMyAzLjUtNC41IDQuNSA2SDVtMTYgMVY1YTIgMiAwIDAgMC0yLTJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMnoiPjwvcGF0aD4KICAgICAgPC9zdmc+');
+          background-size: contain;
+          background-position: center center;
+          background-attachment: scroll;
+          background-repeat: no-repeat;
+          border-top-style: groove;
+          border-right-style: groove;
+          border-bottom-style: groove;
+          border-left-style: groove;
+          border-top-color: rgba(0, 0, 0, 1);
+          border-right-color: rgba(0, 0, 0, 1);
+          border-bottom-color: rgba(0, 0, 0, 1);
+          border-left-color: rgba(0, 0, 0, 1);
+          width: 200px;
+      }
+
+      #ipa1om {
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik04LjUgMTMuNWwyLjUgMyAzLjUtNC41IDQuNSA2SDVtMTYgMVY1YTIgMiAwIDAgMC0yLTJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMnoiPjwvcGF0aD4KICAgICAgPC9zdmc+');
+          background-size: contain;
+          background-position: center center;
+          background-attachment: scroll;
+          background-repeat: no-repeat;
+          border-top-style: groove;
+          border-right-style: groove;
+          border-bottom-style: groove;
+          border-left-style: groove;
+          border-top-color: rgba(0, 0, 0, 1);
+          border-right-color: rgba(0, 0, 0, 1);
+          border-bottom-color: rgba(0, 0, 0, 1);
+          border-left-color: rgba(0, 0, 0, 1);
+          width: 200px;
+      }
+
+      #iqa4ai {
+          display: flex;
+          justify-content: space-around;
       }
 
       @media (max-width: 992px) {
@@ -833,4 +1088,3 @@
 	</div>
 </div>
 </body>
-<!--2023-11-16-->
