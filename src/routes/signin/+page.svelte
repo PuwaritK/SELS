@@ -10,49 +10,32 @@
 </div>
 <section id="i6hsp" class="gjs-section">
 	<div id="is70z" class="gjs-container">
-		<div id="ifdk5o" class="gjs-grid-row">
-			<div id="ivmp0j" class="gjs-grid-column">
-				<div id="izkads">Username:</div>
-				<div id="iaqogc">Password:</div>
-			</div>
-			<div id="i6addv" class="gjs-grid-column">
-				<input type="text" id="ijna4m" name="username" placeholder="" required /><input
-					type="password"
-					id="i3hkxo"
-					name="password"
-					required
-				/>
-			</div>
-		</div>
-		<div id="ixmlac" class="gjs-grid-row">
-			<div id="io9ldo" class="gjs-grid-column">
-				<button type="submit" id="i3ovxs">Submit</button>
-			</div>
+		<div class="relative flex flex-col items-center">
+			<form method="post" class="gap-4 space-y-4">
+				<div class="flex flex-row items-center gap-4">
+					<label for="user" class=" colum">Username: </label>
+					<input type="text" name="username" id="user" required />
+				</div>
+				<div class="flex flex-row items-center gap-4">
+					<label for="pass">Password: </label>
+					<input type="password" name="password" id="pass" required />
+				</div>
+				{#if form?.error}
+					<p class="error text-red-600">{form.error}</p>
+				{/if}
+				<div>
+					<button
+						type="submit"
+						class=" rounded-lg bg-gray-200 text-blue-400 transition-all hover:scale-125 hover:text-green-500"
+					>
+						Login</button
+					>
+				</div>
+			</form>
 		</div>
 	</div>
 </section>
 <div id="iruqjd" class="gjs-grid-row"></div>
-
-<!--<div class="relative flex flex-col items-center">-->
-<!--	<h3 class=" text-4xl">Sign In</h3>-->
-<!--	<br />-->
-<!--	<form method="post" class="space-y-4">-->
-<!--		<div class="columns-2">-->
-<!--			<label for="user" class=" colum">Username: </label>-->
-<!--			<input type="text" name="username" id="user" required />-->
-<!--		</div>-->
-<!--		<div class="columns-2">-->
-<!--			<label for="pass">Password: </label>-->
-<!--			<input type="password" name="password" id="pass" required />-->
-<!--		</div>-->
-<!--		{#if form?.error}-->
-<!--			<p class="error text-red-600">{form.error}</p>-->
-<!--		{/if}-->
-<!--		<div>-->
-<!--			<button type="submit" class=" rounded-lg bg-gray-200 text-blue-400"> Sign In</button>-->
-<!--		</div>-->
-<!--	</form>-->
-<!--</div>-->
 
 <style>
 	* {
