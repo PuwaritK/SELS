@@ -82,7 +82,6 @@
 <!--	<div></div>-->
 <!--</div>-->
 
-<!--2023-11-15 23h starts here-->
 <head>
 	<title>profile</title>
 	<meta charset="utf-8">
@@ -294,14 +293,19 @@
           border-right-style: groove;
           border-bottom-style: groove;
           border-left-style: groove;
+          width: 100%;
       }
 
       #imytl {
+          margin-right: 0px;
+          margin-left: 0px;
+          width: 100%;
+          max-width: 100%;
           display: flex;
+          flex-direction: column;
       }
 
       #ii8su {
-          width: 280px;
           color: rgba(0, 0, 0, 1);
           border-top-style: double;
           border-right-style: double;
@@ -312,18 +316,20 @@
           border-bottom-color: rgba(0, 0, 0, 1);
           border-left-color: rgba(0, 0, 0, 1);
           text-align: left;
+          width: 33%;
       }
 
       #itl8d {
+          padding-top: 5px;
+          padding-right: 5px;
+          padding-bottom: 5px;
+          padding-left: 5px;
           width: 100%;
-          flex-wrap: nowrap;
-          flex-direction: row;
           display: flex;
-          position: relative;
+          justify-content: space-around;
       }
 
       #izuli {
-          width: 280px;
           color: rgba(0, 0, 0, 1);
           border-top-style: double;
           border-right-style: double;
@@ -334,10 +340,10 @@
           border-bottom-color: rgba(0, 0, 0, 1);
           border-left-color: rgba(0, 0, 0, 1);
           text-align: left;
+          width: 33%;
       }
 
       #itq25 {
-          width: 280px;
           color: rgba(0, 0, 0, 1);
           border-top-style: double;
           border-right-style: double;
@@ -348,10 +354,10 @@
           border-bottom-color: rgba(0, 0, 0, 1);
           border-left-color: rgba(0, 0, 0, 1);
           text-align: left;
+          width: 33%;
       }
 
       #iykz8 {
-          width: 280px;
           color: rgba(0, 0, 0, 1);
           border-top-style: double;
           border-right-style: double;
@@ -362,11 +368,10 @@
           border-bottom-color: rgba(0, 0, 0, 1);
           border-left-color: rgba(0, 0, 0, 1);
           text-align: left;
-          position: relative;
+          width: 33%;
       }
 
       #i7brx {
-          width: 280px;
           color: rgba(0, 0, 0, 1);
           border-top-style: double;
           border-right-style: double;
@@ -377,6 +382,7 @@
           border-bottom-color: rgba(0, 0, 0, 1);
           border-left-color: rgba(0, 0, 0, 1);
           text-align: left;
+          width: 33%;
       }
 
       #iic6w {
@@ -410,6 +416,8 @@
       #i4q5js {
           padding-top: 30px;
           padding-bottom: 30px;
+          justify-content: space-around;
+          display: block;
       }
 
       #ivircb {
@@ -420,14 +428,12 @@
 
       #ilcgqj {
           padding: 10px;
-          flex-direction: row;
           flex: 1 1 0%;
           align-self: flex-start;
       }
 
       #iz3kji {
           padding: 10px;
-          flex-direction: row;
           flex: 1 1 0%;
           align-self: flex-start;
       }
@@ -462,7 +468,6 @@
 
       #ixthae {
           padding: 10px;
-          flex-direction: row;
           flex: 1 1 0%;
           align-self: flex-start;
       }
@@ -470,7 +475,7 @@
       #imzuni {
           padding-top: 0px;
           padding-bottom: 0px;
-          flex: 1 1 0%;
+          flex: 0 1 auto;
       }
 
       #iilzb {
@@ -502,29 +507,45 @@
           display: flex;
           align-items: center;
           justify-content: space-around;
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
       }
 
       #ic3xtq {
           display: flex;
           align-items: center;
           justify-content: space-around;
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
       }
 
       #i9155v {
           display: flex;
           align-items: center;
           justify-content: space-around;
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
       }
 
       #idueqb {
           display: flex;
           align-items: center;
           justify-content: space-around;
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
       }
 
       #i9z21 {
-          position: relative;
-          left: -225px;
+          display: flex;
+          justify-content: space-around;
       }
 
       .gjs-link {
@@ -546,10 +567,12 @@
           border-right-style: groove;
           border-bottom-style: groove;
           border-left-style: groove;
-          width: 275px;
-          height: 175px;
+          height: 66%;
           text-align: center;
-          padding-top: 75px;
+          display: flex;
+          justify-content: space-around;
+          flex-direction: column;
+          width: 66%;
       }
 
       #imlwxq {
@@ -620,6 +643,120 @@
           border-left-style: groove;
       }
 
+      #iq491 {
+          background-image: url("https://placehold.co/150/777/white.png?text=IMAGE");
+          background-position: 0px 0px;
+          background-size: 150px 150px;
+          background-repeat: repeat;
+          background-attachment: scroll;
+          background-origin: padding-box;
+      }
+
+      #ilw2j {
+          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik04LjUgMTMuNWwyLjUgMyAzLjUtNC41IDQuNSA2SDVtMTYgMVY1YTIgMiAwIDAgMC0yLTJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMnoiPjwvcGF0aD4KICAgICAgPC9zdmc+');
+          background-size: contain;
+          background-position: center center;
+          background-attachment: scroll;
+          background-repeat: no-repeat;
+          border-top-color: rgba(0, 0, 0, 1);
+          border-right-color: rgba(0, 0, 0, 1);
+          border-bottom-color: rgba(0, 0, 0, 1);
+          border-left-color: rgba(0, 0, 0, 1);
+          border-top-style: groove;
+          border-right-style: groove;
+          border-bottom-style: groove;
+          border-left-style: groove;
+      }
+
+      #is70z {
+          border-top-color: rgba(0, 0, 0, 1);
+          border-right-color: rgba(0, 0, 0, 1);
+          border-bottom-color: rgba(0, 0, 0, 1);
+          border-left-color: rgba(0, 0, 0, 1);
+          border-top-style: groove;
+          border-right-style: groove;
+          border-bottom-style: groove;
+          border-left-style: groove;
+      }
+
+      #ifdk5o {
+          background-color: rgba(190, 190, 190, 1);
+      }
+
+      #ivmp0j {
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 5px;
+          align-self: center;
+          display: flex;
+      }
+
+      #i6addv {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+          align-self: center;
+      }
+
+      #izkads {
+          text-align: center;
+      }
+
+      #iaqogc {
+          text-align: center;
+      }
+
+      #ixmlac {
+          background-color: rgba(190, 190, 190, 1);
+      }
+
+      #io9ldo {
+          display: flex;
+          justify-content: space-around;
+      }
+
+      #ib0jk8 {
+          position: fixed;
+          top: auto;
+          right: 0%;
+          bottom: 0%;
+          left: 0%;
+      }
+
+      #iojh5j {
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          flex: 1 1 0%;
+          align-self: flex-start;
+      }
+
+      #i19a8 {
+          width: 0px;
+          padding-top: 0px;
+          padding-right: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          margin-top: 0px;
+          margin-right: 0px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+      }
+
+      #usrnme_show {
+          padding: 10px;
+      }
+
+      #maxrare_show {
+          padding: 10px;
+      }
+
+      #selamnt_show {
+          padding: 10px;
+      }
+
       @media (max-width: 992px) {
           .gjs-grid-row {
               flex-direction: column;
@@ -651,13 +788,9 @@
 <div id="i9bnk" class="gjs-image-box"></div>
 <div id="i9v8g" class="navbar">
 	<div data-gjs="navbar" id="imytl" class="navbar-container">
-		<div id="i19a8" class="navbar-burger">
-			<div class="navbar-burger-line"></div>
-			<div class="navbar-burger-line"></div>
-			<div class="navbar-burger-line"></div>
-		</div>
+		<div id="i19a8" class="navbar-burger"></div>
 		<div data-gjs="navbar-items" id="i9z21" class="navbar-items-c">
-			<nav id="itl8d" class="navbar-menu"><a id="ii8su" title="" class="navbar-menu-link">User's SEL
+			<nav id="itl8d" class="navbar-menu"><a id="ii8su" title="" class="navbar-menu-link">SEL
 				Paradise<br/></a><a id="i7brx" class="navbar-menu-link">Get SEL<br/></a><a id="izuli"
 																																									 class="navbar-menu-link">Trade SEL<br/></a><a id="itq25" class="navbar-menu-link">Add SPC<br/></a><a
 				id="iykz8" class="navbar-menu-link">Help</a></nav>
@@ -671,9 +804,14 @@
 				<div id="iic6w" class="gjs-image-box"></div>
 			</div>
 			<div id="imzuni" class="gjs-grid-column">
-				<div id="ilcgqj" >Username:</div>
+				<div id="ilcgqj">Username:</div>
 				<div id="iz3kji">SEL Amount:<br/></div>
 				<div id="ixthae">Highest Rarity:<br/></div>
+			</div>
+			<div id="iojh5j" class="gjs-grid-column">
+				<div id="usrnme_show">REPLACE WITH OUTPUT<br/></div>
+				<div id="selamnt_show">REPLACE WITH OUTPUT</div>
+				<div id="maxrare_show" title="">REPLACE WITH OUTPUT</div>
 			</div>
 		</div>
 	</div>
@@ -695,4 +833,4 @@
 	</div>
 </div>
 </body>
-<!--2023-11-15 23h ends here-->
+<!--2023-11-16-->
