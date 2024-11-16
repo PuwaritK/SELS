@@ -868,107 +868,6 @@
           min-height: 50px;
       }
 
-      #iujupk {
-          border-top-color: rgba(0, 0, 0, 1);
-          border-right-color: rgba(0, 0, 0, 1);
-          border-bottom-color: rgba(0, 0, 0, 1);
-          border-left-color: rgba(0, 0, 0, 1);
-          border-top-style: groove;
-          border-right-style: groove;
-          border-bottom-style: groove;
-          border-left-style: groove;
-          background-color: rgba(190, 190, 190, 1);
-      }
-
-      #ihq9s2 {
-          padding: 10px;
-          text-align: center;
-      }
-
-      #i29kmi {
-          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik04LjUgMTMuNWwyLjUgMyAzLjUtNC41IDQuNSA2SDVtMTYgMVY1YTIgMiAwIDAgMC0yLTJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMnoiPjwvcGF0aD4KICAgICAgPC9zdmc+');
-          background-size: contain;
-          background-position: center center;
-          background-attachment: scroll;
-          background-repeat: no-repeat;
-          border-top-style: groove;
-          border-right-style: groove;
-          border-bottom-style: groove;
-          border-left-style: groove;
-          border-top-color: rgba(0, 0, 0, 1);
-          border-right-color: rgba(0, 0, 0, 1);
-          border-bottom-color: rgba(0, 0, 0, 1);
-          border-left-color: rgba(0, 0, 0, 1);
-          width: 200px;
-      }
-
-      #iyx96j {
-          padding-top: 0px;
-          padding-right: 0px;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          justify-content: space-around;
-          flex-direction: column;
-          align-items: center;
-      }
-
-      #i9i3qv {
-          padding-top: 0px;
-          padding-right: 0px;
-          padding-bottom: 0px;
-          padding-left: 0px;
-      }
-
-      #im9mga {
-          padding-top: 0px;
-          padding-right: 0px;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          display: flex;
-          justify-content: space-around;
-          align-self: stretch;
-          flex: 0 0 auto;
-      }
-
-      #ihu1so {
-          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik04LjUgMTMuNWwyLjUgMyAzLjUtNC41IDQuNSA2SDVtMTYgMVY1YTIgMiAwIDAgMC0yLTJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMnoiPjwvcGF0aD4KICAgICAgPC9zdmc+');
-          background-size: contain;
-          background-position: center center;
-          background-attachment: scroll;
-          background-repeat: no-repeat;
-          border-top-style: groove;
-          border-right-style: groove;
-          border-bottom-style: groove;
-          border-left-style: groove;
-          border-top-color: rgba(0, 0, 0, 1);
-          border-right-color: rgba(0, 0, 0, 1);
-          border-bottom-color: rgba(0, 0, 0, 1);
-          border-left-color: rgba(0, 0, 0, 1);
-          width: 200px;
-      }
-
-      #ipa1om {
-          background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik04LjUgMTMuNWwyLjUgMyAzLjUtNC41IDQuNSA2SDVtMTYgMVY1YTIgMiAwIDAgMC0yLTJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMnoiPjwvcGF0aD4KICAgICAgPC9zdmc+');
-          background-size: contain;
-          background-position: center center;
-          background-attachment: scroll;
-          background-repeat: no-repeat;
-          border-top-style: groove;
-          border-right-style: groove;
-          border-bottom-style: groove;
-          border-left-style: groove;
-          border-top-color: rgba(0, 0, 0, 1);
-          border-right-color: rgba(0, 0, 0, 1);
-          border-bottom-color: rgba(0, 0, 0, 1);
-          border-left-color: rgba(0, 0, 0, 1);
-          width: 200px;
-      }
-
-      #iqa4ai {
-          display: flex;
-          justify-content: space-around;
-      }
-
       @media (max-width: 992px) {
           .gjs-grid-row {
               flex-direction: column;
@@ -1003,25 +902,6 @@
 		<div id="irwezo-2">Let's make an account!<br/></div>
 	</div>
 </div>
-<section class="gjs-section" id="iil5wz">
-	<div class="gjs-container" id="iujupk">
-		<div class="gjs-grid-row" id="iyx96j">
-			<div class="gjs-grid-column" id="i9i3qv">
-				<div id="ihq9s2">Select your SEL-buddy!<br/></div>
-			</div>
-			<div class="gjs-grid-column" id="im9mga">
-				<div class="gjs-image-box" id="i29kmi"></div>
-				<div class="gjs-image-box" id="ipa1om"></div>
-				<div class="gjs-image-box" id="ihu1so"></div>
-			</div>
-		</div>
-		<div class="gjs-grid-row" id="ifszbo">
-			<div class="gjs-grid-column" id="iqa4ai">
-				<input type="radio" id="radioss1" name="select SEL 1" value=""/><input type="radio" id="radioss2" name="select SEL 2"/><input type="radio" id="radioss3" name="select SEL 3"/>
-			</div>
-		</div>
-	</div>
-</section>
 <section id="i6hsp-2" class="gjs-section">
 	<div id="is70z-2" class="gjs-container">
 		<div id="ifdk5o-2" class="gjs-grid-row">
