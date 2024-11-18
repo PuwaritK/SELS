@@ -83,7 +83,7 @@ export const getSelCount = async (paradise_id: number) => {
 	});
 };
 
-export const feedAllSel = async (paradise_id: number) => {
+export const feedAllSel = async (paradise_id: number, account: account) => {
 	await prisma.sel.updateMany({
 		where: {
 			paradise_id
@@ -92,6 +92,14 @@ export const feedAllSel = async (paradise_id: number) => {
 			weight: {
 				increment: Math.random() / 10
 			}
+		}
+	});
+	prisma.account.update({
+		where: {
+			user_id: account.user_id
+		},
+		data: {
+			last_feed: new Date(Date.now())
 		}
 	});
 };
