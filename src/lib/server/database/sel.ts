@@ -83,7 +83,7 @@ export const getSelCount = async (paradise_id: number) => {
 	});
 };
 
-export const feedAllSel = async (paradise_id: number, account: account) => {
+export const feedAllSel = async (paradise_id: number, user_id: number) => {
 	await prisma.sel.updateMany({
 		where: {
 			paradise_id
@@ -96,7 +96,7 @@ export const feedAllSel = async (paradise_id: number, account: account) => {
 	});
 	prisma.account.update({
 		where: {
-			user_id: account.user_id
+			user_id
 		},
 		data: {
 			last_feed: new Date(Date.now())
@@ -104,7 +104,7 @@ export const feedAllSel = async (paradise_id: number, account: account) => {
 	});
 };
 
-export const hostSelShow = async (paradise_id: number, account: account) => {
+export const hostSelShow = async (paradise_id: number, user_id: number) => {
 	await prisma.sel.updateMany({
 		where: {
 			paradise_id
@@ -151,13 +151,27 @@ export const hostSelShow = async (paradise_id: number, account: account) => {
 
 	prisma.account.update({
 		where: {
-			user_id: account.user_id
+			user_id
 		},
 		data: {
 			currency: {
 				increment: spcEarned
 			},
 			last_show: new Date(Date.now())
+		}
+	});
+};
+
+export const playWithSels = async (user_id: number) => {
+	await prisma.account.update({
+		where: {
+			user_id
+		},
+		data: {
+			currency: {
+				increment: 6000
+			},
+			last_play: new Date(Date.now())
 		}
 	});
 };
