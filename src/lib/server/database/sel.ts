@@ -1,4 +1,4 @@
-import type { Prisma, sel } from '@prisma/client';
+import type { Prisma, sel, account } from '@prisma/client';
 import prisma from './client';
 
 export const createSel = async (
@@ -79,6 +79,77 @@ export const getSelCount = async (paradise_id: number) => {
 	return await prisma.sel.count({
 		where: {
 			paradise_id
+		}
+	});
+};
+
+export const feedAllSel = async (paradise_id: number) => {
+	await prisma.sel.updateMany({
+		where: {
+			paradise_id
+		},
+		data: {
+			weight: {
+				increment: Math.random() / 10
+			}
+		}
+	});
+};
+
+export const hostSelShow = async (paradise_id: number, account: account) => {
+	await prisma.sel.updateMany({
+		where: {
+			paradise_id
+		},
+		data: {
+			show_xp: {
+				increment: 10
+			}
+		}
+	});
+
+	let legend_count = await prisma.sel.count({
+		where: {
+			paradise_id,
+			tier_id: 5
+		}
+	});
+	let epic_count = await prisma.sel.count({
+		where: {
+			paradise_id,
+			tier_id: 4
+		}
+	});
+	let rare_count = await prisma.sel.count({
+		where: {
+			paradise_id,
+			tier_id: 3
+		}
+	});
+	let uncommon_count = await prisma.sel.count({
+		where: {
+			paradise_id,
+			tier_id: 2
+		}
+	});
+	let common_count = await prisma.sel.count({
+		where: {
+			paradise_id,
+			tier_id: 1
+		}
+	});
+	let spcEarned =
+		legend_count * 500 + epic_count * 50 + rare_count * 25 + uncommon_count * 10 + common_count * 5;
+
+	prisma.account.update({
+		where: {
+			user_id: account.user_id
+		},
+		data: {
+			currency: {
+				increment: spcEarned
+			},
+			last_show: new Date(Date.now())
 		}
 	});
 };
