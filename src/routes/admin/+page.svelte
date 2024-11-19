@@ -6,7 +6,7 @@
 
 admin page
 
-<form method="post" action="?/find" use:enhance>
+<form method="post" use:enhance>
 	<label for="user">Username to find:</label>
 	<input type="text" name="user" />
 	<button type="submit">Find</button>
@@ -53,12 +53,12 @@ admin page
 						</form></td
 					>
 					<td
-						><form action="/delete" method="post">
+						><form action="/delete" method="post" use:enhance>
 							<button
 								type="submit"
 								class="text-blue-500 hover:text-blue-800"
 								name="delete"
-								value={sel.sel_id}>Edit Sel</button
+								value={sel.sel_id}>Delete Sel</button
 							>
 						</form></td
 					>

@@ -9,7 +9,7 @@ export const load: PageServerLoad = async (event) => {
 };
 
 export const actions: Actions = {
-	find: async ({ request }) => {
+	default: async ({ request }) => {
 		let username = (await request.formData()).get('user') as string;
 		let userParadiseID = await prisma.account.findUnique({
 			where: {
@@ -32,9 +32,6 @@ export const actions: Actions = {
 		// 	});
 		// }
 		return { sels, userParadiseID };
-	},
-	delete: async ({ request }) => {
-		let selID = (await request.formData()).get('selID');
 	}
 };
-//admin can search every account and add or remove sels
+//admin can search every account and remove sels
