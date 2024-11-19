@@ -3,7 +3,6 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.account?.role_id === 1) {
-		console.log('not enough privilege');
 		return redirect(303, '/');
 	}
 };

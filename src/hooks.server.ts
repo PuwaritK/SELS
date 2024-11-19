@@ -7,7 +7,6 @@ import {
 import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
-	console.log(event.url.pathname);
 	const token = event.cookies.get('session') ?? null;
 	if (token === null) {
 		// if user hasn't sign in
