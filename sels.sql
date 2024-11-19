@@ -1,6 +1,6 @@
 SET FOREIGN_KEY_CHECKS = 0;
 /*M!999999\- enable the sandbox mode */ 
-INSERT INTO `account` VALUES
+INSERT INTO `account` (user_id,role_id,username,password, paradise_id,currency) VALUES
 (1,1,'sel','$argon2id$v=19$m=65536,t=3,p=4$HGoK6olcn1qSmEpTaNSwUQ$1CQInO9V42DcGvan36hODZZ90QRu7E7EuR58kp1t6tY',1,0);
 INSERT INTO `paradise` VALUES
 (1,'sel',NULL);
