@@ -5,17 +5,17 @@
 
 <nav class="flex h-12 w-screen flex-row justify-center bg-gray-600">
 	<a
-		href="./profile"
+		href="/sels/profile"
 		class="ml-10 mr-10 mt-3 hover:scale-125 hover:underline hover:underline-offset-2"
 		class:active={$page.url.pathname === '/sels/profile'}>Profile</a
 	>
 	<a
-		href="./gacha"
+		href="/sels/gacha"
 		class="ml-10 mr-10 mt-3 hover:scale-125 hover:underline hover:underline-offset-2"
 		class:active={$page.url.pathname === '/sels/gacha'}>Gacha</a
 	>
 	<a
-		href="./trade"
+		href="/sels/trade"
 		class="ml-10 mr-10 mt-3 hover:scale-125 hover:underline hover:underline-offset-2"
 		class:active={$page.url.pathname === '/sels/trade'}>Trade</a
 	>
@@ -29,13 +29,6 @@
 </nav>
 
 {@render children()}
-
-<style>
-	.active {
-		color: greenyellow;
-		transition: all;
-	}
-</style>
 
 <!--<head>-->
 <!--	<title>bars</title>-->
@@ -1126,3 +1119,10 @@
 <!--	</div>-->
 <!--</div>-->
 <!--</body>-->
+
+<style>
+	.active {
+		color: greenyellow;
+		transition: all;
+	}
+</style>
