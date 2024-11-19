@@ -14,9 +14,9 @@ model account {
   password    String    @db.VarChar(256)
   paradise_id Int?
   currency    Int       @default(27000)
-  last_show   DateTime  @default(dbgenerated("(current_timestamp() - interval 1 day)")) @db.DateTime(0)
   last_feed   DateTime  @default(dbgenerated("(current_timestamp() - interval 1 day)")) @db.DateTime(0)
   last_play   DateTime  @default(dbgenerated("(current_timestamp() - interval 1 day)")) @db.DateTime(0)
+  last_show   DateTime  @default(dbgenerated("(current_timestamp() - interval 1 day)")) @db.DateTime(0)
   role        role      @relation(fields: [role_id], references: [role_id], onUpdate: Restrict, map: "account_ibfk_1")
   paradise    paradise? @relation(fields: [paradise_id], references: [paradise_id], map: "account_ibfk_2")
   session     session[]
