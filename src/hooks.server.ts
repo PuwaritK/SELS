@@ -7,6 +7,7 @@ import {
 import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
+	console.log(event.url.pathname);
 	const token = event.cookies.get('session') ?? null;
 	if (token === null) {
 		// if user hasn't sign in
@@ -24,5 +25,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	event.locals.session = session;
 	event.locals.account = account;
+	// let response = await resolve(event);
+	// response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+	// response.headers.set('Pragma', 'no-cache');
+	// response.headers.set('Expires', '0');
+	// return response;
 	return resolve(event);
 };
