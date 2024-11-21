@@ -28,8 +28,12 @@
 			document.getElementById('show')!.innerHTML = showDiff.toString();
 		}, 1000);
 	}
+	import sel_banner from '$lib/sel_banner.png';
 </script>
 
+<div id="ilw2j" class="gjs-image-box">
+	<img src={sel_banner} class="gjs-image-box" alt="" />
+</div>
 <div class="flex min-h-60 flex-row justify-center align-middle">
 	<form method="post" use:enhance>
 		<button type="submit" class="size-20" name="click" value="play">Play with Sels</button>

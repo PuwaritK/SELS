@@ -1,8 +1,11 @@
 <script lang="ts">
 	let { form } = $props();
+	import sel_banner from '$lib/sel_banner.png';
 </script>
 
-<div id="ilw2j" class="gjs-image-box"></div>
+<div id="ilw2j" class="gjs-image-box">
+	<img src={sel_banner} class="gjs-image-box" alt="" />
+</div>
 <div id="itdoz2" class="gjs-grid-row">
 	<div id="imxmcp" class="gjs-grid-column">
 		<div id="irwezo">Welcome to the login page!<br /></div>

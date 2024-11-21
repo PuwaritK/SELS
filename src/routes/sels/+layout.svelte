@@ -15,9 +15,9 @@
 		class:active={$page.url.pathname === '/sels/gacha'}>Gacha</a
 	>
 	<a
-		href="/sels/trade"
+		href={$page.url.pathname}
 		class="ml-10 mr-10 mt-3 hover:scale-125 hover:underline hover:underline-offset-2"
-		class:active={$page.url.pathname === '/sels/trade'}>Trade</a
+		class:active={$page.url.pathname === '/sels/trade'}>Trade [WIP]</a
 	>
 	<a
 		href="/sels/addcurrency"

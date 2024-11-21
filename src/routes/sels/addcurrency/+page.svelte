@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import sel_banner from '$lib/sel_banner.png';
 </script>
 
+<div id="ilw2j" class="gjs-image-box">
+	<img src={sel_banner} class="gjs-image-box" alt="" />
+</div>
 <p class="justify-self-center text-8xl">Add Currency</p>
 <form method="post" use:enhance class="flex flex-col gap-4">
 	<div class="mt-4 flex flex-row content-center items-center justify-center gap-12">
