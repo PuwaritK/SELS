@@ -1,58 +1,253 @@
 <script lang="ts">
 	let { data } = $props();
-	let sex: string = $state('');
-	let type: string = $state('');
+	let sex0: string = $state('');
+	let type0: string = $state('');
+	let sex1: string = $state('');
+	let type1: string = $state('');
+	let sex2: string = $state('');
+	let type2: string = $state('');
+	let sex3: string = $state('');
+	let type3: string = $state('');
+	let sex4: string = $state('');
+	let type4: string = $state('');
 	import sel_banner from '$lib/sel_banner.png';
-	if (data.shownSel != null) {
-		switch (data.shownSel?.sex_id) {
+
+	if (data.shownSel[0] != null) {
+		switch (data.shownSel[0].sex_id) {
 			case 1: {
-				sex = 'm';
+				sex0 = 'm';
 				break;
 			}
 			case 2: {
-				sex = 'f';
+				sex0 = 'f';
 				break;
 			}
 			case 3: {
-				sex = 's';
+				sex0 = 's';
 				break;
 			}
 		}
-		switch (data.shownSel.type_id) {
+		switch (data.shownSel[0].type_id) {
 			case 1: {
-				type = 'harper';
+				type0 = 'harper';
 				break;
 			}
 			case 2: {
-				type = 'grey';
+				type0 = 'grey';
 				break;
 			}
 			case 3: {
-				type = 'baikal';
+				type0 = 'baikal';
 				break;
 			}
 			case 4: {
-				type = 'elephant';
+				type0 = 'elephant';
 				break;
 			}
 			case 5: {
-				type = 'leopard';
+				type0 = 'leopard';
 				break;
 			}
 			case 6: {
-				type = 'sealion';
+				type0 = 'sealion';
 				break;
 			}
 			case 7: {
-				type = 'walrus';
+				type0 = 'walrus';
+				break;
+			}
+		}
+	}
+	if (data.shownSel[1] != null) {
+		switch (data.shownSel[1].sex_id) {
+			case 1: {
+				sex1 = 'm';
+				break;
+			}
+			case 2: {
+				sex1 = 'f';
+				break;
+			}
+			case 3: {
+				sex1 = 's';
+				break;
+			}
+		}
+		switch (data.shownSel[1].type_id) {
+			case 1: {
+				type1 = 'harper';
+				break;
+			}
+			case 2: {
+				type1 = 'grey';
+				break;
+			}
+			case 3: {
+				type1 = 'baikal';
+				break;
+			}
+			case 4: {
+				type1 = 'elephant';
+				break;
+			}
+			case 5: {
+				type1 = 'leopard';
+				break;
+			}
+			case 6: {
+				type1 = 'sealion';
+				break;
+			}
+			case 7: {
+				type1 = 'walrus';
+				break;
+			}
+		}
+	}
+	if (data.shownSel[2] != null) {
+		switch (data.shownSel[2].sex_id) {
+			case 1: {
+				sex2 = 'm';
+				break;
+			}
+			case 2: {
+				sex2 = 'f';
+				break;
+			}
+			case 3: {
+				sex2 = 's';
+				break;
+			}
+		}
+		switch (data.shownSel[2].type_id) {
+			case 1: {
+				type2 = 'harper';
+				break;
+			}
+			case 2: {
+				type2 = 'grey';
+				break;
+			}
+			case 3: {
+				type2 = 'baikal';
+				break;
+			}
+			case 4: {
+				type2 = 'elephant';
+				break;
+			}
+			case 5: {
+				type2 = 'leopard';
+				break;
+			}
+			case 6: {
+				type2 = 'sealion';
+				break;
+			}
+			case 7: {
+				type2 = 'walrus';
+				break;
+			}
+		}
+	}
+	if (data.shownSel[3] != null) {
+		switch (data.shownSel[3].sex_id) {
+			case 1: {
+				sex3 = 'm';
+				break;
+			}
+			case 2: {
+				sex3 = 'f';
+				break;
+			}
+			case 3: {
+				sex3 = 's';
+				break;
+			}
+		}
+		switch (data.shownSel[3].type_id) {
+			case 1: {
+				type3 = 'harper';
+				break;
+			}
+			case 2: {
+				type3 = 'grey';
+				break;
+			}
+			case 3: {
+				type3 = 'baikal';
+				break;
+			}
+			case 4: {
+				type3 = 'elephant';
+				break;
+			}
+			case 5: {
+				type3 = 'leopard';
+				break;
+			}
+			case 6: {
+				type3 = 'sealion';
+				break;
+			}
+			case 7: {
+				type3 = 'walrus';
+				break;
+			}
+		}
+	}
+	if (data.shownSel[4] != null) {
+		switch (data.shownSel[4].sex_id) {
+			case 1: {
+				sex4 = 'm';
+				break;
+			}
+			case 2: {
+				sex4 = 'f';
+				break;
+			}
+			case 3: {
+				sex4 = 's';
+				break;
+			}
+		}
+		switch (data.shownSel[4].type_id) {
+			case 1: {
+				type4 = 'harper';
+				break;
+			}
+			case 2: {
+				type4 = 'grey';
+				break;
+			}
+			case 3: {
+				type4 = 'baikal';
+				break;
+			}
+			case 4: {
+				type4 = 'elephant';
+				break;
+			}
+			case 5: {
+				type4 = 'leopard';
+				break;
+			}
+			case 6: {
+				type4 = 'sealion';
+				break;
+			}
+			case 7: {
+				type4 = 'walrus';
 				break;
 			}
 		}
 	}
 </script>
 
-<div id="i9bnk" class="gjs-image-box"><img src={sel_banner} class="gjs-image-box" alt="" /></div>
-<div id="i9v8g" class="navbar">
+<div id="i9bnk" class="gjs-image-banner">
+	<img src={sel_banner} class="gjs-image-banner" alt="" />
+</div>
+<!-- <div id="i9v8g" class="navbar">
 	<div data-gjs="navbar" id="imytl" class="navbar-container">
 		<div id="i19a8" class="navbar-burger"></div>
 		<div data-gjs="navbar-items" id="i9z21" class="navbar-items-c">
@@ -67,26 +262,31 @@
 			</nav>
 		</div>
 	</div>
-</div>
+</div> -->
 <section id="i4q5js" class="gjs-section">
 	<div id="ivircb" class="gjs-container">
 		<div id="i46onn" class="gjs-grid-row">
 			<div id="ijyrjn" class="gjs-grid-column">
-				<div id="iic6w" class="gjs-image-box">
-					{#if data.shownSel != null}
+				<div id="iic6w" class="gjs-image-box gap-4 shadow-lg shadow-black">
+					{#if data.shownSel[0] != null}
 						<div>
 							<div>
-								{#await import(`$lib/sprites/sx-${sex}.png`) then { default: src }}
-									<img {src} alt="" class="z-1 absolute h-48 w-48" />
+								{#await import(`$lib/sprites/sx-${sex0}.png`) then { default: src }}
+									<img
+										{src}
+										alt=""
+										class="z-1 absolute h-48 w-48"
+										style="background-color: {data.shownSel[0].colour}"
+									/>
 								{/await}
 							</div>
 							<div>
-								{#await import(`$lib/sprites/type-${type}.png`) then { default: src }}
+								{#await import(`$lib/sprites/type-${type0}.png`) then { default: src }}
 									<img {src} alt="" class="z-2 absolute h-48 w-48" />
 								{/await}
 							</div>
 							<div>
-								{#await import(`$lib/sprites/tier-${data.shownSel.tier_id}.png`) then { default: src }}
+								{#await import(`$lib/sprites/tier-${data.shownSel[0].tier_id}.png`) then { default: src }}
 									<img {src} alt="" class="z-3 absolute h-48 w-48" />
 								{/await}
 							</div>
@@ -118,16 +318,140 @@
 		<a id="icomdq" href="./profile/manage" class="gjs-link">Manage SEL!<br /></a>
 	</div>
 	<div id="i8o103" class="gjs-grid-column">
-		<div id="imlwxq" class="gjs-image-box"></div>
+		<div id="imlwxq" class="gjs-image-box gap-4 shadow-lg shadow-black">
+			{#if data.shownSel[1] != null}
+				<div>
+					<div>
+						{#await import(`$lib/sprites/sx-${sex1}.png`) then { default: src }}
+							<img
+								{src}
+								alt=""
+								class="z-1 absolute h-48 w-48"
+								style="background-color: {data.shownSel[1].colour}"
+							/>
+						{/await}
+					</div>
+					<div>
+						{#await import(`$lib/sprites/type-${type1}.png`) then { default: src }}
+							<img {src} alt="" class="z-2 absolute h-48 w-48" />
+						{/await}
+					</div>
+					<div>
+						{#await import(`$lib/sprites/tier-${data.shownSel[1].tier_id}.png`) then { default: src }}
+							<img {src} alt="" class="z-3 absolute h-48 w-48" />
+						{/await}
+					</div>
+				</div>
+			{:else}
+				<div>
+					{#await import(`$lib/sprites/sx-s.png`) then { default: src }}
+						<img {src} alt="" class="z-3 absolute" />
+					{/await}
+				</div>
+			{/if}
+		</div>
 	</div>
 	<div id="idueqb" class="gjs-grid-column">
-		<div id="ipo6ij" class="gjs-image-box"></div>
+		<div id="ipo6ij" class="gjs-image-box gap-4 shadow-lg shadow-black">
+			{#if data.shownSel[2] != null}
+				<div>
+					<div>
+						{#await import(`$lib/sprites/sx-${sex2}.png`) then { default: src }}
+							<img
+								{src}
+								alt=""
+								class="z-1 absolute h-48 w-48"
+								style="background-color: {data.shownSel[2].colour}"
+							/>
+						{/await}
+					</div>
+					<div>
+						{#await import(`$lib/sprites/type-${type2}.png`) then { default: src }}
+							<img {src} alt="" class="z-2 absolute h-48 w-48" />
+						{/await}
+					</div>
+					<div>
+						{#await import(`$lib/sprites/tier-${data.shownSel[2].tier_id}.png`) then { default: src }}
+							<img {src} alt="" class="z-3 absolute h-48 w-48" />
+						{/await}
+					</div>
+				</div>
+			{:else}
+				<div>
+					{#await import(`$lib/sprites/sx-s.png`) then { default: src }}
+						<img {src} alt="" class="z-3 absolute" />
+					{/await}
+				</div>
+			{/if}
+		</div>
 	</div>
 	<div id="i9155v" class="gjs-grid-column">
-		<div id="im274b" class="gjs-image-box"></div>
+		<div id="im274b" class="gjs-image-box gap-4 shadow-lg shadow-black">
+			{#if data.shownSel[3] != null}
+				<div>
+					<div>
+						{#await import(`$lib/sprites/sx-${sex3}.png`) then { default: src }}
+							<img
+								{src}
+								alt=""
+								class="z-1 absolute h-48 w-48"
+								style="background-color: {data.shownSel[3].colour}"
+							/>
+						{/await}
+					</div>
+					<div>
+						{#await import(`$lib/sprites/type-${type3}.png`) then { default: src }}
+							<img {src} alt="" class="z-2 absolute h-48 w-48" />
+						{/await}
+					</div>
+					<div>
+						{#await import(`$lib/sprites/tier-${data.shownSel[3].tier_id}.png`) then { default: src }}
+							<img {src} alt="" class="z-3 absolute h-48 w-48" />
+						{/await}
+					</div>
+				</div>
+			{:else}
+				<div>
+					{#await import(`$lib/sprites/sx-s.png`) then { default: src }}
+						<img {src} alt="" class="z-3 absolute" />
+					{/await}
+				</div>
+			{/if}
+		</div>
 	</div>
 	<div id="ic3xtq" class="gjs-grid-column">
-		<div id="i3u0u6" class="gjs-image-box"></div>
+		<div id="i3u0u6" class="gjs-image-box gap-4 shadow-lg shadow-black">
+			{#if data.shownSel[4] != null}
+				<div>
+					<div>
+						{#await import(`$lib/sprites/sx-${sex4}.png`) then { default: src }}
+							<img
+								{src}
+								alt=""
+								class="z-1 absolute h-48 w-48"
+								style="background-color: {data.shownSel[4].colour}"
+							/>
+						{/await}
+					</div>
+					<div>
+						{#await import(`$lib/sprites/type-${type4}.png`) then { default: src }}
+							<img {src} alt="" class="z-2 absolute h-48 w-48" />
+						{/await}
+					</div>
+					<div>
+						{#await import(`$lib/sprites/tier-${data.shownSel[4].tier_id}.png`) then { default: src }}
+							<img {src} alt="" class="z-3 absolute h-48 w-48" />
+						{/await}
+					</div>
+				</div>
+			{:else}
+				<div>
+					{#await import(`$lib/sprites/sx-s.png`) then { default: src }}
+						<img {src} alt="" class="z-3 absolute" />
+					{/await}
+				</div>
+			{/if}
+		</div>
 	</div>
 </div>
 
@@ -242,7 +566,13 @@
 	}
 
 	.gjs-image-box {
-		height: 200px;
+		height: 12rem;
+		width: 12rem;
+		max-height: 12rem;
+		max-width: 12rem;
+	}
+	.gjs-image-banner {
+		height: fit-content;
 		width: 100%;
 	}
 

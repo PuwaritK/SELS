@@ -83,6 +83,18 @@ export const getFirstSelWithTier = async (paradise_id: number, tier_id: number) 
 	});
 };
 
+export const getSelsWithTierDesc = async (paradise_id: number, numberOfSels: number) => {
+	return await prisma.sel.findMany({
+		take: numberOfSels,
+		where: {
+			paradise_id
+		},
+		orderBy: {
+			tier_id: 'desc'
+		}
+	});
+};
+
 export const getSelCount = async (paradise_id: number) => {
 	return await prisma.sel.count({
 		where: {
