@@ -28,27 +28,35 @@ export const createSel = async (
 	});
 };
 
-// export const updateSel = async (
-// 	sel_id: number,
-// 	sel_name: string,
-// 	sel_type: number,
-// 	sel_colour: string,
-// 	sel_weight: number,
-// 	sel_tier: number
-// ) => {
-// 	const upgradeSel = await prisma.sel.update({
-// 		where: {
-// 			sel_id: sel_id
-// 		},
-// 		data: {
-// 			name: sel_name,
-// 			type_id: sel_type,
-// 			colour: sel_colour,
-// 			weight: sel_weight,
-// 			tier_id: sel_tier
-// 		}
-// 	})
-// };
+export const updateSel = async (
+	sel_id: number,
+	sel_name: string,
+	sel_type: number,
+	sel_colour: string,
+	sel_sex: number,
+	sel_dob: Date,
+	sel_weight: number,
+	sel_showxp: number,
+	sel_price: number,
+	sel_tier: number
+) => {
+	const upgradeSel = await prisma.sel.update({
+		where: {
+			sel_id: sel_id
+		},
+		data: {
+			name: sel_name,
+			type_id: sel_type,
+			colour: sel_colour,
+			sex_id: sel_sex,
+			dob: sel_dob,
+			weight: sel_weight,
+			show_xp: sel_showxp,
+			price: sel_price,
+			tier_id: sel_tier
+		}
+	});
+};
 
 export const deleteSel = async (sel_id: number) => {
 	const killSel = await prisma.sel.delete({
@@ -174,6 +182,24 @@ export const playWithSels = async (user_id: number) => {
 			last_play: new Date(Date.now())
 		}
 	});
+};
+
+export const isSelExist = async (sel_id: number) => {
+	let sel = await prisma.sel.findFirst({
+		where: {
+			sel_id
+		}
+	});
+	return sel !== null;
+};
+
+export const getSel = async (sel_id: number) => {
+	let sel = await prisma.sel.findFirst({
+		where: {
+			sel_id
+		}
+	});
+	return sel;
 };
 
 export type SearchOptions = {
