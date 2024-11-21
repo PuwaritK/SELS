@@ -6,6 +6,9 @@ import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load: PageServerLoad = async (event) => {
+	if (event.locals.account === null) {
+		redirect(302, '/');
+	}
 	if (event.locals.account?.role_id !== 3) {
 		return redirect(303, '/');
 	}

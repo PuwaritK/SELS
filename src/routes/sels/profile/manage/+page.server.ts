@@ -15,7 +15,7 @@ export const actions: Actions = {
 			case 'play': {
 				if (timeNow.getTime() - locals.account!.last_play.getTime() > 1000 * 60 * 60) {
 					await playWithSels(locals.account?.user_id!);
-					break;
+					return { validPlay: true };
 				} else {
 					return { validPlay: false };
 				}
@@ -23,7 +23,7 @@ export const actions: Actions = {
 			case 'show': {
 				if (timeNow.getTime() - locals.account!.last_show.getTime() > 1000 * 60 * 60) {
 					await hostSelShow(locals.account?.paradise_id!, locals.account?.user_id!);
-					break;
+					return { validShow: true };
 				} else {
 					return { validShow: false };
 				}
@@ -31,7 +31,7 @@ export const actions: Actions = {
 			case 'feed': {
 				if (timeNow.getTime() - locals.account!.last_feed.getTime() > 1000 * 60 * 60) {
 					await feedAllSel(locals.account?.paradise_id!, locals.account?.user_id!);
-					break;
+					return { validFeed: true };
 				} else {
 					return { validFeed: false };
 				}

@@ -3,6 +3,9 @@ import type { PageServerLoad, Actions } from './$types';
 import prisma from '$lib/server/database/client';
 
 export const load: PageServerLoad = async (event) => {
+	if (event.locals.account === null) {
+		redirect(302, '/');
+	}
 	if (event.locals.account?.role_id === 1) {
 		return redirect(303, '/');
 	}

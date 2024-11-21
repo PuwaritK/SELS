@@ -20,7 +20,7 @@
 		class:active={$page.url.pathname === '/sels/trade'}>Trade</a
 	>
 	<a
-		href={$page.url.pathname}
+		href="/sels/addcurrency"
 		class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-indigo-500
             to-red-500 bg-clip-text
             font-bold text-transparent hover:scale-125 hover:underline hover:underline-offset-2"
