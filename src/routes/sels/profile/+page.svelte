@@ -2,6 +2,7 @@
 	let { data } = $props();
 	let sex: string = $state('');
 	let type: string = $state('');
+	import sel_banner from '$lib/sel_banner.png';
 	if (data.shownSel != null) {
 		switch (data.shownSel?.sex_id) {
 			case 1: {
@@ -50,9 +51,7 @@
 	}
 </script>
 
-<p>profile</p>
-
-<div id="i9bnk" class="gjs-image-box"></div>
+<div id="i9bnk" class="gjs-image-box"><img src={sel_banner} class="gjs-image-box" alt="" /></div>
 <div id="i9v8g" class="navbar">
 	<div data-gjs="navbar" id="imytl" class="navbar-container">
 		<div id="i19a8" class="navbar-burger"></div>
@@ -61,7 +60,7 @@
 				<a id="ii8su" title="" class="navbar-menu-link">SEL Paradise<br /></a><a
 					id="i7brx"
 					class="navbar-menu-link">Get SEL<br /></a
-				><a id="izuli" class="navbar-menu-link">Trade SEL<br /></a><a
+				><a id="izuli" class="navbar-menu-link">Trade SEL [WIP]<br /></a><a
 					id="itq25"
 					class="navbar-menu-link">Add SPC<br /></a
 				><a id="iykz8" class="navbar-menu-link">Help</a>
