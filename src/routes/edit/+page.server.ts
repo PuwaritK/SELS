@@ -10,7 +10,6 @@ export const load: PageServerLoad = async (event) => {
 		return redirect(303, '/');
 	}
 	let sel_id = parseInt(event.url.searchParams.get('sel_id')!);
-	console.log(sel_id);
 
 	const selTypes = await getSelType();
 	const selSex = await getSelSex();
