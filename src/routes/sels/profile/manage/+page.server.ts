@@ -5,7 +5,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 	let lastPlay = locals.account!.last_play;
 	let lastShow = locals.account!.last_show;
 	let lastFeed = locals.account!.last_feed;
-	console.log(lastPlay, lastShow, lastFeed);
 	let validPlay = timeNow.getTime() - locals.account!.last_play.getTime() > 1000 * 60 * 60;
 	let validShow = timeNow.getTime() - locals.account!.last_show.getTime() > 1000 * 60 * 60;
 	let validFeed = timeNow.getTime() - locals.account!.last_feed.getTime() > 1000 * 60 * 60;
