@@ -306,7 +306,7 @@
 		</div>
 	</div>
 </section>
-<div id="ia9992" class="gjs-grid-row bg-blue-100">
+<div id="ia9992" class="gjs-grid-row gap-6 bg-blue-100">
 	<div id="i8p0ce" class="gjs-grid-column rounded-2xl">
 		<a
 			id="icomdq"

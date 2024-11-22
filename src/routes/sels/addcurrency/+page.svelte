@@ -9,7 +9,7 @@
 <section class="h-screen bg-green-100">
 	<p class="mb-8 justify-self-center text-8xl">Add Currency</p>
 	<form method="post" use:enhance class="flex flex-col gap-4">
-		<div class="mt-4 flex flex-row content-center items-center justify-center gap-12">
+		<div class="gjs-grid-row mt-4 flex flex-row content-center items-center justify-center gap-12">
 			{#each [3000, 30000, 300000] as currency}
 				<button
 					type="submit"
@@ -21,3 +21,11 @@
 		</div>
 	</form>
 </section>
+
+<style>
+	@media (max-width: 992px) {
+		.gjs-grid-row {
+			flex-direction: column;
+		}
+	}
+</style>
