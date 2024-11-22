@@ -1,22 +1,23 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	let { children } = $props();
+	let { children, data } = $props();
 </script>
 
-<nav class="flex h-12 w-screen flex-row justify-center bg-gray-600">
+<nav class="flex h-12 w-screen flex-row justify-around bg-gray-600">
 	<a
 		href="/sels/profile"
-		class="ml-10 mr-10 mt-3 hover:scale-125 hover:underline hover:underline-offset-2"
-		class:active={$page.url.pathname === '/sels/profile'}>Profile</a
+		class="ml-10 mr-10 mt-3 text-white hover:scale-125 hover:underline hover:underline-offset-2"
+		class:active={$page.url.pathname === '/sels/profile' ||
+			$page.url.pathname === '/sels/profile/manage'}>Profile</a
 	>
 	<a
 		href="/sels/gacha"
-		class="ml-10 mr-10 mt-3 hover:scale-125 hover:underline hover:underline-offset-2"
+		class="ml-10 mr-10 mt-3 text-white hover:scale-125 hover:underline hover:underline-offset-2"
 		class:active={$page.url.pathname === '/sels/gacha'}>Gacha</a
 	>
 	<a
 		href={$page.url.pathname}
-		class="ml-10 mr-10 mt-3 hover:scale-125 hover:underline hover:underline-offset-2"
+		class="ml-10 mr-10 mt-3 text-white hover:scale-125 hover:underline hover:underline-offset-2"
 		class:active={$page.url.pathname === '/sels/trade'}>Trade [WIP]</a
 	>
 	<a
@@ -26,6 +27,28 @@
             font-bold text-transparent hover:scale-125 hover:underline hover:underline-offset-2"
 		>Add Currency</a
 	>
+	{#if data.isAdmin}
+		<a
+			href="/admin"
+			class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-green-500
+            to-blue-500 bg-clip-text
+            font-bold text-transparent hover:scale-125 hover:underline hover:underline-offset-2"
+			>Admin Page</a
+		>
+	{:else if data.isDev}
+		<a
+			href="/dev"
+			class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-green-500
+		to-blue-500 bg-clip-text
+		font-bold text-transparent hover:scale-125 hover:underline hover:underline-offset-2"
+			>Developer Page</a
+		>
+	{/if}
+	<div class="min-w-10">
+		<p class="ml-10 mr-10 mt-3 text-white">
+			SPC: {data.accountCurrency}
+		</p>
+	</div>
 </nav>
 
 {@render children()}

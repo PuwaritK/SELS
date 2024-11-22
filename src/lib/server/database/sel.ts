@@ -114,7 +114,7 @@ export const feedAllSel = async (paradise_id: number, user_id: number) => {
 			}
 		}
 	});
-	prisma.account.update({
+	await prisma.account.update({
 		where: {
 			user_id
 		},
@@ -169,7 +169,7 @@ export const hostSelShow = async (paradise_id: number, user_id: number) => {
 	let spcEarned =
 		legend_count * 500 + epic_count * 50 + rare_count * 25 + uncommon_count * 10 + common_count * 5;
 
-	prisma.account.update({
+	await prisma.account.update({
 		where: {
 			user_id
 		},

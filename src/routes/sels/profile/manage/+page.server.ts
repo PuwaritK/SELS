@@ -1,10 +1,15 @@
 import { feedAllSel, hostSelShow, playWithSels } from '$lib/server/database/sel';
 import type { PageServerLoad, Actions } from '../$types';
 export const load: PageServerLoad = async ({ locals }) => {
+	let timeNow = new Date(Date.now());
 	let lastPlay = locals.account!.last_play;
 	let lastShow = locals.account!.last_show;
 	let lastFeed = locals.account!.last_feed;
-	return { lastPlay, lastShow, lastFeed };
+	console.log(lastPlay, lastShow, lastFeed);
+	let validPlay = timeNow.getTime() - locals.account!.last_play.getTime() > 1000 * 60 * 60;
+	let validShow = timeNow.getTime() - locals.account!.last_show.getTime() > 1000 * 60 * 60;
+	let validFeed = timeNow.getTime() - locals.account!.last_feed.getTime() > 1000 * 60 * 60;
+	return { lastPlay, lastShow, lastFeed, validFeed, validPlay, validShow };
 };
 
 export const actions: Actions = {
@@ -15,26 +20,23 @@ export const actions: Actions = {
 			case 'play': {
 				if (timeNow.getTime() - locals.account!.last_play.getTime() > 1000 * 60 * 60) {
 					await playWithSels(locals.account?.user_id!);
-					return { validPlay: true };
-				} else {
-					return { validPlay: false };
+					return { successPlay: true };
 				}
+				return { validPlay: false };
 			}
 			case 'show': {
 				if (timeNow.getTime() - locals.account!.last_show.getTime() > 1000 * 60 * 60) {
 					await hostSelShow(locals.account?.paradise_id!, locals.account?.user_id!);
-					return { validShow: true };
-				} else {
-					return { validShow: false };
+					return { successShow: true };
 				}
+				return { validShow: false };
 			}
 			case 'feed': {
 				if (timeNow.getTime() - locals.account!.last_feed.getTime() > 1000 * 60 * 60) {
 					await feedAllSel(locals.account?.paradise_id!, locals.account?.user_id!);
-					return { validFeed: true };
-				} else {
-					return { validFeed: false };
+					return { successFeed: true };
 				}
+				return { validFeed: false };
 			}
 		}
 	}

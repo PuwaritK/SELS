@@ -19,7 +19,7 @@
 					<a href="./signup">Sign Up</a>
 				</div>
 				<div
-					class="ml-4 flex-row rounded-lg bg-white text-2xl text-blue-500 drop-shadow-lg transition-transform hover:scale-125"
+					class="drop-drop-shadow-md ml-4 flex-row rounded-lg bg-white text-2xl text-blue-500 transition-transform hover:scale-125"
 				>
 					<a href="./signin">Sign In</a>
 				</div>

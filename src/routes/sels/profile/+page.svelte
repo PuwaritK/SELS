@@ -267,7 +267,7 @@
 	<div id="ivircb" class="gjs-container">
 		<div id="i46onn" class="gjs-grid-row">
 			<div id="ijyrjn" class="gjs-grid-column">
-				<div id="iic6w" class="gjs-image-box gap-4 shadow-lg shadow-black">
+				<div id="iic6w" class="gjs-image-box gap-4 shadow-md shadow-black">
 					{#if data.shownSel[0] != null}
 						<div>
 							<div>
@@ -292,10 +292,8 @@
 							</div>
 						</div>
 					{:else}
-						<div>
-							{#await import(`$lib/sprites/sx-s.png`) then { default: src }}
-								<img {src} alt="" class="z-3 absolute" />
-							{/await}
+						<div class="justify-center align-middle">
+							<p class="text-center">No Sel to show.</p>
 						</div>
 					{/if}
 				</div>
@@ -318,7 +316,7 @@
 		<a id="icomdq" href="./profile/manage" class="gjs-link">Manage SEL!<br /></a>
 	</div>
 	<div id="i8o103" class="gjs-grid-column">
-		<div id="imlwxq" class="gjs-image-box gap-4 shadow-lg shadow-black">
+		<div id="imlwxq" class="gjs-image-box gap-4 shadow-md shadow-black">
 			{#if data.shownSel[1] != null}
 				<div>
 					<div>
@@ -343,16 +341,14 @@
 					</div>
 				</div>
 			{:else}
-				<div>
-					{#await import(`$lib/sprites/sx-s.png`) then { default: src }}
-						<img {src} alt="" class="z-3 absolute" />
-					{/await}
+				<div class="justify-center align-middle">
+					<p class="text-center">No Sel to show.</p>
 				</div>
 			{/if}
 		</div>
 	</div>
 	<div id="idueqb" class="gjs-grid-column">
-		<div id="ipo6ij" class="gjs-image-box gap-4 shadow-lg shadow-black">
+		<div id="ipo6ij" class="gjs-image-box gap-4 shadow-md shadow-black">
 			{#if data.shownSel[2] != null}
 				<div>
 					<div>
@@ -377,16 +373,14 @@
 					</div>
 				</div>
 			{:else}
-				<div>
-					{#await import(`$lib/sprites/sx-s.png`) then { default: src }}
-						<img {src} alt="" class="z-3 absolute" />
-					{/await}
+				<div class="justify-center align-middle">
+					<p class="text-center">No Sel to show.</p>
 				</div>
 			{/if}
 		</div>
 	</div>
 	<div id="i9155v" class="gjs-grid-column">
-		<div id="im274b" class="gjs-image-box gap-4 shadow-lg shadow-black">
+		<div id="im274b" class="gjs-image-box gap-4 shadow-md shadow-black">
 			{#if data.shownSel[3] != null}
 				<div>
 					<div>
@@ -411,16 +405,14 @@
 					</div>
 				</div>
 			{:else}
-				<div>
-					{#await import(`$lib/sprites/sx-s.png`) then { default: src }}
-						<img {src} alt="" class="z-3 absolute" />
-					{/await}
+				<div class="justify-center align-middle">
+					<p class="text-center">No Sel to show.</p>
 				</div>
 			{/if}
 		</div>
 	</div>
 	<div id="ic3xtq" class="gjs-grid-column">
-		<div id="i3u0u6" class="gjs-image-box gap-4 shadow-lg shadow-black">
+		<div id="i3u0u6" class="gjs-image-box gap-4 shadow-md shadow-black">
 			{#if data.shownSel[4] != null}
 				<div>
 					<div>
@@ -445,10 +437,8 @@
 					</div>
 				</div>
 			{:else}
-				<div>
-					{#await import(`$lib/sprites/sx-s.png`) then { default: src }}
-						<img {src} alt="" class="z-3 absolute" />
-					{/await}
+				<div class="justify-center align-middle">
+					<p class="text-center">No Sel to show.</p>
 				</div>
 			{/if}
 		</div>

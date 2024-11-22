@@ -40,7 +40,7 @@
 					<div class="flex flex-col items-center space-y-4">
 						<button
 							type="submit"
-							class=" relative w-max flex-col items-center rounded-lg bg-white text-2xl text-blue-500 drop-shadow-lg transition-transform hover:scale-125"
+							class=" drop-drop-shadow-md relative w-max flex-col items-center rounded-lg bg-white text-2xl text-blue-500 transition-transform hover:scale-125"
 						>
 							Sign Up</button
 						>
@@ -49,7 +49,7 @@
 				{#if form?.created}
 					<p class="text-green-600">Account Created! <br /> Please proceed to sign in page.</p>
 					<div
-						class=" relative w-max flex-col items-center rounded-lg bg-white text-2xl text-blue-500 drop-shadow-lg transition-transform hover:scale-125"
+						class=" drop-drop-shadow-md relative w-max flex-col items-center rounded-lg bg-white text-2xl text-blue-500 transition-transform hover:scale-125"
 					>
 						<a href="./signin">Sign In</a>
 					</div>
