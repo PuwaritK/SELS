@@ -104,6 +104,23 @@ export const getSelCount = async (paradise_id: number) => {
 };
 
 export const feedAllSel = async (paradise_id: number, user_id: number) => {
+	let account_sels_count = await prisma.sel.count({
+		where: {
+			paradise_id
+		}
+	});
+
+	await prisma.account.update({
+		where: {
+			user_id
+		},
+		data: {
+			currency: {
+				decrement: account_sels_count
+			}
+		}
+	});
+
 	await prisma.sel.updateMany({
 		where: {
 			paradise_id
