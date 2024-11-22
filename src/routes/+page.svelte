@@ -8,7 +8,7 @@
 			<h1>Welcome to SELS</h1>
 		</div>
 		<div class="space-y-8 text-center align-middle font-serif text-4xl">
-			<p>A fantasy game that will feed your gambling addiction.</p>
+			<p>Content warning! Contains gacha.</p>
 			<p>Login or signup now.</p>
 		</div>
 		{#if !data.isSignedIn}

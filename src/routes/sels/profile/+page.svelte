@@ -263,11 +263,11 @@
 		</div>
 	</div>
 </div> -->
-<section id="i4q5js" class="gjs-section">
+<section id="i4q5js" class="gjs-section bg-green-100">
 	<div id="ivircb" class="gjs-container">
-		<div id="i46onn" class="gjs-grid-row">
+		<div id="i46onn" class="gjs-grid-row rounded-2xl bg-pink-100">
 			<div id="ijyrjn" class="gjs-grid-column">
-				<div id="iic6w" class="gjs-image-box gap-4 shadow-md shadow-black">
+				<div id="iic6w" class="gjs-image-box ml-1 gap-4 shadow-black outline outline-1">
 					{#if data.shownSel[0] != null}
 						<div>
 							<div>
@@ -298,25 +298,25 @@
 					{/if}
 				</div>
 			</div>
-			<div id="imzuni" class="gjs-grid-column">
-				<div id="ilcgqj">Username:</div>
-				<div id="iz3kji">SEL Amount:<br /></div>
-				<div id="ixthae">Highest Rarity:<br /></div>
-			</div>
-			<div id="iojh5j" class="gjs-grid-column">
-				<div id="usrnme_show">{data.username}<br /></div>
-				<div id="selamnt_show">{data.selCount}</div>
-				<div id="maxrare_show" title="">REPLACE WITH OUTPUT</div>
+			<div id="imzuni" class="gjs-grid-column text-xl">
+				<div id="ilcgqj">Username: {data.username}</div>
+				<div id="iz3kji">SEL Amount: {data.selCount}<br /></div>
+				<div id="ixthae">Highest Rarity: {data.highestRarityName?.name}<br /></div>
 			</div>
 		</div>
 	</div>
 </section>
-<div id="ia9992" class="gjs-grid-row">
-	<div id="i8p0ce" class="gjs-grid-column">
-		<a id="icomdq" href="./profile/manage" class="gjs-link">Manage SEL!<br /></a>
+<div id="ia9992" class="gjs-grid-row bg-blue-100">
+	<div id="i8p0ce" class="gjs-grid-column rounded-2xl">
+		<a
+			id="icomdq"
+			href="./profile/manage"
+			class="gjs-link rounded-2xl bg-yellow-100 text-2xl transition-all hover:scale-110"
+			>Manage SEL!<br /></a
+		>
 	</div>
 	<div id="i8o103" class="gjs-grid-column">
-		<div id="imlwxq" class="gjs-image-box gap-4 shadow-md shadow-black">
+		<div id="imlwxq" class="gjs-image-box gap-4 shadow-black outline outline-1">
 			{#if data.shownSel[1] != null}
 				<div>
 					<div>
@@ -348,7 +348,7 @@
 		</div>
 	</div>
 	<div id="idueqb" class="gjs-grid-column">
-		<div id="ipo6ij" class="gjs-image-box gap-4 shadow-md shadow-black">
+		<div id="ipo6ij" class="gjs-image-box gap-4 shadow-black outline outline-1">
 			{#if data.shownSel[2] != null}
 				<div>
 					<div>
@@ -380,7 +380,7 @@
 		</div>
 	</div>
 	<div id="i9155v" class="gjs-grid-column">
-		<div id="im274b" class="gjs-image-box gap-4 shadow-md shadow-black">
+		<div id="im274b" class="gjs-image-box gap-4 shadow-black outline outline-1">
 			{#if data.shownSel[3] != null}
 				<div>
 					<div>
@@ -412,7 +412,7 @@
 		</div>
 	</div>
 	<div id="ic3xtq" class="gjs-grid-column">
-		<div id="i3u0u6" class="gjs-image-box gap-4 shadow-md shadow-black">
+		<div id="i3u0u6" class="gjs-image-box gap-4 shadow-black outline outline-1">
 			{#if data.shownSel[4] != null}
 				<div>
 					<div>
@@ -539,7 +539,6 @@
 
 	.gjs-link:hover {
 		color: rgb(36, 99, 235);
-		text-decoration: underline;
 	}
 
 	.gjs-icon.gjs-feature-icon {
@@ -562,7 +561,7 @@
 		max-width: 12rem;
 	}
 	.gjs-image-banner {
-		height: fit-content;
+		height: max-content;
 		width: 100%;
 	}
 
@@ -816,9 +815,8 @@
 	}
 
 	#i46onn {
-		background-color: rgba(190, 190, 190, 1);
-		padding-top: 0px;
-		padding-bottom: 0px;
+		padding-top: 5px;
+		padding-bottom: 5px;
 	}
 
 	#ijyrjn {
@@ -921,7 +919,7 @@
 
 	#icomdq {
 		color: rgba(0, 0, 0, 1);
-		background-color: rgba(190, 190, 190, 1);
+
 		border-top-color: rgba(0, 0, 0, 1);
 		border-right-color: rgba(0, 0, 0, 1);
 		border-bottom-color: rgba(0, 0, 0, 1);

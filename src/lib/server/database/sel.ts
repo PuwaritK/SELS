@@ -231,6 +231,14 @@ export const getSel = async (sel_id: number) => {
 	return sel;
 };
 
+export const getHighestRaritySel = async (paradise_id: number) => {
+	let sel = await getSelsWithTierDesc(paradise_id, 1);
+	if (sel !== null) {
+		return sel[0].tier_id;
+	}
+	return null;
+};
+
 export type SearchOptions = {
 	name: string | null;
 	type_id: number | null;

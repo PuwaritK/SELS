@@ -91,7 +91,7 @@
 		<div>
 			<button
 				type="submit"
-				class="mb-2 size-40 outline outline-1 hover:scale-110"
+				class="mb-2 size-40 rounded-lg text-xl outline outline-1 transition-all hover:scale-110"
 				name="click"
 				value="play">Play with Sels</button
 			>
@@ -112,7 +112,7 @@
 		<div>
 			<button
 				type="submit"
-				class="mb-2 size-40 outline outline-1 hover:scale-110"
+				class="mb-2 size-40 rounded-lg text-xl outline outline-1 transition-all hover:scale-110"
 				name="click"
 				value="show">Host Sels show</button
 			>
@@ -133,7 +133,7 @@
 		<div>
 			<button
 				type="submit"
-				class="mb-2 size-40 outline outline-1 hover:scale-110"
+				class="mb-2 size-40 rounded-lg text-xl outline outline-1 transition-all hover:scale-110"
 				name="click"
 				value="feed">Feed Sels</button
 			>

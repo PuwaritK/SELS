@@ -3,49 +3,46 @@
 	let { children, data } = $props();
 </script>
 
-<nav class="flex h-12 w-screen flex-row justify-around bg-gray-600">
+<nav class="flex h-14 w-screen flex-row justify-around bg-gray-700 text-xl">
 	<a
 		href="/sels/profile"
-		class="ml-10 mr-10 mt-3 text-white hover:scale-125 hover:underline hover:underline-offset-2"
+		class="ml-10 mr-10 mt-3 text-white transition-all hover:scale-125"
 		class:active={$page.url.pathname === '/sels/profile' ||
 			$page.url.pathname === '/sels/profile/manage'}>Profile</a
 	>
 	<a
 		href="/sels/gacha"
-		class="ml-10 mr-10 mt-3 text-white hover:scale-125 hover:underline hover:underline-offset-2"
+		class="ml-10 mr-10 mt-3 text-white transition-all hover:scale-125"
 		class:active={$page.url.pathname === '/sels/gacha'}>Gacha</a
 	>
 	<a
 		href={$page.url.pathname}
-		class="ml-10 mr-10 mt-3 text-white hover:scale-125 hover:underline hover:underline-offset-2"
+		class="ml-10 mr-10 mt-3 text-white transition-all hover:scale-125"
 		class:active={$page.url.pathname === '/sels/trade'}>Trade [WIP]</a
 	>
 	<a
 		href="/sels/addcurrency"
 		class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-indigo-500
             to-red-500 bg-clip-text
-            font-bold text-transparent hover:scale-125 hover:underline hover:underline-offset-2"
-		>Add Currency</a
+            font-bold text-transparent transition-all hover:scale-125">Add Currency</a
 	>
 	{#if data.isAdmin}
 		<a
 			href="/admin"
 			class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-green-500
             to-blue-500 bg-clip-text
-            font-bold text-transparent hover:scale-125 hover:underline hover:underline-offset-2"
-			>Admin Page</a
+            font-bold text-transparent transition-all hover:scale-125">Admin Page</a
 		>
 	{:else if data.isDev}
 		<a
 			href="/dev"
 			class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-green-500
 		to-blue-500 bg-clip-text
-		font-bold text-transparent hover:scale-125 hover:underline hover:underline-offset-2"
-			>Developer Page</a
+		font-bold text-transparent transition-all hover:scale-125">Developer Page</a
 		>
 	{/if}
 	<div class="min-w-10">
-		<p class="ml-10 mr-10 mt-3 text-white">
+		<p class="ml-10 mr-10 mt-3 text-green-400">
 			SPC: {data.accountCurrency}
 		</p>
 	</div>
@@ -1146,6 +1143,8 @@
 <style>
 	.active {
 		color: greenyellow;
-		transition: all;
+		transition-property: all;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 150ms;
 	}
 </style>

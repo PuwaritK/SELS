@@ -1,6 +1,6 @@
 import { getSel, updateSel } from '$lib/server/database/sel';
 import { getSelSex } from '$lib/server/database/sex';
-import { getSelTier } from '$lib/server/database/tier';
+import { getAllSelTier } from '$lib/server/database/tier';
 import { getSelType } from '$lib/server/database/type';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
@@ -16,7 +16,7 @@ export const load: PageServerLoad = async (event) => {
 
 	const selTypes = await getSelType();
 	const selSex = await getSelSex();
-	const selTier = await getSelTier();
+	const selTier = await getAllSelTier();
 	const selToConfigure = await getSel(sel_id);
 	return { selTypes, selSex, selTier, selToConfigure };
 };
