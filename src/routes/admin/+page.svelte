@@ -17,35 +17,35 @@
 {/if}
 {#if data.found === true}
 	<p>Sels of ParadiseID: {data.paradise_id}</p>
-	<table>
-		<thead>
-			<tr>
-				<td>Sel ID</td>
-				<td>Name</td>
-				<td>Type ID</td>
-				<td>Tier ID</td>
-				<td>Sex ID</td>
-				<td>Colour</td>
-				<td>DOB</td>
-				<td>Show XP</td>
-				<td>Weight</td>
-				<td>Price</td>
-			</tr>
-
-			{#each data.sels! as sel}
+	<form action="/delete" method="post" use:enhance>
+		<table>
+			<thead>
 				<tr>
-					<td>{sel.sel_id}</td>
-					<td>{sel.name}</td>
-					<td>{sel.type_id}</td>
-					<td>{sel.tier_id}</td>
-					<td>{sel.sex_id}</td>
-					<td>{sel.colour}</td>
-					<td>{sel.dob}</td>
-					<td>{sel.show_xp}</td>
-					<td>{sel.weight}</td>
-					<td>{sel.price}</td>
-					<td
-						><form action="/delete" method="post" use:enhance>
+					<td>Sel ID</td>
+					<td>Name</td>
+					<td>Type ID</td>
+					<td>Tier ID</td>
+					<td>Sex ID</td>
+					<td>Colour</td>
+					<td>DOB</td>
+					<td>Show XP</td>
+					<td>Weight</td>
+					<td>Price</td>
+				</tr>
+
+				{#each data.sels! as sel}
+					<tr>
+						<td>{sel.sel_id}</td>
+						<td>{sel.name}</td>
+						<td>{sel.type_id}</td>
+						<td>{sel.tier_id}</td>
+						<td>{sel.sex_id}</td>
+						<td>{sel.colour}</td>
+						<td>{sel.dob}</td>
+						<td>{sel.show_xp}</td>
+						<td>{sel.weight}</td>
+						<td>{sel.price}</td>
+						<td>
 							<button
 								type="submit"
 								class="text-blue-500 hover:text-blue-800"
@@ -55,12 +55,12 @@
 							>
 								Delete Sel
 							</button>
-						</form></td
-					>
-				</tr>
-			{/each}
-		</thead>
-	</table>
+						</td>
+					</tr>
+				{/each}
+			</thead>
+		</table>
+	</form>
 {/if}
 
 <style>

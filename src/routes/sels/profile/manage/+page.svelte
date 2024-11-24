@@ -87,7 +87,7 @@
 	<img src={sel_banner} class="" alt="" />
 </div>
 
-<div class="h-screen bg-green-100 pt-10">
+<div class="h-dvh bg-green-100 pt-10">
 	<form method="post" use:enhance>
 		<div class="flex min-h-60 flex-row justify-evenly gap-10 align-middle">
 			<div>

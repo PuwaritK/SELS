@@ -8,7 +8,7 @@
 <div id="ilw2j" class="gjs-image-box">
 	<img src={sel_banner} class="gjs-image-box" alt="" />
 </div>
-<section class="h-screen bg-green-100">
+<section class="h-dvh bg-green-100">
 	<p class="mb-8 justify-self-center text-8xl">Gamba</p>
 	<form method="post" use:enhance class="flex flex-col gap-4">
 		<div class="gjs-grid-row mt-4 flex content-center items-center justify-center gap-12">
