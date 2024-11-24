@@ -1,5 +1,25 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation';
+	import { onMount } from 'svelte';
+
 	let { data } = $props();
+	const availableDisplayText = [
+		'Content warning! Contains gacha.',
+		'"sel." -Sel',
+		'A gacha game to feed your gambling addiction.',
+		"Oh, it's not really gambling when you never lose.",
+		'Gambling has brought our family together. We had to move to a smaller house.',
+		'I love online gambling.'
+	];
+	afterNavigate(() => {
+		const index = Math.floor(Math.random() * availableDisplayText.length);
+		displayText = availableDisplayText[index];
+	});
+	onMount(() => {
+		const index = Math.floor(Math.random() * availableDisplayText.length);
+		displayText = availableDisplayText[index];
+	});
+	let displayText = $state('');
 </script>
 
 <div class=" min-h-screen w-screen bg-gray-400">
@@ -8,7 +28,7 @@
 			<h1>Welcome to SELS</h1>
 		</div>
 		<div class="space-y-8 text-center align-middle font-serif text-4xl">
-			<p>Content warning! Contains gacha.</p>
+			<p>{displayText}</p>
 			<p>Login or signup now.</p>
 		</div>
 		{#if !data.isSignedIn}

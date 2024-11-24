@@ -83,73 +83,76 @@
 	import sel_banner from '$lib/sel_banner.png';
 </script>
 
-<div id="ilw2j" class="gjs-image-box mb-10">
-	<img src={sel_banner} class="gjs-image-box" alt="" />
+<div id="ilw2j" class="">
+	<img src={sel_banner} class="" alt="" />
 </div>
-<form method="post" use:enhance>
-	<div class="flex min-h-60 flex-row justify-evenly gap-10 align-middle">
-		<div>
-			<button
-				type="submit"
-				class="mb-2 size-40 rounded-lg text-xl outline outline-1 transition-all hover:scale-110"
-				name="click"
-				value="play">Play with Sels</button
-			>
-			{#if data.validPlay === false || form?.validPlay === false}
-				<p class="text-red-400">Play on cooldown.</p>
-				<p id="play" class="min-w-12">Time until play: {playTimer}</p>
-			{:else if form?.successPlay}
-				<p class="text-green-400">Play Successful</p>
-				{(playInterval = startTimer(
-					playDiff,
-					(time) => (playTimer = time),
-					(ready) => (playReady = ready)
-				))}
-			{:else}
-				<p class="text-green-400">Feed Ready!</p>
-			{/if}
+
+<div class="h-screen bg-green-100 pt-10">
+	<form method="post" use:enhance>
+		<div class="flex min-h-60 flex-row justify-evenly gap-10 align-middle">
+			<div>
+				<button
+					type="submit"
+					class="mb-2 size-40 rounded-lg bg-red-100 text-xl outline outline-1 transition-all hover:scale-110"
+					name="click"
+					value="play">Play with Sels</button
+				>
+				{#if data.validPlay === false || form?.validPlay === false}
+					<p class="text-red-400">Play on cooldown.</p>
+					<p id="play" class="min-w-12">Time until play: {playTimer}</p>
+				{:else if form?.successPlay}
+					<p class="text-green-400">Play Successful</p>
+					{(playInterval = startTimer(
+						playDiff,
+						(time) => (playTimer = time),
+						(ready) => (playReady = ready)
+					))}
+				{:else}
+					<p class="text-green-400">Feed Ready!</p>
+				{/if}
+			</div>
+			<div>
+				<button
+					type="submit"
+					class="mb-2 size-40 rounded-lg bg-pink-100 text-xl outline outline-1 transition-all hover:scale-110"
+					name="click"
+					value="show">Host Sels show</button
+				>
+				{#if data.validShow === false || form?.validShow === false}
+					<p class="text-red-400">Show on cooldown.</p>
+					<p id="show" class="min-w-12">Time until show: {showTimer}</p>
+				{:else if form?.successShow}
+					<p class="text-green-400">Show Successful</p>
+					{(feedInterval = startTimer(
+						feedDiff,
+						(time) => (feedTimer = time),
+						(ready) => (feedReady = ready)
+					))}
+				{:else}
+					<p class="text-green-400">Feed Ready!</p>
+				{/if}
+			</div>
+			<div>
+				<button
+					type="submit"
+					class="mb-2 size-40 rounded-lg bg-blue-100 text-xl outline outline-1 transition-all hover:scale-110"
+					name="click"
+					value="feed">Feed Sels</button
+				>
+				{#if data.validFeed === false || form?.validFeed === false}
+					<p class="text-red-400">Feed on cooldown.</p>
+					<p id="feed" class="min-w-12">Time until feed: {feedTimer}</p>
+				{:else if form?.successFeed}
+					<p class="text-green-400">Feed Successful</p>
+					{(showInterval = startTimer(
+						showDiff,
+						(time) => (showTimer = time),
+						(ready) => (showReady = ready)
+					))}
+				{:else}
+					<p class="text-green-400">Feed Ready!</p>
+				{/if}
+			</div>
 		</div>
-		<div>
-			<button
-				type="submit"
-				class="mb-2 size-40 rounded-lg text-xl outline outline-1 transition-all hover:scale-110"
-				name="click"
-				value="show">Host Sels show</button
-			>
-			{#if data.validShow === false || form?.validShow === false}
-				<p class="text-red-400">Show on cooldown.</p>
-				<p id="show" class="min-w-12">Time until show: {showTimer}</p>
-			{:else if form?.successShow}
-				<p class="text-green-400">Show Successful</p>
-				{(feedInterval = startTimer(
-					feedDiff,
-					(time) => (feedTimer = time),
-					(ready) => (feedReady = ready)
-				))}
-			{:else}
-				<p class="text-green-400">Feed Ready!</p>
-			{/if}
-		</div>
-		<div>
-			<button
-				type="submit"
-				class="mb-2 size-40 rounded-lg text-xl outline outline-1 transition-all hover:scale-110"
-				name="click"
-				value="feed">Feed Sels</button
-			>
-			{#if data.validFeed === false || form?.validFeed === false}
-				<p class="text-red-400">Feed on cooldown.</p>
-				<p id="feed" class="min-w-12">Time until feed: {feedTimer}</p>
-			{:else if form?.successFeed}
-				<p class="text-green-400">Feed Successful</p>
-				{(showInterval = startTimer(
-					showDiff,
-					(time) => (showTimer = time),
-					(ready) => (showReady = ready)
-				))}
-			{:else}
-				<p class="text-green-400">Feed Ready!</p>
-			{/if}
-		</div>
-	</div>
-</form>
+	</form>
+</div>

@@ -30,15 +30,15 @@
 		<a
 			href="/admin"
 			class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-green-500
-            to-blue-500 bg-clip-text
-            font-bold text-transparent transition-all hover:scale-125">Admin Page</a
+	to-blue-500 bg-clip-text
+	font-bold text-transparent transition-all hover:scale-125">Admin Page</a
 		>
 	{:else if data.isDev}
 		<a
 			href="/dev"
 			class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-green-500
-		to-blue-500 bg-clip-text
-		font-bold text-transparent transition-all hover:scale-125">Developer Page</a
+	to-blue-500 bg-clip-text
+	font-bold text-transparent transition-all hover:scale-125">Developer Page</a
 		>
 	{/if}
 	<div class="min-w-10">
@@ -46,6 +46,11 @@
 			SPC: {data.accountCurrency}
 		</p>
 	</div>
+	<a
+		href="/signout"
+		class="ml-10 mr-10 mt-3 font-bold text-red-600
+			transition-all hover:scale-125">Signout</a
+	>
 </nav>
 
 {@render children()}
