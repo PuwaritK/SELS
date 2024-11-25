@@ -19,6 +19,8 @@
 		</div>
 		{#if typeof form?.result === typeof ''}
 			<p class=" mx-auto text-red-600">Insufficient currency</p>
+		{:else if typeof form?.result === typeof 1}
+			<p class=" text-green-50000 mx-auto">Successfully pulled {form?.result} sel(s)</p>
 		{/if}
 	</form>
 </section>

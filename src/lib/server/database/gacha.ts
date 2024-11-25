@@ -147,7 +147,7 @@ export const pullSel = async (account: account, pullAmount: number = 1) => {
 	}
 	const GACHACOST = 3000;
 	let currency = (await getCurrency(account.user_id))!;
-
+	let realPullAmount = pullAmount;
 	pullAmount -= Math.floor(pullAmount / 10);
 	let pullCost = GACHACOST * pullAmount;
 	let generatedSel: sel[] = [];
@@ -159,7 +159,7 @@ export const pullSel = async (account: account, pullAmount: number = 1) => {
 		for (let i = 0; i < pullAmount; i++) {
 			generatedSel.push(await randomSel(account.paradise_id!));
 		}
-		return (result = generatedSel);
+		return (result = realPullAmount);
 	}
 	// switch (pullAmount) {
 	// 	case 1:
