@@ -39,12 +39,12 @@
 				{#if form?.created}
 					<p class="text-green-600">Account Created! <br /> Please proceed to sign in page.</p>
 					<div
-						class=" drop-drop-shadow-md relative w-max flex-col items-center rounded-lg bg-white text-2xl text-blue-500 transition-transform hover:scale-125"
+						class="drop-drop-shadow-md relative mt-2 w-max flex-col items-center rounded-lg bg-white text-2xl text-blue-500 transition-transform hover:scale-125"
 					>
 						<a href="./signin">Sign In</a>
 					</div>
 				{:else}
-					<div class="flex flex-col items-center space-y-4">
+					<div class="flex flex-col items-center space-y-4 pt-4">
 						<button
 							type="submit"
 							class="drop-drop-shadow-md relative w-max flex-col items-center rounded-lg bg-white text-2xl text-blue-500 transition-transform hover:scale-125"
