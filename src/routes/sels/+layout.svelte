@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	let { children, data } = $props();
+	import sel_banner from '$lib/sel_banner.png';
 </script>
 
+<div id="i9bnk" class="gjs-image-banner">
+	<img src={sel_banner} class="gjs-image-banner" alt="" />
+</div>
 <nav class="flex h-14 w-screen flex-row justify-around bg-gray-700 text-xl">
 	<a
 		href="/sels/profile"
@@ -48,6 +52,7 @@
 	</div>
 	<a
 		href="/signout"
+		data-sveltekit-preload-data="tap"
 		class="ml-10 mr-10 mt-3 font-bold text-red-600
 			transition-all hover:scale-125">Signout</a
 	>

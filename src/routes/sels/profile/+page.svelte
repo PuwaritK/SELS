@@ -10,7 +10,6 @@
 	let type3: string = $state('');
 	let sex4: string = $state('');
 	let type4: string = $state('');
-	import sel_banner from '$lib/sel_banner.png';
 
 	if (data.shownSel[0] != null) {
 		switch (data.shownSel[0].sex_id) {
@@ -244,9 +243,6 @@
 	}
 </script>
 
-<div id="i9bnk" class="gjs-image-banner">
-	<img src={sel_banner} class="gjs-image-banner" alt="" />
-</div>
 <!-- <div id="i9v8g" class="navbar">
 	<div data-gjs="navbar" id="imytl" class="navbar-container">
 		<div id="i19a8" class="navbar-burger"></div>

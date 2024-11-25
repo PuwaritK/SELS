@@ -1,6 +1,5 @@
 <script lang="ts">
 	let { form } = $props();
-	import sel_banner from '$lib/sel_banner.png';
 </script>
 
 <title>signin</title>
@@ -9,9 +8,6 @@
 <meta name="robots" content="index,follow" />
 <meta name="generator" content="GrapesJS Studio" />
 
-<div id="ilw2j-2" class="gjs-image-box">
-	<img src={sel_banner} class="gjs-image-box" alt="" />
-</div>
 <div id="itdoz2-2" class="gjs-grid-row">
 	<div id="imxmcp-2" class="gjs-grid-column">
 		<div id="irwezo-2">Let's make an account!<br /></div>

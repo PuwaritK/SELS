@@ -2,12 +2,8 @@
 	import { enhance } from '$app/forms';
 
 	let { form } = $props();
-	import sel_banner from '$lib/sel_banner.png';
 </script>
 
-<div id="ilw2j" class="gjs-image-box">
-	<img src={sel_banner} class="gjs-image-box" alt="" />
-</div>
 <section class="h-dvh bg-green-100">
 	<p class="mb-8 justify-self-center text-8xl">Gamba</p>
 	<form method="post" use:enhance class="flex flex-col gap-4">

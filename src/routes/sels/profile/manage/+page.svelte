@@ -79,13 +79,7 @@
 			(ready) => (showReady = ready)
 		);
 	}
-
-	import sel_banner from '$lib/sel_banner.png';
 </script>
-
-<div id="ilw2j" class="">
-	<img src={sel_banner} class="" alt="" />
-</div>
 
 <div class="h-dvh bg-green-100 pt-10">
 	<form method="post" use:enhance>
