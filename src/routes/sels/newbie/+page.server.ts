@@ -5,8 +5,11 @@ import prisma from '$lib/server/database/client';
 import { getAccount } from '$lib/server/database/account';
 const NEWBIE_WEIGHT_KILOS = 8;
 
-export const load = async () => {
+export const load = async (event) => {
 	const selTypes = await getSelType();
+	if (event.locals.account?.paradise_id !== null && event.url.pathname === '/sels/newbie') {
+		return redirect(302, '/sels/profile');
+	}
 	return { selTypes };
 };
 export const actions: Actions = {

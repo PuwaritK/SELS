@@ -17,11 +17,15 @@
 			verifyForm.requestSubmit();
 		}, 2000);
 	};
+	import sel_banner from '$lib/sel_banner.png';
 </script>
 
+<div id="i9bnk" class="gjs-image-banner">
+	<img src={sel_banner} class="gjs-image-banner" alt="" />
+</div>
 <div class="h-dvh bg-green-50">
-	<div class="yellow mb-8 flex flex-col items-center justify-center pt-8">
-		<h1 class="mb-4 text-4xl">Paradise setup</h1>
+	<div class="yellow mb-8 flex flex-col items-center justify-center pt-6">
+		<h1 class="mb-4 text-4xl font-bold">Paradise setup</h1>
 		<form
 			action="?/paradise"
 			method="post"
@@ -56,7 +60,7 @@
 	</div>
 
 	<div class="flex flex-col items-center justify-center">
-		<p class="mb-8 text-2xl">Configure your sel</p>
+		<p class="mb-8 text-2xl font-bold">Configure your sel</p>
 		<form action="?/sel" method="post">
 			<div>
 				<label for="sel_name">Give your first sel a name: </label>
@@ -83,8 +87,13 @@
 			</div>
 			<input type="hidden" name="paradise_name" bind:value={paradiseName} />
 			{#if form?.verified}
-				<div>
-					<button type="submit" class="outline outline-2">Confirm</button>
+				<div class="flex flex-col items-center space-y-4 pt-4">
+					<button
+						type="submit"
+						class="drop-drop-shadow-md relative w-max flex-col items-center rounded-lg bg-white text-2xl text-blue-500 transition-transform hover:scale-125"
+					>
+						Confirm</button
+					>
 				</div>
 			{:else}
 				<div>
