@@ -259,7 +259,7 @@
 		</div>
 	</div>
 </div> -->
-<section id="i4q5js" class="gjs-section bg-green-100">
+<section id="i4q5js" class="gjs-section bg-green-50">
 	<div id="ivircb" class="gjs-container">
 		<div id="i46onn" class="gjs-grid-row rounded-2xl bg-pink-100">
 			<div id="ijyrjn" class="gjs-grid-column">
@@ -302,7 +302,7 @@
 		</div>
 	</div>
 </section>
-<div id="ia9992" class="gjs-grid-row gap-6 bg-blue-100">
+<div id="ia9992" class="gjs-grid-row gap-6 bg-blue-50">
 	<div id="i8p0ce" class="gjs-grid-column rounded-2xl">
 		<a
 			id="icomdq"

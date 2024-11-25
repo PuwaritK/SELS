@@ -4,7 +4,7 @@
 	let { form } = $props();
 </script>
 
-<section class="h-dvh bg-green-100">
+<section class="h-dvh bg-green-50">
 	<p class="mb-8 justify-self-center text-8xl">Gamba</p>
 	<form method="post" use:enhance class="flex flex-col gap-4">
 		<div class="gjs-grid-row mt-4 flex content-center items-center justify-center gap-12">
@@ -20,7 +20,7 @@
 		{#if typeof form?.result === typeof ''}
 			<p class=" mx-auto text-red-600">Insufficient currency</p>
 		{:else if typeof form?.result === typeof 1}
-			<p class=" text-green-50000 mx-auto">Successfully pulled {form?.result} sel(s)</p>
+			<p class=" mx-auto text-green-500">Successfully pulled {form?.result} sel(s)</p>
 		{/if}
 	</form>
 </section>

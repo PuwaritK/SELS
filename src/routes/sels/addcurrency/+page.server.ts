@@ -7,9 +7,10 @@ export const load: PageServerLoad = async () => {};
 
 export const actions: Actions = {
 	default: async (event) => {
-		await addCurrency(
+		let amount = await addCurrency(
 			event.locals.account?.user_id!,
 			parseInt((await event.request.formData()).get('currency') as string)
 		);
+		return { amount };
 	}
 };

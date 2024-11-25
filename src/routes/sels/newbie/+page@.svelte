@@ -19,7 +19,7 @@
 	};
 </script>
 
-<div class="h-dvh bg-green-100">
+<div class="h-dvh bg-green-50">
 	<div class="yellow mb-8 flex flex-col items-center justify-center pt-8">
 		<h1 class="mb-4 text-4xl">Paradise setup</h1>
 		<form

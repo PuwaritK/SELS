@@ -63,7 +63,7 @@ export const addCurrency = async (user_id: number, amount: number) => {
 			currency: currentCurrency + amount
 		}
 	});
-	return plusCurrency;
+	return amount;
 };
 
 export const subtractCurrency = async (user_id: number, amount: number) => {
