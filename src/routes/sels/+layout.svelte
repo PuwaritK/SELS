@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	let { children, data } = $props();
 	import sel_banner from '$lib/sel_banner.png';
+	import sel_coin from '$lib/sel_coin.gif';
 </script>
 
 <div id="i9bnk" class="gjs-image-banner">
@@ -28,7 +29,8 @@
 		href="/sels/addcurrency"
 		class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-indigo-500
             to-red-500 bg-clip-text
-            font-bold text-transparent transition-all hover:scale-125">Add Currency</a
+            font-bold text-transparent transition-all hover:scale-125"
+		class:active={$page.url.pathname === '/sels/addcurrency'}>Add Currency</a
 	>
 	{#if data.isAdmin}
 		<a
@@ -45,15 +47,19 @@
 	font-bold text-transparent transition-all hover:scale-125">Developer Page</a
 		>
 	{/if}
-	<div class="min-w-10">
-		<p class="ml-10 mr-10 mt-3 text-green-400">
+	<div class="flex min-w-10 flex-row">
+		<p class="ml-10 mr-0 mt-3 text-right text-green-400">
 			SPC: {data.accountCurrency}
 		</p>
+
+		<div class="flex flex-row items-center">
+			<img src={sel_coin} class="inline h-10 w-10" alt="" />
+		</div>
 	</div>
 	<a
 		href="/signout"
 		data-sveltekit-preload-data="tap"
-		class="ml-10 mr-10 mt-3 font-bold text-red-600
+		class="ml-10 mr-10 mt-3 font-bold text-red-500
 			transition-all hover:scale-125">Signout</a
 	>
 </nav>
