@@ -61,11 +61,33 @@ export const updateSel = async (
 export const deleteSel = async (sel_id: number) => {
 	const killSel = await prisma.sel.delete({
 		where: {
-			sel_id: sel_id
+			sel_id: sel_id,
+			NOT: {
+				price: 0
+			}
 		}
 	});
 };
 
+export const deleteAllSel = async (username: string) => {
+	let paradise_id = await prisma.account.findFirst({
+		where: {
+			username
+		},
+		select: {
+			paradise_id: true
+		}
+	});
+
+	const killAllSel = await prisma.sel.deleteMany({
+		where: {
+			paradise_id: paradise_id?.paradise_id,
+			NOT: {
+				price: 0
+			}
+		}
+	});
+};
 export const searchSel = async (searchOptions: SearchOptions, username: string) => {
 	//TODO: for patton
 };

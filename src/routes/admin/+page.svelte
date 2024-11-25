@@ -31,6 +31,16 @@
 					<td>Show XP</td>
 					<td>Weight</td>
 					<td>Price</td>
+					<td>
+						<button
+							type="submit"
+							class=" text-red-500 hover:text-blue-800"
+							name="deleteall"
+							value={$page.url.searchParams.get('search')}
+						>
+							Delete All Sel
+						</button>
+					</td>
 				</tr>
 
 				{#each data.sels! as sel}

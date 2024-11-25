@@ -1,4 +1,4 @@
-import { deleteSel } from '$lib/server/database/sel';
+import { deleteAllSel, deleteSel } from '$lib/server/database/sel';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
@@ -12,10 +12,15 @@ export const load: PageServerLoad = async (event) => {
 };
 
 export const actions: Actions = {
-	default: async ({ request, url }) => {
+	default: async ({ request }) => {
 		let formData = await request.formData();
-		let selID = Number(formData.get('delete') as string);
-		// if (!(await isSelExist(selID))) return;
+		let deletedata = formData.get('delete') as string;
+		let deleteall = formData.get('deleteall') as string;
+		if (deleteall !== null) {
+			await deleteAllSel(deleteall);
+			return;
+		}
+		let selID = Number(deletedata);
 		try {
 			await deleteSel(selID);
 		} catch {
