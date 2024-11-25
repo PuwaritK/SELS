@@ -139,6 +139,7 @@ export const feedAllSel = async (paradise_id: number, user_id: number) => {
 			last_feed: new Date(Date.now())
 		}
 	});
+	return account_sels_count;
 };
 
 export const hostSelShow = async (paradise_id: number, user_id: number) => {
@@ -197,6 +198,7 @@ export const hostSelShow = async (paradise_id: number, user_id: number) => {
 			last_show: new Date(Date.now())
 		}
 	});
+	return spcEarned;
 };
 
 export const playWithSels = async (user_id: number) => {
@@ -211,6 +213,7 @@ export const playWithSels = async (user_id: number) => {
 			last_play: new Date(Date.now())
 		}
 	});
+	return 6000;
 };
 
 export const isSelExist = async (sel_id: number) => {

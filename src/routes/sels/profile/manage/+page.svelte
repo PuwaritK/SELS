@@ -91,16 +91,12 @@
 					name="click"
 					value="play">Play with Sels</button
 				>
+				{#if form?.playResult}
+					<p class="text-green-400">Play Successful, gained {form.playResult} SPC.</p>
+				{/if}
 				{#if data.validPlay === false || form?.validPlay === false}
 					<p class="text-red-400">Play on cooldown.</p>
 					<p id="play" class="min-w-12">Time until play: {playTimer}</p>
-				{:else if form?.successPlay}
-					<p class="text-green-400">Play Successful</p>
-					{(playInterval = startTimer(
-						playDiff,
-						(time) => (playTimer = time),
-						(ready) => (playReady = ready)
-					))}
 				{:else}
 					<p class="text-green-400">Feed Ready!</p>
 				{/if}
@@ -112,16 +108,12 @@
 					name="click"
 					value="show">Host Sels show</button
 				>
+				{#if form?.showResult}
+					<p class="text-green-400">Show Successful, gained {form.showResult} SPC.</p>
+				{/if}
 				{#if data.validShow === false || form?.validShow === false}
 					<p class="text-red-400">Show on cooldown.</p>
 					<p id="show" class="min-w-12">Time until show: {showTimer}</p>
-				{:else if form?.successShow}
-					<p class="text-green-400">Show Successful</p>
-					{(feedInterval = startTimer(
-						feedDiff,
-						(time) => (feedTimer = time),
-						(ready) => (feedReady = ready)
-					))}
 				{:else}
 					<p class="text-green-400">Feed Ready!</p>
 				{/if}
@@ -133,16 +125,12 @@
 					name="click"
 					value="feed">Feed Sels</button
 				>
+				{#if form?.feedResult}
+					<p class="text-green-400">Feed Successful, paid {form.feedResult} SPC.</p>
+				{/if}
 				{#if data.validFeed === false || form?.validFeed === false}
 					<p class="text-red-400">Feed on cooldown.</p>
 					<p id="feed" class="min-w-12">Time until feed: {feedTimer}</p>
-				{:else if form?.successFeed}
-					<p class="text-green-400">Feed Successful</p>
-					{(showInterval = startTimer(
-						showDiff,
-						(time) => (showTimer = time),
-						(ready) => (showReady = ready)
-					))}
 				{:else}
 					<p class="text-green-400">Feed Ready!</p>
 				{/if}

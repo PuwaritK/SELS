@@ -18,22 +18,25 @@ export const actions: Actions = {
 		switch (formType) {
 			case 'play': {
 				if (timeNow.getTime() - locals.account!.last_play.getTime() > 1000 * 60 * 60) {
-					await playWithSels(locals.account?.user_id!);
-					return { successPlay: true };
+					let playResult = await playWithSels(locals.account?.user_id!);
+					return { successPlay: true, playResult };
 				}
 				return { validPlay: false };
 			}
 			case 'show': {
 				if (timeNow.getTime() - locals.account!.last_show.getTime() > 1000 * 60 * 60) {
-					await hostSelShow(locals.account?.paradise_id!, locals.account?.user_id!);
-					return { successShow: true };
+					let showResult = await hostSelShow(
+						locals.account?.paradise_id!,
+						locals.account?.user_id!
+					);
+					return { successShow: true, showResult };
 				}
 				return { validShow: false };
 			}
 			case 'feed': {
 				if (timeNow.getTime() - locals.account!.last_feed.getTime() > 1000 * 60 * 60) {
-					await feedAllSel(locals.account?.paradise_id!, locals.account?.user_id!);
-					return { successFeed: true };
+					let feedResult = await feedAllSel(locals.account?.paradise_id!, locals.account?.user_id!);
+					return { successFeed: true, feedResult };
 				}
 				return { validFeed: false };
 			}
