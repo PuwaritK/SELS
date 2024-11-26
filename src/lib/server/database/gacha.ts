@@ -156,7 +156,7 @@ export const pullSel = async (account: account, pullAmount: number = 1) => {
 		return (result = 'Insufficient currency.');
 	} else {
 		await subtractCurrency(account.user_id, pullCost);
-		for (let i = 0; i < pullAmount; i++) {
+		for (let i = 0; i < realPullAmount; i++) {
 			generatedSel.push(await randomSel(account.paradise_id!));
 		}
 		return (result = realPullAmount);
