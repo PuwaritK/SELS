@@ -28,7 +28,7 @@
 						<label for="cpass" class="mb-1 h-8">Confirm Password: </label>
 					</div>
 					<div class="flex flex-col justify-center">
-						<input type="text" name="username" id="user" class="mb-1 h-8" required />
+						<input type="text" name="username" id="user" maxlength="20" class="mb-1 h-8" required />
 						<input type="password" name="password" id="pass" class="mb-1 h-8" required />
 						<input type="password" name="confirm_password" id="cpass" class="mb-1 h-8" required />
 					</div>
