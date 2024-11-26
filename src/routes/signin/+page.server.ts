@@ -15,6 +15,9 @@ export const actions = {
 		let account: account | null = null;
 		try {
 			let isAccExist = await isAccountExist(username, password);
+			if (username.length > 20) {
+				throw new Error('Username must be at most 20 characters');
+			}
 			if (!isAccExist) {
 				throw new Error('The Username or Password is Incorrect. Try again.');
 			}
