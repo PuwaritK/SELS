@@ -1,4 +1,5 @@
 /*M!999999\- enable the sandbox mode */
+SET FOREIGN_KEY_CHECKS = 0;
 INSERT INTO
     `account`
 VALUES
@@ -306,3 +307,5 @@ VALUES
     (5, 'Leopard seal'),
     (6, 'Sea lion'),
     (7, 'Walrus');
+
+SET FOREIGN_KEY_CHECKS = 1;

@@ -19,7 +19,7 @@
 	<form method="post">
 		<div>
 			<label for="sel_name">Sel name: </label>
-			<input type="text" name="sel_name" value={data.selToConfigure?.name} required />
+			<input type="text" name="sel_name" value={data.selToConfigure?.name} maxlength="25" required />
 		</div>
 		<div>
 			<label for="sel_type">Sel race: </label>
