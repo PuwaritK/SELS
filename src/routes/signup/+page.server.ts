@@ -14,6 +14,9 @@ export const actions = {
 			if (password != cpassword) {
 				throw new Error('Password mismatch');
 			}
+			if (username.length > 20) {
+				throw new Error('Username must be at most 20 characters');
+			}
 			let isExist = await isUsernameExist(username);
 			if (isExist) {
 				throw new Error('Username already exists');
