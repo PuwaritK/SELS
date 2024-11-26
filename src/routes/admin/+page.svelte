@@ -9,7 +9,7 @@
 
 <form method="get">
 	<label for="user">Username to find:</label>
-	<input type="text" name="search" value={$page.url.searchParams.get('search')} />
+	<input type="text" name="search" value={$page.url.searchParams.get('search')} maxlength="20"/>
 	<button type="submit" class="outline outline-2">Find</button>
 </form>
 {#if data.found === false}

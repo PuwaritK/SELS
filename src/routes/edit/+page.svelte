@@ -55,15 +55,15 @@
 		</div>
 		<div>
 			<label for="sel_weight">Sel Weight:</label>
-			<input type="text" name="sel_weight" value={data.selToConfigure?.weight} />
+			<input type="text" name="sel_weight" value={data.selToConfigure?.weight} maxlength="10" />
 		</div>
 		<div>
 			<label for="sel_showxp">Sel ShowXP:</label>
-			<input type="text" name="sel_showxp" value={data.selToConfigure?.show_xp} />
+			<input type="text" name="sel_showxp" value={data.selToConfigure?.show_xp} maxlength="10"/>
 		</div>
 		<div>
 			<label for="sel_price">Sel Price:</label>
-			<input type="text" name="sel_price" value={data.selToConfigure?.price} />
+			<input type="text" name="sel_price" value={data.selToConfigure?.price} maxlength="10"/>
 		</div>
 		<div>
 			<label for="sel_tier">Sel Tier:</label>
