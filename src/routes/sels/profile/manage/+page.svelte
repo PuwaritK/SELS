@@ -98,7 +98,7 @@
 					<p class="text-red-400">Play on cooldown.</p>
 					<p id="play" class="min-w-12">Time until play: {playTimer}</p>
 				{:else}
-					<p class="text-green-400">Feed Ready!</p>
+					<p class="text-green-400">Play Ready!</p>
 				{/if}
 			</div>
 			<div>
@@ -115,7 +115,7 @@
 					<p class="text-red-400">Show on cooldown.</p>
 					<p id="show" class="min-w-12">Time until show: {showTimer}</p>
 				{:else}
-					<p class="text-green-400">Feed Ready!</p>
+					<p class="text-green-400">Show Ready!</p>
 				{/if}
 			</div>
 			<div>

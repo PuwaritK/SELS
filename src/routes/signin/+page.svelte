@@ -21,7 +21,7 @@
 						<label for="pass" class="mb-1 h-8">Password: </label>
 					</div>
 					<div class="flex flex-col justify-center">
-						<input type="text" name="username" id="user" class="mb-1 h-8" required />
+						<input type="text" name="username" id="user" maxlength="20" class="mb-1 h-8" required />
 						<input type="password" name="password" id="pass" class="mb-1 h-8" required />
 					</div>
 				</div>
