@@ -25,7 +25,7 @@
 <div class=" min-h-screen w-screen bg-gray-400">
 	<div class="relative flex flex-col items-center space-y-8 bg-gray-200 pb-7">
 		<div class="font-serif text-8xl font-bold">
-			<h1>Welcome to SELS</h1>
+			<h1>Welcome to SELS!</h1>
 		</div>
 		<div class="space-y-8 text-center align-middle font-serif text-4xl">
 			<p>{displayText}</p>
