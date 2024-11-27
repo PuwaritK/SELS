@@ -29,7 +29,7 @@
 		</div>
 		<div class="space-y-8 text-center align-middle font-serif text-4xl">
 			<p>{displayText}</p>
-			<p>Login or signup now.</p>
+			<p>Login or signup now!</p>
 		</div>
 		{#if !data.isSignedIn}
 			<div class="col-span-2 flex">
