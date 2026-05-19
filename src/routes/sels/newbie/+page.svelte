@@ -9,16 +9,17 @@
 			clearTimeout(verifyTimer);
 		}
 
-		verifyTimer = setTimeout(() => {
+		verifyTimer = window.setTimeout(() => {
 			const activeElement = document.activeElement;
+			let start;
+			let end;
 			if (
 				activeElement instanceof HTMLInputElement ||
 				activeElement instanceof HTMLTextAreaElement
 			) {
-				const start = activeElement.selectionStart;
-				const end = activeElement.selectionEnd;
+				start = activeElement.selectionStart;
+				end = activeElement.selectionEnd;
 			}
-
 			verifyForm.requestSubmit();
 		}, 2000);
 	};
