@@ -15,6 +15,7 @@ Thumbs.db
 .env.local.*
 !.env.example
 !.env.test
+.env
 
 # Vite
 vite.config.js.timestamp-*
@@ -23,4 +24,3 @@ vite.config.ts.timestamp-*
 #IDE
 .idea/
 
-horseeden/

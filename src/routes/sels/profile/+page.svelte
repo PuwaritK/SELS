@@ -446,14 +446,6 @@
 		box-sizing: border-box;
 	}
 
-	body {
-		margin: 0;
-	}
-
-	.text-content {
-		line-height: 20px;
-	}
-
 	.text-main-content {
 		line-height: 30px;
 		font-size: 1.2rem;

@@ -11,8 +11,13 @@
 
 		verifyTimer = setTimeout(() => {
 			const activeElement = document.activeElement;
-			const start = activeElement.selectionStart;
-			const end = activeElement.selectionEnd;
+			if (
+				activeElement instanceof HTMLInputElement ||
+				activeElement instanceof HTMLTextAreaElement
+			) {
+				const start = activeElement.selectionStart;
+				const end = activeElement.selectionEnd;
+			}
 
 			verifyForm.requestSubmit();
 		}, 2000);
