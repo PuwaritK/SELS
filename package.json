@@ -8,7 +8,7 @@
 		"dbpush": "echo 'SET FOREIGN_KEY_CHECKS = 0;\n' > sels.sql && mariadb-dump --no-create-info --compact -u root -p sels >> sels.sql && echo '\nSET FOREIGN_KEY_CHECKS = 1;\n' >> sels.sql",
 		"dbpull": "npm run resetdb && mariadb -u root -p sels < sels.sql && npm run genprisma",
 		"dev": "vite dev",
-		"build": "prisma generate &&vite build",
+		"build": "prisma generate && vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -17,6 +17,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-vercel": "^6.3.3",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
