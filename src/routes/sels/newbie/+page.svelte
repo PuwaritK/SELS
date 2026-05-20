@@ -26,8 +26,8 @@
 	import sel_banner from '$lib/sel_banner.png';
 </script>
 
-<div id="i9bnk" class="gjs-image-banner">
-	<img src={sel_banner} class="gjs-image-banner" alt="" />
+<div>
+	<img src={sel_banner} alt="" />
 </div>
 <div class="h-dvh bg-green-50">
 	<div class="yellow mb-8 flex flex-col items-center justify-center pt-6">

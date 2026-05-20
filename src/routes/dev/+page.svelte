@@ -87,8 +87,4 @@
 	</table>
 {/if}
 
-<style>
-	td {
-		border: 2px solid black;
-	}
-</style>
+
