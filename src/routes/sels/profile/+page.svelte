@@ -327,7 +327,7 @@
 			{/if}
 		</div>
 	</div>
-	<div  class="gjs-grid-column">
+	<div  class="">
 		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline outline-1">
 			{#if data.shownSel[2] != null}
 				<div>
@@ -359,7 +359,7 @@
 			{/if}
 		</div>
 	</div>
-	<div  class="gjs-grid-column">
+	<div  class="">
 		<div class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline outline-1">
 			{#if data.shownSel[3] != null}
 				<div>
@@ -391,7 +391,7 @@
 			{/if}
 		</div>
 	</div>
-	<div class="gjs-grid-column">
+	<div class="">
 		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline outline-1">
 			{#if data.shownSel[4] != null}
 				<div>
