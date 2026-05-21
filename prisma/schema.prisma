@@ -14,15 +14,15 @@ model account {
   password    String    @db.VarChar(256)
   paradise_id Int?
   currency    Int       @default(27000)
-  last_feed   DateTime  @default(dbgenerated("(current_timestamp() - interval 1 day)")) @db.DateTime(0)
-  last_play   DateTime  @default(dbgenerated("(current_timestamp() - interval 1 day)")) @db.DateTime(0)
-  last_show   DateTime  @default(dbgenerated("(current_timestamp() - interval 1 day)")) @db.DateTime(0)
+  last_feed   DateTime  @default(dbgenerated("(NOW() - interval '1 day')")) @db.Timestamp(0)
+  last_play   DateTime  @default(dbgenerated("(NOW() - interval '1 day')")) @db.Timestamp(0)
+  last_show   DateTime  @default(dbgenerated("(NOW() - interval '1 day')")) @db.Timestamp(0)
   role        role      @relation(fields: [role_id], references: [role_id], onUpdate: Restrict, map: "account_ibfk_1")
   paradise    paradise? @relation(fields: [paradise_id], references: [paradise_id], map: "account_ibfk_2")
   session     session[]
 
-  @@index([paradise_id], map: "paradise_id")
-  @@index([role_id], map: "role_id")
+  @@index([paradise_id])
+  @@index([role_id])
 }
 
 model gacha {
@@ -33,8 +33,8 @@ model gacha {
   paradise    paradise @relation(fields: [paradise_id], references: [paradise_id], onUpdate: Restrict, map: "gacha_ibfk_1")
   tier        tier     @relation(fields: [tier_id], references: [tier_id], onUpdate: Restrict, map: "gacha_ibfk_2")
 
-  @@index([paradise_id], map: "paradise_id")
-  @@index([tier_id], map: "tier_id")
+  @@index([paradise_id])
+  @@index([tier_id])
 }
 
 model paradise {
@@ -59,7 +59,7 @@ model sel {
   type_id     Int
   colour      String    @db.VarChar(25)
   sex_id      Int
-  dob         DateTime  @db.DateTime(0)
+  dob         DateTime  @db.Timestamp(0)
   weight      Int
   show_xp     Int       @default(0)
   price       Int
@@ -70,10 +70,10 @@ model sel {
   tier        tier      @relation(fields: [tier_id], references: [tier_id], onUpdate: Restrict, map: "sel_ibfk_3")
   paradise    paradise? @relation(fields: [paradise_id], references: [paradise_id], onDelete: Cascade, map: "sel_ibfk_4")
 
-  @@index([paradise_id], map: "paradise_id")
-  @@index([sex_id], map: "sex_id")
-  @@index([tier_id], map: "tier_id")
-  @@index([type_id], map: "type_id")
+  @@index([paradise_id])
+  @@index([sex_id])
+  @@index([tier_id])
+  @@index([type_id])
 }
 
 model sex {
@@ -101,5 +101,5 @@ model session {
   expiresAt DateTime
   account   account  @relation(fields: [userId], references: [user_id], onDelete: Cascade, map: "Session_userId_fkey")
 
-  @@index([userId], map: "Session_userId_fkey")
+  @@index([userId])
 }
