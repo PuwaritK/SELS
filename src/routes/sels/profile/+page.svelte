@@ -248,7 +248,7 @@
 	<div class=" flex flex-col">
 		<div class="bot-1 top-1 flex flex-col rounded-2xl bg-pink-100">
 			<div class="bot-1 left-1 right-1 top-1 flex-col">
-				<div class="ml-1 h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline outline-1">
+				<div class="ml-1 h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-solid outline-1">
 					{#if data.shownSel[0] != null}
 						<div>
 							<div>
@@ -296,7 +296,7 @@
 		>
 	</div>
 	<div class="">
-		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline outline-1">
+		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-solid outline-1">
 			{#if data.shownSel[1] != null}
 				<div>
 					<div>
@@ -328,7 +328,7 @@
 		</div>
 	</div>
 	<div  class="">
-		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline outline-1">
+		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-solid outline-1">
 			{#if data.shownSel[2] != null}
 				<div>
 					<div>
@@ -360,7 +360,7 @@
 		</div>
 	</div>
 	<div  class="">
-		<div class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline outline-1">
+		<div class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-solid outline-1">
 			{#if data.shownSel[3] != null}
 				<div>
 					<div>
@@ -392,7 +392,7 @@
 		</div>
 	</div>
 	<div class="">
-		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline outline-1">
+		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-solid outline-1">
 			{#if data.shownSel[4] != null}
 				<div>
 					<div>

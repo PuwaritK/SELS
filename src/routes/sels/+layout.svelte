@@ -27,7 +27,7 @@
 	>
 	<a
 		href="/sels/addcurrency"
-		class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-indigo-500
+		class="ml-10 mr-10 mt-3 animate-text bg-linear-to-r from-indigo-500
             to-red-500 bg-clip-text
             font-bold text-transparent transition-all hover:scale-125"
 		class:active={$page.url.pathname === '/sels/addcurrency'}>Add Currency</a
@@ -35,14 +35,14 @@
 	{#if data.isAdmin}
 		<a
 			href="/admin"
-			class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-green-500
+			class="ml-10 mr-10 mt-3 animate-text bg-linear-to-r from-green-500
 	to-blue-500 bg-clip-text
 	font-bold text-transparent transition-all hover:scale-125">Admin Page</a
 		>
 	{:else if data.isDev}
 		<a
 			href="/dev"
-			class="ml-10 mr-10 mt-3 animate-text bg-gradient-to-r from-green-500
+			class="ml-10 mr-10 mt-3 animate-text bg-linear-to-r from-green-500
 	to-blue-500 bg-clip-text
 	font-bold text-transparent transition-all hover:scale-125">Developer Page</a
 		>

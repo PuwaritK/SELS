@@ -78,7 +78,7 @@
 		<input type="hidden" name="sel_id" value={$page.url.searchParams.get('sel_id')} />
 		<input type="text" name="username" value={$page.url.searchParams.get('search')} hidden />
 		<div>
-			<button type="submit" class="outline outline-2">Confirm</button>
+			<button type="submit" class="outline-solid outline-2">Confirm</button>
 		</div>
 	</form>
 </div>

@@ -53,7 +53,7 @@
 				/>
 			</div>
 			<!-- <div>
-			<button type="submit" class="outline outline-2">Verify paradise name</button>
+			<button type="submit" class="outline-solid outline-2">Verify paradise name</button>
 			</div> -->
 		</form>
 		{#if form?.verified}
