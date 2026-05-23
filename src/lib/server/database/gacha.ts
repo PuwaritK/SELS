@@ -145,6 +145,9 @@ export const pullSel = async (account: account, pullAmount: number = 1) => {
 	if (isNaN(pullAmount)) {
 		return;
 	}
+	if (pullAmount <= 0) {
+		return;
+	}
 	const GACHACOST = 3000;
 	let currency = (await getCurrency(account.user_id))!;
 	let realPullAmount = pullAmount;
