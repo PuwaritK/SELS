@@ -11,7 +11,7 @@ export const actions = {
 		const cpassword = formData.get('confirm_password') as string;
 
 		try {
-			if (password != cpassword) {
+			if (password !== cpassword) {
 				throw new Error('Password mismatch');
 			}
 			if (username.length > 20) {

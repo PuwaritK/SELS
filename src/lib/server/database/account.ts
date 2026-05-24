@@ -6,7 +6,7 @@ export const isUsernameExist = async (username: string) => {
 			username
 		}
 	});
-	return exist != null;
+	return exist !== null;
 };
 
 export const isAccountExist = async (username: string, password: string) => {
