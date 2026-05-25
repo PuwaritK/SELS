@@ -1,277 +1,355 @@
 <script lang="ts">
-	let { data } = $props();
-	let sex0: string = $state('');
-	let type0: string = $state('');
-	let sex1: string = $state('');
-	let type1: string = $state('');
-	let sex2: string = $state('');
-	let type2: string = $state('');
-	let sex3: string = $state('');
-	let type3: string = $state('');
-	let sex4: string = $state('');
-	let type4: string = $state('');
+	import { onMount } from 'svelte';
 
-	if (data.shownSel[0] != null) {
-		switch (data.shownSel[0].sex_id) {
+	let { data } = $props();
+	let loadedData = () => data;
+
+	let selSex: string[] = $state(['', '', '', '', '']);
+	let selType: string[] = $state(['', '', '', '', '']);
+
+	let canvas1: HTMLCanvasElement | null = $state(null);
+	let canvas2: HTMLCanvasElement | null = $state(null);
+	let canvas3: HTMLCanvasElement | null = $state(null);
+	let canvas4: HTMLCanvasElement | null = $state(null);
+	let canvas5: HTMLCanvasElement | null = $state(null);
+
+	let imagesToStack: string[][] = [];
+
+	if (loadedData().shownSel[0] !== null) {
+		switch (loadedData().shownSel[0].sex_id) {
 			case 1: {
-				sex0 = 'm';
+				selSex[0] = 'm';
 				break;
 			}
 			case 2: {
-				sex0 = 'f';
+				selSex[0] = 'f';
 				break;
 			}
 			case 3: {
-				sex0 = 's';
+				selSex[0] = 's';
 				break;
 			}
 		}
-		switch (data.shownSel[0].type_id) {
+		switch (loadedData().shownSel[0].type_id) {
 			case 1: {
-				type0 = 'harper';
+				selType[0] = 'harper';
 				break;
 			}
 			case 2: {
-				type0 = 'grey';
+				selType[0] = 'grey';
 				break;
 			}
 			case 3: {
-				type0 = 'baikal';
+				selType[0] = 'baikal';
 				break;
 			}
 			case 4: {
-				type0 = 'elephant';
+				selType[0] = 'elephant';
 				break;
 			}
 			case 5: {
-				type0 = 'leopard';
+				selType[0] = 'leopard';
 				break;
 			}
 			case 6: {
-				type0 = 'sealion';
+				selType[0] = 'sealion';
 				break;
 			}
 			case 7: {
-				type0 = 'walrus';
+				selType[0] = 'walrus';
 				break;
 			}
 		}
+		imagesToStack.push([
+			`/sprites/sx-sex.png`.replace('sex', selSex[0]),
+			`/sprites/type-race.png`.replace('race', () => selType[0]),
+			`/sprites/tier-level.png`.replace('level', loadedData().shownSel[0].tier_id.toString())
+		]);
 	}
-	if (data.shownSel[1] != null) {
-		switch (data.shownSel[1].sex_id) {
+	if (loadedData().shownSel[1] !== null) {
+		switch (loadedData().shownSel[1].sex_id) {
 			case 1: {
-				sex1 = 'm';
+				selSex[1] = 'm';
 				break;
 			}
 			case 2: {
-				sex1 = 'f';
+				selSex[1] = 'f';
 				break;
 			}
 			case 3: {
-				sex1 = 's';
+				selSex[1] = 's';
 				break;
 			}
 		}
-		switch (data.shownSel[1].type_id) {
+		switch (loadedData().shownSel[1].type_id) {
 			case 1: {
-				type1 = 'harper';
+				selType[1] = 'harper';
 				break;
 			}
 			case 2: {
-				type1 = 'grey';
+				selType[1] = 'grey';
 				break;
 			}
 			case 3: {
-				type1 = 'baikal';
+				selType[1] = 'baikal';
 				break;
 			}
 			case 4: {
-				type1 = 'elephant';
+				selType[1] = 'elephant';
 				break;
 			}
 			case 5: {
-				type1 = 'leopard';
+				selType[1] = 'leopard';
 				break;
 			}
 			case 6: {
-				type1 = 'sealion';
+				selType[1] = 'sealion';
 				break;
 			}
 			case 7: {
-				type1 = 'walrus';
+				selType[1] = 'walrus';
 				break;
 			}
 		}
+		imagesToStack.push([
+			`/sprites/sx-sex.png`.replace('sex', selSex[1]),
+			`/sprites/type-race.png`.replace('race', () => selType[1]),
+			`/sprites/tier-level.png`.replace('level', loadedData().shownSel[1].tier_id.toString())
+		]);
 	}
-	if (data.shownSel[2] != null) {
-		switch (data.shownSel[2].sex_id) {
+	if (loadedData().shownSel[2] !== null) {
+		switch (loadedData().shownSel[2].sex_id) {
 			case 1: {
-				sex2 = 'm';
+				selSex[2] = 'm';
 				break;
 			}
 			case 2: {
-				sex2 = 'f';
+				selSex[2] = 'f';
 				break;
 			}
 			case 3: {
-				sex2 = 's';
+				selSex[2] = 's';
 				break;
 			}
 		}
-		switch (data.shownSel[2].type_id) {
+		switch (loadedData().shownSel[2].type_id) {
 			case 1: {
-				type2 = 'harper';
+				selType[2] = 'harper';
 				break;
 			}
 			case 2: {
-				type2 = 'grey';
+				selType[2] = 'grey';
 				break;
 			}
 			case 3: {
-				type2 = 'baikal';
+				selType[2] = 'baikal';
 				break;
 			}
 			case 4: {
-				type2 = 'elephant';
+				selType[2] = 'elephant';
 				break;
 			}
 			case 5: {
-				type2 = 'leopard';
+				selType[2] = 'leopard';
 				break;
 			}
 			case 6: {
-				type2 = 'sealion';
+				selType[2] = 'sealion';
 				break;
 			}
 			case 7: {
-				type2 = 'walrus';
+				selType[2] = 'walrus';
 				break;
 			}
 		}
+		imagesToStack.push([
+			`/sprites/sx-sex.png`.replace('sex', selSex[2]),
+			`/sprites/type-race.png`.replace('race', () => selType[2]),
+			`/sprites/tier-level.png`.replace('level', loadedData().shownSel[2].tier_id.toString())
+		]);
 	}
-	if (data.shownSel[3] != null) {
-		switch (data.shownSel[3].sex_id) {
+	if (loadedData().shownSel[3] !== null) {
+		switch (loadedData().shownSel[3].sex_id) {
 			case 1: {
-				sex3 = 'm';
+				selSex[3] = 'm';
 				break;
 			}
 			case 2: {
-				sex3 = 'f';
+				selSex[3] = 'f';
 				break;
 			}
 			case 3: {
-				sex3 = 's';
+				selSex[3] = 's';
 				break;
 			}
 		}
-		switch (data.shownSel[3].type_id) {
+		switch (loadedData().shownSel[3].type_id) {
 			case 1: {
-				type3 = 'harper';
+				selType[3] = 'harper';
 				break;
 			}
 			case 2: {
-				type3 = 'grey';
+				selType[3] = 'grey';
 				break;
 			}
 			case 3: {
-				type3 = 'baikal';
+				selType[3] = 'baikal';
 				break;
 			}
 			case 4: {
-				type3 = 'elephant';
+				selType[3] = 'elephant';
 				break;
 			}
 			case 5: {
-				type3 = 'leopard';
+				selType[3] = 'leopard';
 				break;
 			}
 			case 6: {
-				type3 = 'sealion';
+				selType[3] = 'sealion';
 				break;
 			}
 			case 7: {
-				type3 = 'walrus';
+				selType[3] = 'walrus';
 				break;
 			}
 		}
+		imagesToStack.push([
+			`/sprites/sx-sex.png`.replace('sex', selSex[3]),
+			`/sprites/type-race.png`.replace('race', () => selType[3]),
+			`/sprites/tier-level.png`.replace('level', loadedData().shownSel[3].tier_id.toString())
+		]);
 	}
-	if (data.shownSel[4] != null) {
-		switch (data.shownSel[4].sex_id) {
+	if (loadedData().shownSel[4] !== null) {
+		switch (loadedData().shownSel[4].sex_id) {
 			case 1: {
-				sex4 = 'm';
+				selSex[4] = 'm';
 				break;
 			}
 			case 2: {
-				sex4 = 'f';
+				selSex[4] = 'f';
 				break;
 			}
 			case 3: {
-				sex4 = 's';
+				selSex[4] = 's';
 				break;
 			}
 		}
-		switch (data.shownSel[4].type_id) {
+		switch (loadedData().shownSel[4].type_id) {
 			case 1: {
-				type4 = 'harper';
+				selType[4] = 'harper';
 				break;
 			}
 			case 2: {
-				type4 = 'grey';
+				selType[4] = 'grey';
 				break;
 			}
 			case 3: {
-				type4 = 'baikal';
+				selType[4] = 'baikal';
 				break;
 			}
 			case 4: {
-				type4 = 'elephant';
+				selType[4] = 'elephant';
 				break;
 			}
 			case 5: {
-				type4 = 'leopard';
+				selType[4] = 'leopard';
 				break;
 			}
 			case 6: {
-				type4 = 'sealion';
+				selType[4] = 'sealion';
 				break;
 			}
 			case 7: {
-				type4 = 'walrus';
+				selType[4] = 'walrus';
 				break;
 			}
 		}
+		imagesToStack.push([
+			`/sprites/sx-sex.png`.replace('sex', selSex[4]),
+			`/sprites/type-race.png`.replace('race', () => selType[4]),
+			`/sprites/tier-level.png`.replace('level', loadedData().shownSel[4].tier_id.toString())
+		]);
 	}
+	onMount(async () => {
+		const loadImage = async (src: string): Promise<HTMLImageElement> => {
+			return new Promise((resolve) => {
+				const img = new Image();
+				img.src = src;
+				img.onload = () => resolve(img);
+			});
+		};
+
+		if (imagesToStack[0]) {
+			const loadedImages1 = await Promise.all(imagesToStack[0].map(loadImage));
+			if (canvas1) {
+				let ctx1 = canvas1.getContext('2d');
+				if (ctx1) {
+					for (let index = 0; index < loadedImages1.length; index++) {
+						let element = loadedImages1[index];
+						ctx1.drawImage(element, 0, 0, canvas1.width, canvas1.height);
+					}
+				}
+			}
+		}
+		if (imagesToStack[1]) {
+			const loadedImages2 = await Promise.all(imagesToStack[1].map(loadImage));
+			if (canvas2) {
+				let ctx2 = canvas2.getContext('2d');
+				if (ctx2) {
+					for (let index = 0; index < loadedImages2.length; index++) {
+						let element = loadedImages2[index];
+						ctx2.drawImage(element, 0, 0, canvas2.width, canvas2.height);
+					}
+				}
+			}
+		}
+		if (imagesToStack[2]) {
+			const loadedImages3 = await Promise.all(imagesToStack[2].map(loadImage));
+			if (canvas3) {
+				let ctx3 = canvas3.getContext('2d');
+				if (ctx3) {
+					for (let index = 0; index < loadedImages3.length; index++) {
+						let element = loadedImages3[index];
+						ctx3.drawImage(element, 0, 0, canvas3.width, canvas3.height);
+					}
+				}
+			}
+		}
+		if (imagesToStack[3]) {
+			const loadedImages4 = await Promise.all(imagesToStack[3].map(loadImage));
+			if (canvas4) {
+				let ctx4 = canvas4.getContext('2d');
+				if (ctx4) {
+					for (let index = 0; index < loadedImages4.length; index++) {
+						let element = loadedImages4[index];
+						ctx4.drawImage(element, 0, 0, canvas4.width, canvas4.height);
+					}
+				}
+			}
+		}
+		if (imagesToStack[4]) {
+			const loadedImages5 = await Promise.all(imagesToStack[4].map(loadImage));
+			if (canvas5) {
+				let ctx5 = canvas5.getContext('2d');
+				if (ctx5) {
+					for (let index = 0; index < loadedImages5.length; index++) {
+						let element = loadedImages5[index];
+						ctx5.drawImage(element, 0, 0, canvas5.width, canvas5.height);
+					}
+				}
+			}
+		}
+	});
 </script>
 
-
-<section  class=" bg-green-100">
-	<div class=" flex flex-col">
+<section class=" bg-green-100">
+	<div class="m-16 flex flex-col">
 		<div class="bot-1 top-1 flex flex-col rounded-2xl bg-pink-100">
-			<div class="bot-1 left-1 right-1 top-1 flex-col">
-				<div class="ml-1 h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-solid outline-1">
-					{#if data.shownSel[0] != null}
-						<div>
-							<div>
-								{#await import(`$lib/sprites/sx-${sex0}.png`) then { default: src }}
-									<img
-										{src}
-										alt=""
-										class="z-1 absolute h-48 w-48"
-										style="background-color: {data.shownSel[0].colour}"
-									/>
-								{/await}
-							</div>
-							<div>
-								{#await import(`$lib/sprites/type-${type0}.png`) then { default: src }}
-									<img {src} alt="" class="z-2 absolute h-48 w-48" />
-								{/await}
-							</div>
-							<div>
-								{#await import(`$lib/sprites/tier-${data.shownSel[0].tier_id}.png`) then { default: src }}
-									<img {src} alt="" class="z-3 absolute h-48 w-48" />
-								{/await}
-							</div>
-						</div>
+			<div class="bot-1 top-1 right-1 left-1 flex-col">
+				<div class="ml-1 h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-1 outline-solid">
+					{#if data.shownSel[0] !== null}
+						<canvas class="absolute z-1 h-48 w-48" bind:this={canvas1} width="192" height="192"
+						></canvas>
 					{:else}
 						<div class="justify-center align-middle">
 							<p class="text-center">No Sel to show.</p>
@@ -279,16 +357,16 @@
 					{/if}
 				</div>
 			</div>
-			<div  class=" text-xl">
-				<div >Username: {data.username}</div>
-				<div >SEL Amount: {data.selCount}<br /></div>
-				<div >Highest Rarity: {data.highestRarityName?.name}<br /></div>
+			<div class=" text-xl">
+				<div>Username: {data.username}</div>
+				<div>SEL Amount: {data.selCount}<br /></div>
+				<div>Highest Rarity: {data.highestRarityName?.name}<br /></div>
 			</div>
 		</div>
 	</div>
 </section>
 <div class="min-h-64 flex-col gap-6 bg-blue-100">
-	<div  class=" rounded-2xl">
+	<div class=" rounded-2xl">
 		<a
 			href="./profile/manage"
 			class=" rounded-2xl bg-yellow-100 text-2xl transition-all hover:scale-110"
@@ -296,94 +374,10 @@
 		>
 	</div>
 	<div class="">
-		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-solid outline-1">
-			{#if data.shownSel[1] != null}
-				<div>
-					<div>
-						{#await import(`$lib/sprites/sx-${sex1}.png`) then { default: src }}
-							<img
-								{src}
-								alt=""
-								class="z-1 absolute h-48 w-48"
-								style="background-color: {data.shownSel[1].colour}"
-							/>
-						{/await}
-					</div>
-					<div>
-						{#await import(`$lib/sprites/type-${type1}.png`) then { default: src }}
-							<img {src} alt="" class="z-2 absolute h-48 w-48" />
-						{/await}
-					</div>
-					<div>
-						{#await import(`$lib/sprites/tier-${data.shownSel[1].tier_id}.png`) then { default: src }}
-							<img {src} alt="" class="z-3 absolute h-48 w-48" />
-						{/await}
-					</div>
-				</div>
-			{:else}
-				<div class="justify-center align-middle">
-					<p class="text-center">No Sel to show.</p>
-				</div>
-			{/if}
-		</div>
-	</div>
-	<div  class="">
-		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-solid outline-1">
-			{#if data.shownSel[2] != null}
-				<div>
-					<div>
-						{#await import(`$lib/sprites/sx-${sex2}.png`) then { default: src }}
-							<img
-								{src}
-								alt=""
-								class="z-1 absolute h-48 w-48"
-								style="background-color: {data.shownSel[2].colour}"
-							/>
-						{/await}
-					</div>
-					<div>
-						{#await import(`$lib/sprites/type-${type2}.png`) then { default: src }}
-							<img {src} alt="" class="z-2 absolute h-48 w-48" />
-						{/await}
-					</div>
-					<div>
-						{#await import(`$lib/sprites/tier-${data.shownSel[2].tier_id}.png`) then { default: src }}
-							<img {src} alt="" class="z-3 absolute h-48 w-48" />
-						{/await}
-					</div>
-				</div>
-			{:else}
-				<div class="justify-center align-middle">
-					<p class="text-center">No Sel to show.</p>
-				</div>
-			{/if}
-		</div>
-	</div>
-	<div  class="">
-		<div class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-solid outline-1">
-			{#if data.shownSel[3] != null}
-				<div>
-					<div>
-						{#await import(`$lib/sprites/sx-${sex3}.png`) then { default: src }}
-							<img
-								{src}
-								alt=""
-								class="z-1 absolute h-48 w-48"
-								style="background-color: {data.shownSel[3].colour}"
-							/>
-						{/await}
-					</div>
-					<div>
-						{#await import(`$lib/sprites/type-${type3}.png`) then { default: src }}
-							<img {src} alt="" class="z-2 absolute h-48 w-48" />
-						{/await}
-					</div>
-					<div>
-						{#await import(`$lib/sprites/tier-${data.shownSel[3].tier_id}.png`) then { default: src }}
-							<img {src} alt="" class="z-3 absolute h-48 w-48" />
-						{/await}
-					</div>
-				</div>
+		<div class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-1 outline-solid">
+			{#if data.shownSel[1] !== null}
+				<canvas class="absolute z-1 h-48 w-48" bind:this={canvas2} width="192" height="192"
+				></canvas>
 			{:else}
 				<div class="justify-center align-middle">
 					<p class="text-center">No Sel to show.</p>
@@ -392,30 +386,34 @@
 		</div>
 	</div>
 	<div class="">
-		<div  class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-solid outline-1">
-			{#if data.shownSel[4] != null}
-				<div>
-					<div>
-						{#await import(`$lib/sprites/sx-${sex4}.png`) then { default: src }}
-							<img
-								{src}
-								alt=""
-								class="z-1 absolute h-48 w-48"
-								style="background-color: {data.shownSel[4].colour}"
-							/>
-						{/await}
-					</div>
-					<div>
-						{#await import(`$lib/sprites/type-${type4}.png`) then { default: src }}
-							<img {src} alt="" class="z-2 absolute h-48 w-48" />
-						{/await}
-					</div>
-					<div>
-						{#await import(`$lib/sprites/tier-${data.shownSel[4].tier_id}.png`) then { default: src }}
-							<img {src} alt="" class="z-3 absolute h-48 w-48" />
-						{/await}
-					</div>
+		<div class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-1 outline-solid">
+			{#if data.shownSel[2] !== null}
+				<canvas class="absolute z-1 h-48 w-48" bind:this={canvas3} width="192" height="192"
+				></canvas>
+			{:else}
+				<div class="justify-center align-middle">
+					<p class="text-center">No Sel to show.</p>
 				</div>
+			{/if}
+		</div>
+	</div>
+	<div class="">
+		<div class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-1 outline-solid">
+			{#if data.shownSel[3] !== null}
+				<canvas class="absolute z-1 h-48 w-48" bind:this={canvas4} width="192" height="192"
+				></canvas>
+			{:else}
+				<div class="justify-center align-middle">
+					<p class="text-center">No Sel to show.</p>
+				</div>
+			{/if}
+		</div>
+	</div>
+	<div class="">
+		<div class="h-48 max-h-48 w-48 max-w-48 gap-4 shadow-black outline-1 outline-solid">
+			{#if data.shownSel[4] !== null}
+				<canvas class="absolute z-1 h-48 w-48" bind:this={canvas5} width="192" height="192"
+				></canvas>
 			{:else}
 				<div class="justify-center align-middle">
 					<p class="text-center">No Sel to show.</p>
