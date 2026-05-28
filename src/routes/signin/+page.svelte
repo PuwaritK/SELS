@@ -1,21 +1,11 @@
 <script lang="ts">
 	let { form } = $props();
-	import sel_banner from '$lib/sel_banner.png';
 	import LoginForm from '$lib/components/login-form.svelte';
-	import {
-		FieldGroup,
-		Field,
-		FieldLabel,
-		FieldDescription,
-		FieldSeparator
-	} from '$lib/components/ui/field/index.js';
+	import { FieldGroup, FieldDescription } from '$lib/components/ui/field/index.js';
 	import * as Alert from '$lib/components/ui/alert/index.js';
 	import AlertCircleIcon from '@lucide/svelte/icons/alert-circle';
 </script>
 
-<!-- <div class="gjs-image-banner">
-	<img src={sel_banner} class="gjs-image-banner" alt="" />
-</div> -->
 <div class="bg-background flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
 	<div class="w-full max-w-sm gap-7">
 		<FieldGroup>
