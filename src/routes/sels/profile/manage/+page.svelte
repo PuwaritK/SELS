@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	let { form, data } = $props();
-
+	let loadedData = () => data;
 	let feedReady = $state(false);
 	let playReady = $state(false);
 	let showReady = $state(false);
 
 	let feedDiff =
-		new Date(data.lastFeed.getTime() + 60 * 60 * 1000).getTime() - new Date().getTime();
+		new Date(loadedData().lastFeed.getTime() + 60 * 60 * 1000).getTime() - new Date().getTime();
 	let playDiff =
-		new Date(data.lastPlay.getTime() + 60 * 60 * 1000).getTime() - new Date().getTime();
+		new Date(loadedData().lastPlay.getTime() + 60 * 60 * 1000).getTime() - new Date().getTime();
 	let showDiff =
-		new Date(data.lastShow.getTime() + 60 * 60 * 1000).getTime() - new Date().getTime();
+		new Date(loadedData().lastShow.getTime() + 60 * 60 * 1000).getTime() - new Date().getTime();
 
 	let feedTimer = $state('');
 	let playTimer = $state('');
@@ -87,7 +87,7 @@
 			<div>
 				<button
 					type="submit"
-					class="mb-2 size-40 rounded-lg bg-red-100 text-xl outline-solid outline-1 transition-all hover:scale-110"
+					class="mb-2 size-40 rounded-lg bg-red-100 text-xl outline-1 transition-all outline-solid hover:scale-110"
 					name="click"
 					value="play">Play with Sels</button
 				>
@@ -104,7 +104,7 @@
 			<div>
 				<button
 					type="submit"
-					class="mb-2 size-40 rounded-lg bg-pink-100 text-xl outline-solid outline-1 transition-all hover:scale-110"
+					class="mb-2 size-40 rounded-lg bg-pink-100 text-xl outline-1 transition-all outline-solid hover:scale-110"
 					name="click"
 					value="show">Host Sels show</button
 				>
@@ -121,7 +121,7 @@
 			<div>
 				<button
 					type="submit"
-					class="mb-2 size-40 rounded-lg bg-blue-100 text-xl outline-solid outline-1 transition-all hover:scale-110"
+					class="mb-2 size-40 rounded-lg bg-blue-100 text-xl outline-1 transition-all outline-solid hover:scale-110"
 					name="click"
 					value="feed">Feed Sels</button
 				>

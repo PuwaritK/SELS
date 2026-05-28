@@ -22,7 +22,7 @@
 	let displayText = $state('');
 </script>
 
-<div class=" min-h-screen w-screen bg-gray-400">
+<div class="min-h-screen w-screen bg-gray-400">
 	<div class="relative flex flex-col items-center space-y-8 bg-gray-200 pb-7">
 		<div class="font-serif text-8xl font-bold">
 			<h1>Welcome to SELS!</h1>
