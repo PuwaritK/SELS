@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import sel_banner from '$lib/sel_banner.png';
+	import { Button } from '$lib/components/ui/button/index.js';
 
 	let { data } = $props();
 	const availableDisplayText = [
@@ -22,27 +24,21 @@
 	let displayText = $state('');
 </script>
 
-<div class="min-h-screen w-screen bg-gray-400">
-	<div class="relative flex flex-col items-center space-y-8 bg-gray-200 pb-7">
-		<div class="font-serif text-8xl font-bold">
+<div class="bg-background flex min-h-svh flex-col items-center">
+	<img src={sel_banner} alt="" />
+
+	<div class="relative top-8 flex flex-col items-center space-y-8 pb-7">
+		<div class="text-center font-serif text-8xl font-bold">
 			<h1>Welcome to SELS!</h1>
 		</div>
-		<div class="space-y-8 text-center align-middle font-serif text-4xl">
+		<div class="space-y-8 text-center align-middle text-4xl">
 			<p>{displayText}</p>
-			<p>Login or signup now!</p>
+			<p class="font-bold">Login or signup now!</p>
 		</div>
 		{#if !data.isSignedIn}
-			<div class="col-span-2 flex">
-				<div
-					class="mr-4 flex-row rounded-lg bg-white text-2xl text-blue-500 drop-shadow-md transition-transform hover:scale-125"
-				>
-					<a href="./signup">Sign Up</a>
-				</div>
-				<div
-					class="drop-drop-shadow-md ml-4 flex-row rounded-lg bg-white text-2xl text-blue-500 transition-transform hover:scale-125"
-				>
-					<a href="./signin">Sign In</a>
-				</div>
+			<div class="col-span-2 flex gap-x-16">
+				<Button href="/signup" size="lg" class="text-xl">Sign Up</Button>
+				<Button href="/signin" size="lg" class="text-xl">Sign In</Button>
 			</div>
 		{:else}
 			<div class="flex content-evenly justify-center">
