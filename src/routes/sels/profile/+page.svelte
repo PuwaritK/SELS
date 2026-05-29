@@ -3,7 +3,6 @@
 
 	let { data } = $props();
 	let loadedData = () => data;
-
 	let selSex: string[] = $state(['', '', '', '', '']);
 	let selType: string[] = $state(['', '', '', '', '']);
 
@@ -15,7 +14,7 @@
 
 	let imagesToStack: string[][] = [];
 
-	if (loadedData().shownSel[0] !== null) {
+	if (loadedData().shownSel[0]) {
 		switch (loadedData().shownSel[0].sex_id) {
 			case 1: {
 				selSex[0] = 'm';
@@ -66,7 +65,7 @@
 			`/sprites/tier-level.png`.replace('level', loadedData().shownSel[0].tier_id.toString())
 		]);
 	}
-	if (loadedData().shownSel[1] !== null) {
+	if (loadedData().shownSel[1]) {
 		switch (loadedData().shownSel[1].sex_id) {
 			case 1: {
 				selSex[1] = 'm';
@@ -117,7 +116,7 @@
 			`/sprites/tier-level.png`.replace('level', loadedData().shownSel[1].tier_id.toString())
 		]);
 	}
-	if (loadedData().shownSel[2] !== null) {
+	if (loadedData().shownSel[2]) {
 		switch (loadedData().shownSel[2].sex_id) {
 			case 1: {
 				selSex[2] = 'm';
@@ -168,7 +167,7 @@
 			`/sprites/tier-level.png`.replace('level', loadedData().shownSel[2].tier_id.toString())
 		]);
 	}
-	if (loadedData().shownSel[3] !== null) {
+	if (loadedData().shownSel[3]) {
 		switch (loadedData().shownSel[3].sex_id) {
 			case 1: {
 				selSex[3] = 'm';
@@ -219,7 +218,7 @@
 			`/sprites/tier-level.png`.replace('level', loadedData().shownSel[3].tier_id.toString())
 		]);
 	}
-	if (loadedData().shownSel[4] !== null) {
+	if (loadedData().shownSel[4]) {
 		switch (loadedData().shownSel[4].sex_id) {
 			case 1: {
 				selSex[4] = 'm';

@@ -251,9 +251,62 @@ export const getSel = async (sel_id: number) => {
 	let sel = await prisma.sel.findFirst({
 		where: {
 			sel_id
+		},
+		include: {
+			type: true,
+			sex: true,
+			tier: true
 		}
 	});
 	return sel;
+};
+
+export const getSelsByParadise = async (paradise_id: number) => {
+	return await prisma.sel.findMany({
+		where: {
+			paradise_id
+		},
+		include: {
+			type: true,
+			sex: true,
+			tier: true
+		}
+	});
+};
+
+export const getSelsForSale = async (
+	exclude_paradise_id: number,
+	limit: number = 30,
+	offset: number = 0
+) => {
+	return await prisma.sel.findMany({
+		where: {
+			price: {
+				gt: 0
+			},
+			NOT: {
+				paradise_id: exclude_paradise_id
+			}
+		},
+		take: limit,
+		skip: offset,
+		include: {
+			type: true,
+			sex: true,
+			tier: true
+		}
+	});
+};
+
+export const updateSelPrice = async (sel_id: number, price: number) => {
+	return await prisma.sel.update({
+		where: {
+			sel_id
+		},
+		data: {
+			price
+		}
+	});
 };
 
 export const getHighestRaritySel = async (paradise_id: number) => {

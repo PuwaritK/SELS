@@ -11,23 +11,23 @@
 <nav class="flex h-14 w-screen flex-row justify-around bg-gray-700 text-xl">
 	<a
 		href="/sels/profile"
-		class="ml-10 mr-10 mt-3 text-white transition-all hover:scale-125"
+		class="mt-3 mr-10 ml-10 text-white transition-all hover:scale-125"
 		class:active={$page.url.pathname === '/sels/profile' ||
 			$page.url.pathname === '/sels/profile/manage'}>Profile</a
 	>
 	<a
 		href="/sels/gacha"
-		class="ml-10 mr-10 mt-3 text-white transition-all hover:scale-125"
+		class="mt-3 mr-10 ml-10 text-white transition-all hover:scale-125"
 		class:active={$page.url.pathname === '/sels/gacha'}>Gacha</a
 	>
 	<a
-		href={$page.url.pathname}
-		class="ml-10 mr-10 mt-3 text-white transition-all hover:scale-125"
+		href="/sels/trade"
+		class="mt-3 mr-10 ml-10 text-white transition-all hover:scale-125"
 		class:active={$page.url.pathname === '/sels/trade'}>Trade [WIP]</a
 	>
 	<a
 		href="/sels/addcurrency"
-		class="ml-10 mr-10 mt-3 animate-text bg-linear-to-r from-indigo-500
+		class="animate-text mt-3 mr-10 ml-10 bg-linear-to-r from-indigo-500
             to-red-500 bg-clip-text
             font-bold text-transparent transition-all hover:scale-125"
 		class:active={$page.url.pathname === '/sels/addcurrency'}>Add Currency</a
@@ -35,20 +35,20 @@
 	{#if data.isAdmin}
 		<a
 			href="/admin"
-			class="ml-10 mr-10 mt-3 animate-text bg-linear-to-r from-green-500
+			class="animate-text mt-3 mr-10 ml-10 bg-linear-to-r from-green-500
 	to-blue-500 bg-clip-text
 	font-bold text-transparent transition-all hover:scale-125">Admin Page</a
 		>
 	{:else if data.isDev}
 		<a
 			href="/dev"
-			class="ml-10 mr-10 mt-3 animate-text bg-linear-to-r from-green-500
+			class="animate-text mt-3 mr-10 ml-10 bg-linear-to-r from-green-500
 	to-blue-500 bg-clip-text
 	font-bold text-transparent transition-all hover:scale-125">Developer Page</a
 		>
 	{/if}
 	<div class="flex min-w-10 flex-row">
-		<p class="ml-10 mr-0 mt-3 text-right text-green-400">
+		<p class="mt-3 mr-0 ml-10 text-right text-green-400">
 			SPC: {data.accountCurrency}
 		</p>
 
@@ -59,7 +59,7 @@
 	<a
 		href="/signout"
 		data-sveltekit-preload-data="tap"
-		class="ml-10 mr-10 mt-3 font-bold text-red-500
+		class="mt-3 mr-10 ml-10 font-bold text-red-500
 			transition-all hover:scale-125">Signout</a
 	>
 </nav>
