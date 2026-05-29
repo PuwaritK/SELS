@@ -48,29 +48,6 @@ export const randomSel = async (paradise_id: number) => {
 		// common
 		randomTier = 1;
 	}
-	let selPrice = 0;
-	switch (randomTier) {
-		case 5: {
-			selPrice = 50000;
-			break;
-		}
-		case 4: {
-			selPrice = 5000;
-			break;
-		}
-		case 3: {
-			selPrice = 2500;
-			break;
-		}
-		case 2: {
-			selPrice = 1000;
-			break;
-		}
-		case 1: {
-			selPrice = 500;
-			break;
-		}
-	}
 	let selTypeName = '';
 	switch (randomType) {
 		case 1: {
@@ -133,7 +110,7 @@ export const randomSel = async (paradise_id: number) => {
 			sex_id: randomSex,
 			dob: new Date(Date.now()),
 			weight: 8,
-			price: selPrice,
+			price: 0,
 			tier_id: randomTier,
 			paradise_id
 		}
