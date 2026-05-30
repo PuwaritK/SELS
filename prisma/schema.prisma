@@ -20,9 +20,25 @@ model account {
   role        role      @relation(fields: [role_id], references: [role_id], onUpdate: Restrict)
   paradise    paradise? @relation(fields: [paradise_id], references: [paradise_id])
   session     session[]
+  orders      order[]
 
   @@index([paradise_id])
   @@index([role_id])
+}
+
+model order {
+  order_id       String   @id @default(uuid())
+  user_id        Int
+  amount_spc     Int
+  price_fiat     Float
+  currency_code  String   @default("USD")
+  payment_method String
+  status         String   @default("PENDING")
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+  account        account  @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+
+  @@index([user_id])
 }
 
 model gacha {
