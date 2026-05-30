@@ -5,13 +5,6 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import AlertCircleIcon from '@lucide/svelte/icons/alert-circle';
 	import CheckCircleIcon from '@lucide/svelte/icons/check-circle';
-	import { toast } from 'svelte-sonner';
-
-	$effect(() => {
-		if (form?.created) {
-			toast.success('Account created successfully!');
-		}
-	});
 </script>
 
 <title>Sign Up</title>

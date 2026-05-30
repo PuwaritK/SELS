@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
-	import { mode } from 'mode-watcher';
-	import sel_banner from '$lib/sel_banner.png';
 	import dark_sel_banner from '$lib/dark_sel_banner.png';
 	import { Button } from '$lib/components/ui/button/index.js';
 
@@ -24,12 +22,10 @@
 		displayText = availableDisplayText[index];
 	});
 	let displayText = $state('');
-
-	let currentBanner = $derived(mode.current === 'dark' ? dark_sel_banner : sel_banner);
 </script>
 
 <div class="bg-background flex min-h-svh flex-col items-center">
-	<img src={currentBanner} alt="" class="w-full object-contain" />
+	<img src={dark_sel_banner} alt="" class="w-full object-contain" />
 
 	<div class="relative top-8 flex flex-col items-center space-y-8 pb-7">
 		<div class="text-center font-serif text-8xl font-bold">

@@ -6,13 +6,9 @@
 	import { Input } from '$lib/components/ui/input/index.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import { enhance } from '$app/forms';
-	import { mode } from 'mode-watcher';
-	import sel_logo from '$lib/sel_logo.png';
 	import dark_sel_logo from '$lib/dark_sel_logo.png';
 
 	let { class: className, ...restProps }: HTMLAttributes<HTMLDivElement> = $props();
-
-	let currentLogo = $derived(mode.current === 'dark' ? dark_sel_logo : sel_logo);
 </script>
 
 <div class={cn('flex flex-col gap-6', className)} {...restProps}>
@@ -55,7 +51,7 @@
 				</Field.Group>
 			</form>
 			<div class="bg-muted relative hidden md:block">
-				<img src={currentLogo} alt="" class="absolute inset-0 h-full w-full object-fill" />
+				<img src={dark_sel_logo} alt="" class="absolute inset-0 h-full w-full object-fill" />
 			</div>
 		</Card.Content>
 	</Card.Root>
