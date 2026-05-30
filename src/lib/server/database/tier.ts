@@ -6,6 +6,7 @@ export const getAllSelTier = async () => {
 };
 
 export const getSelTier = async (tier_id: number) => {
+	if (!tier_id) return null;
 	let selTier = await prisma.tier.findFirst({
 		where: {
 			tier_id

@@ -311,7 +311,7 @@ export const updateSelPrice = async (sel_id: number, price: number) => {
 
 export const getHighestRaritySel = async (paradise_id: number) => {
 	let sel = await getSelsWithTierDesc(paradise_id, 1);
-	if (sel !== null) {
+	if (sel.length > 0) {
 		return sel[0].tier_id;
 	}
 	return null;

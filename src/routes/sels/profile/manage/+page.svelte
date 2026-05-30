@@ -48,7 +48,9 @@
 		</Button>
 		<div class="space-y-1">
 			<h1 class="text-3xl font-bold">Manage Your Sels</h1>
-			<p class="text-muted-foreground">Interact with your Sels to earn rewards and keep them happy.</p>
+			<p class="text-muted-foreground">
+				Interact with your Sels to earn rewards and keep them happy.
+			</p>
 		</div>
 	</div>
 
@@ -57,9 +59,15 @@
 			<CheckCircle2 class="h-4 w-4" />
 			<Alert.Title>Action Successful!</Alert.Title>
 			<Alert.Description>
-				{#if form.successPlay} Gained {form.playResult} SPC from playing. {/if}
-				{#if form.successShow} Gained {form.showResult} SPC from the show. {/if}
-				{#if form.successFeed} Paid {form.feedResult} SPC to feed your Sels. {/if}
+				{#if form.successPlay}
+					Gained {form.playResult} SPC from playing.
+				{/if}
+				{#if form.successShow}
+					Gained {form.showResult} SPC from the show.
+				{/if}
+				{#if form.successFeed}
+					Paid {form.feedResult} SPC to feed your Sels.
+				{/if}
 			</Alert.Description>
 		</Alert.Root>
 	{/if}
@@ -82,7 +90,7 @@
 				<Card.Title class="mt-4">Play with Sels</Card.Title>
 				<Card.Description>Spend time with your Sels to earn SPC.</Card.Description>
 			</Card.Header>
-			<Card.Content class="flex-grow">
+			<Card.Content class="grow">
 				{#if !playReady}
 					<p class="text-destructive flex items-center gap-1 text-sm font-medium">
 						<AlertCircle class="h-4 w-4" />
@@ -126,7 +134,7 @@
 				<Card.Title class="mt-4">Host Sel Show</Card.Title>
 				<Card.Description>Showcase your Sels to the public for rewards.</Card.Description>
 			</Card.Header>
-			<Card.Content class="flex-grow">
+			<Card.Content class="grow">
 				{#if !showReady}
 					<p class="text-destructive flex items-center gap-1 text-sm font-medium">
 						<AlertCircle class="h-4 w-4" />
@@ -170,7 +178,7 @@
 				<Card.Title class="mt-4">Feed Sels</Card.Title>
 				<Card.Description>Keep your Sels healthy and happy by feeding them.</Card.Description>
 			</Card.Header>
-			<Card.Content class="flex-grow">
+			<Card.Content class="grow">
 				{#if !feedReady}
 					<p class="text-destructive flex items-center gap-1 text-sm font-medium">
 						<AlertCircle class="h-4 w-4" />
