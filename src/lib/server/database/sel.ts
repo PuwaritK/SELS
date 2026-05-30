@@ -162,7 +162,7 @@ export const feedAllSel = async (paradise_id: number, user_id: number) => {
 		},
 		data: {
 			weight: {
-				increment: Math.random() / 10
+				increment: Math.random()
 			}
 		}
 	});
