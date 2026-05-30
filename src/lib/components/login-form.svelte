@@ -1,12 +1,10 @@
 <script lang="ts">
-	import GalleryVerticalEndIcon from '@lucide/svelte/icons/gallery-vertical-end';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import {
 		FieldGroup,
 		Field,
 		FieldLabel,
-		FieldDescription,
-		FieldSeparator
+		FieldDescription
 	} from '$lib/components/ui/field/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';

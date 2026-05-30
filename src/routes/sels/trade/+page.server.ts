@@ -1,4 +1,9 @@
-import { getSelsByParadise, getSelsForSale, updateSelPrice, getUnlistedSelCount } from '$lib/server/database/sel';
+import {
+	getSelsByParadise,
+	getSelsForSale,
+	updateSelPrice,
+	getUnlistedSelCount
+} from '$lib/server/database/sel';
 import { executeTrade } from '$lib/server/database/trade';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';

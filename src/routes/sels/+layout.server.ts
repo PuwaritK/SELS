@@ -11,7 +11,7 @@ export const load: LayoutServerLoad = async (event) => {
 	} else if (event.locals.account.paradise_id !== null && event.url.pathname === '/sels/newbie') {
 		return redirect(302, '/sels/profile');
 	}
-	let accountCurrency = await getCurrency(event.locals.account.user_id);
+	const accountCurrency = await getCurrency(event.locals.account.user_id);
 	if (event.locals.account.role_id === 2) {
 		return { isAdmin: true, accountCurrency };
 	}

@@ -14,7 +14,7 @@ export const actions = {
 		const password = formData.get('password') as string;
 		let account: account | null = null;
 		try {
-			let isAccExist = await isAccountExist(username, password);
+			const isAccExist = await isAccountExist(username, password);
 			if (username.length > 20) {
 				throw new Error('Username must be at most 20 characters');
 			}
@@ -23,7 +23,7 @@ export const actions = {
 			}
 
 			account = await getAccount(username);
-			let userId = account?.user_id as number;
+			const userId = account?.user_id as number;
 
 			const token = generateSessionToken();
 			const session = createSession(token, userId);

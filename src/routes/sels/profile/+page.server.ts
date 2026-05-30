@@ -5,8 +5,8 @@ import { getSelTier } from '$lib/server/database/tier';
 export const load: PageServerLoad = async ({ locals }) => {
 	const user = locals.account;
 	const username = user?.username;
-	let selCount = await getSelCount(user?.paradise_id!);
-	let shownSel = await getSelsWithTierDesc(user?.paradise_id!, 5);
+	const selCount = await getSelCount(user?.paradise_id!);
+	const shownSel = await getSelsWithTierDesc(user?.paradise_id!, 5);
 	for (let index = 0; index < shownSel.length; index++) {
 		switch (shownSel[index].type.type_id) {
 			case 1:
@@ -43,7 +43,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 				break;
 		}
 	}
-	let highestRarity = await getHighestRaritySel(user?.paradise_id!);
-	let highestRarityName = await getSelTier(highestRarity!);
+	const highestRarity = await getHighestRaritySel(user?.paradise_id!);
+	const highestRarityName = await getSelTier(highestRarity!);
 	return { shownSel, selCount, username, highestRarityName };
 };

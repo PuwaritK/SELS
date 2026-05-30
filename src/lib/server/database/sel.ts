@@ -1,4 +1,3 @@
-import type { Prisma, sel, account } from '@prisma/client';
 import prisma from './client';
 
 export const createSel = async (
@@ -70,7 +69,7 @@ export const deleteSel = async (sel_id: number) => {
 };
 
 export const deleteAllSel = async (username: string) => {
-	let paradise_id = await prisma.account.findFirst({
+	const paradise_id = await prisma.account.findFirst({
 		where: {
 			username
 		},
@@ -140,7 +139,7 @@ export const getUnlistedSelCount = async (paradise_id: number) => {
 };
 
 export const feedAllSel = async (paradise_id: number, user_id: number) => {
-	let account_sels_count = await prisma.sel.count({
+	const account_sels_count = await prisma.sel.count({
 		where: {
 			paradise_id
 		}
@@ -190,37 +189,37 @@ export const hostSelShow = async (paradise_id: number, user_id: number) => {
 		}
 	});
 
-	let legend_count = await prisma.sel.count({
+	const legend_count = await prisma.sel.count({
 		where: {
 			paradise_id,
 			tier_id: 5
 		}
 	});
-	let epic_count = await prisma.sel.count({
+	const epic_count = await prisma.sel.count({
 		where: {
 			paradise_id,
 			tier_id: 4
 		}
 	});
-	let rare_count = await prisma.sel.count({
+	const rare_count = await prisma.sel.count({
 		where: {
 			paradise_id,
 			tier_id: 3
 		}
 	});
-	let uncommon_count = await prisma.sel.count({
+	const uncommon_count = await prisma.sel.count({
 		where: {
 			paradise_id,
 			tier_id: 2
 		}
 	});
-	let common_count = await prisma.sel.count({
+	const common_count = await prisma.sel.count({
 		where: {
 			paradise_id,
 			tier_id: 1
 		}
 	});
-	let spcEarned =
+	const spcEarned =
 		legend_count * 500 + epic_count * 50 + rare_count * 25 + uncommon_count * 10 + common_count * 5;
 
 	await prisma.account.update({
@@ -253,7 +252,7 @@ export const playWithSels = async (user_id: number) => {
 };
 
 export const isSelExist = async (sel_id: number) => {
-	let sel = await prisma.sel.findFirst({
+	const sel = await prisma.sel.findFirst({
 		where: {
 			sel_id
 		}
@@ -262,7 +261,7 @@ export const isSelExist = async (sel_id: number) => {
 };
 
 export const getSel = async (sel_id: number) => {
-	let sel = await prisma.sel.findFirst({
+	const sel = await prisma.sel.findFirst({
 		where: {
 			sel_id
 		},
@@ -324,7 +323,7 @@ export const updateSelPrice = async (sel_id: number, price: number) => {
 };
 
 export const getHighestRaritySel = async (paradise_id: number) => {
-	let sel = await getSelsWithTierDesc(paradise_id, 1);
+	const sel = await getSelsWithTierDesc(paradise_id, 1);
 	if (sel.length > 0) {
 		return sel[0].tier_id;
 	}

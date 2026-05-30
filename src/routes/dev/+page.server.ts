@@ -11,8 +11,8 @@ export const load: PageServerLoad = async (event) => {
 	}
 	const search = event.url.searchParams.get('search');
 	if (!search) return { found: null };
-	let username = search;
-	let userParadiseID = await prisma.account.findUnique({
+	const username = search;
+	const userParadiseID = await prisma.account.findUnique({
 		where: {
 			username: username
 		},
@@ -21,7 +21,7 @@ export const load: PageServerLoad = async (event) => {
 		}
 	});
 	if (!userParadiseID) return { found: false };
-	let sels =
+	const sels =
 		(await prisma.sel.findMany({
 			where: {
 				paradise_id: userParadiseID.paradise_id

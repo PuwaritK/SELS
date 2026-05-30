@@ -2,7 +2,6 @@ import { verifyParadiseName } from '$lib/server/database/paradise';
 import { getSelType } from '$lib/server/database/type';
 import { redirect, type Actions } from '@sveltejs/kit';
 import prisma from '$lib/server/database/client';
-import { getAccount } from '$lib/server/database/account';
 const NEWBIE_WEIGHT_KILOS = 8;
 
 export const load = async (event) => {

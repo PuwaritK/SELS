@@ -13,14 +13,14 @@ export const load: PageServerLoad = async (event) => {
 
 export const actions: Actions = {
 	default: async ({ request }) => {
-		let formData = await request.formData();
-		let deletedata = formData.get('delete') as string;
-		let deleteall = formData.get('deleteall') as string;
+		const formData = await request.formData();
+		const deletedata = formData.get('delete') as string;
+		const deleteall = formData.get('deleteall') as string;
 		if (deleteall !== null) {
 			await deleteAllSel(deleteall);
 			return;
 		}
-		let selID = Number(deletedata);
+		const selID = Number(deletedata);
 		try {
 			await deleteSel(selID);
 		} catch {

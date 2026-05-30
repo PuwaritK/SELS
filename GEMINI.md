@@ -67,3 +67,9 @@ The database schema revolves around several core entities:
 - **Database Access:** Prefer using the utility functions in `src/lib/server/database/` rather than calling Prisma directly in routes to maintain a clean separation of concerns.
 - **Authentication:** Check `event.locals.account` in server-side `load` functions or actions to verify user status.
 - **Styling:** Use Tailwind CSS utility classes for styling. Custom CSS should be minimal and scoped to Svelte components or defined in `src/app.css`.
+
+## Coding Style
+
+- Always use strict equality (`===` and `!==`).
+- **Variables, Functions, and Methods:** `camelCase` (e.g., `fetchUserData()`, `isActive`).
+- **Components & Classes:** `PascalCase` (e.g., `UserProfile`, `Button.tsx`).

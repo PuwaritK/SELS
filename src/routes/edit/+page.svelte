@@ -19,7 +19,13 @@
 	<form method="post">
 		<div>
 			<label for="sel_name">Sel name: </label>
-			<input type="text" name="sel_name" value={data.selToConfigure?.name} maxlength="25" required />
+			<input
+				type="text"
+				name="sel_name"
+				value={data.selToConfigure?.name}
+				maxlength="25"
+				required
+			/>
 		</div>
 		<div>
 			<label for="sel_type">Sel race: </label>
@@ -59,11 +65,11 @@
 		</div>
 		<div>
 			<label for="sel_showxp">Sel ShowXP:</label>
-			<input type="text" name="sel_showxp" value={data.selToConfigure?.show_xp} maxlength="10"/>
+			<input type="text" name="sel_showxp" value={data.selToConfigure?.show_xp} maxlength="10" />
 		</div>
 		<div>
 			<label for="sel_price">Sel Price:</label>
-			<input type="text" name="sel_price" value={data.selToConfigure?.price} maxlength="10"/>
+			<input type="text" name="sel_price" value={data.selToConfigure?.price} maxlength="10" />
 		</div>
 		<div>
 			<label for="sel_tier">Sel Tier:</label>
@@ -78,7 +84,7 @@
 		<input type="hidden" name="sel_id" value={$page.url.searchParams.get('sel_id')} />
 		<input type="text" name="username" value={$page.url.searchParams.get('search')} hidden />
 		<div>
-			<button type="submit" class="outline-solid outline-2">Confirm</button>
+			<button type="submit" class="outline-2 outline-solid">Confirm</button>
 		</div>
 	</form>
 </div>

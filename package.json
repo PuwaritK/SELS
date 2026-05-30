@@ -58,6 +58,7 @@
 		"argon2": "^0.41.1",
 		"bits-ui": "^2.18.1",
 		"formsnap": "^2.0.1",
+		"mode-watcher": "^1.1.0",
 		"paneforge": "^1.0.0-next.6",
 		"random-name": "^0.1.2",
 		"svelte-sonner": "^1.1.1",

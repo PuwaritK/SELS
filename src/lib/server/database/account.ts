@@ -16,7 +16,7 @@ export const isAccountExist = async (username: string, password: string) => {
 		}
 	});
 	if (!userExist) return false;
-	let dbpassword = userExist?.password;
+	const dbpassword = userExist?.password;
 	return await verify(dbpassword, password);
 };
 

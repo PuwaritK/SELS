@@ -2,9 +2,8 @@
 	import * as Tabs from '$lib/components/ui/tabs';
 	import * as Card from '$lib/components/ui/card';
 	import * as AlertDialog from '$lib/components/ui/alert-dialog';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
+	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
 	import SelCanvas from '$lib/components/SelCanvas.svelte';
 	import { enhance } from '$app/forms';
 	import { toast } from 'svelte-sonner';
@@ -66,11 +65,19 @@
 				<form method="POST" action="?/list" use:enhance class="w-full space-y-2">
 					<input type="hidden" name="selId" value={sel.sel_id} />
 					<div class="flex gap-2">
-						<Input type="number" name="price" placeholder="Price" min="1" required class="h-9" disabled={unlistedCount <= 1} />
+						<Input
+							type="number"
+							name="price"
+							placeholder="Price"
+							min="1"
+							required
+							class="h-9"
+							disabled={unlistedCount <= 1}
+						/>
 						<Button type="submit" size="sm" disabled={unlistedCount <= 1}>List</Button>
 					</div>
 					{#if unlistedCount <= 1}
-						<p class="text-[10px] text-destructive text-center">Must keep at least one Sel</p>
+						<p class="text-destructive text-center text-[10px]">Must keep at least one Sel</p>
 					{/if}
 				</form>
 			{/if}
@@ -91,7 +98,7 @@
 	</div>
 
 	<Tabs.Root value="marketplace" class="w-full">
-		<Tabs.List class="grid w-full max-md:max-w-md grid-cols-2">
+		<Tabs.List class="grid w-full grid-cols-2 max-md:max-w-md">
 			<Tabs.Trigger value="marketplace">Marketplace</Tabs.Trigger>
 			<Tabs.Trigger value="inventory">My Sels</Tabs.Trigger>
 		</Tabs.List>
@@ -138,17 +145,26 @@
 			<AlertDialog.Title>Confirm Purchase</AlertDialog.Title>
 			<AlertDialog.Description>
 				{#if selToBuy}
-					Are you sure you want to buy <span class="font-bold text-foreground"
+					Are you sure you want to buy <span class="text-foreground font-bold"
 						>{selToBuy.name || 'this Sel'}</span
 					>
-					for <span class="font-bold text-foreground">{selToBuy.price} SPC</span>?
+					for <span class="text-foreground font-bold">{selToBuy.price} SPC</span>?
 				{/if}
 			</AlertDialog.Description>
 		</AlertDialog.Header>
 		<AlertDialog.Footer>
 			<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
 			{#if selToBuy}
-				<form method="POST" action="?/buy" use:enhance={() => { buyDialogOpen = false; return async ({ update }) => { await update(); }; }}>
+				<form
+					method="POST"
+					action="?/buy"
+					use:enhance={() => {
+						buyDialogOpen = false;
+						return async ({ update }) => {
+							await update();
+						};
+					}}
+				>
 					<input type="hidden" name="selId" value={selToBuy.sel_id} />
 					<Button type="submit">Confirm</Button>
 				</form>

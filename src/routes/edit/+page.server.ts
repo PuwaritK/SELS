@@ -12,7 +12,7 @@ export const load: PageServerLoad = async (event) => {
 	if (event.locals.account?.role_id !== 3) {
 		return redirect(303, '/');
 	}
-	let sel_id = parseInt(event.url.searchParams.get('sel_id')!);
+	const sel_id = parseInt(event.url.searchParams.get('sel_id')!);
 
 	const selTypes = await getSelType();
 	const selSex = await getSelSex();

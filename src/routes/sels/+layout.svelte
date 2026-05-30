@@ -10,9 +10,12 @@
 		ShieldCheck,
 		Terminal,
 		LogOut,
-		Coins
+		Sun,
+		Moon
 	} from '@lucide/svelte';
+	import { mode, toggleMode } from 'mode-watcher';
 	import sel_banner from '$lib/sel_banner.png';
+	import dark_sel_banner from '$lib/dark_sel_banner.png';
 	import sel_coin from '$lib/sel_coin.gif';
 
 	let { children, data } = $props();
@@ -44,12 +47,14 @@
 			special: true
 		}
 	];
+
+	let currentBanner = $derived(mode.current === 'dark' ? dark_sel_banner : sel_banner);
 </script>
 
 <div class="bg-background flex min-h-screen flex-col">
 	<!-- Banner -->
 	<div class="bg-muted relative h-32 w-full overflow-hidden md:h-96">
-		<img src={sel_banner} class="h-full w-full object-cover opacity-90" alt="SELS Banner" />
+		<img src={currentBanner} class="h-full w-full object-cover opacity-90" alt="SELS Banner" />
 		<div class="to-background/20 absolute inset-0 bg-linear-to-b from-transparent"></div>
 	</div>
 
@@ -107,6 +112,16 @@
 			</div>
 
 			<div class="flex items-center gap-4">
+				<Button onclick={toggleMode} variant="ghost" size="icon">
+					<Sun
+						class="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"
+					/>
+					<Moon
+						class="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"
+					/>
+					<span class="sr-only">Toggle theme</span>
+				</Button>
+
 				<div
 					class="bg-primary/10 border-primary/20 hover:bg-primary/15 flex items-center gap-2 rounded-full border px-3 py-1.5 transition-all"
 				>

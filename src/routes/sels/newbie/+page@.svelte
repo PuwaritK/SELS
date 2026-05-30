@@ -2,6 +2,10 @@
 	let paradiseName = $state('');
 	let { form, data } = $props();
 	import { enhance } from '$app/forms';
+	import { mode } from 'mode-watcher';
+	import sel_banner from '$lib/sel_banner.png';
+	import dark_sel_banner from '$lib/dark_sel_banner.png';
+
 	let verifyForm: HTMLFormElement;
 	let verifyTimer: number | null = null;
 	const resetTimer = () => {
@@ -23,13 +27,14 @@
 			verifyForm.requestSubmit();
 		}, 2000);
 	};
-	import sel_banner from '$lib/sel_banner.png';
+
+	let currentBanner = $derived(mode.current === 'dark' ? dark_sel_banner : sel_banner);
 </script>
 
-<div>
-	<img src={sel_banner} alt="" />
-</div>
-<div class="h-dvh bg-green-50">
+<div class="bg-background min-h-screen">
+	<div class="bg-muted relative h-32 w-full overflow-hidden md:h-64">
+		<img src={currentBanner} alt="" class="h-full w-full object-cover" />
+	</div>
 	<div class="yellow mb-8 flex flex-col items-center justify-center pt-6">
 		<h1 class="mb-4 text-4xl font-bold">Paradise setup</h1>
 		<form

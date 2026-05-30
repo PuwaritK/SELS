@@ -2,7 +2,7 @@ import type { account, session } from '@prisma/client';
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
 import prisma from '../database/client';
 import { sha256 } from '@oslojs/crypto/sha2';
-import type { Cookies, RequestEvent } from '@sveltejs/kit';
+import type { Cookies } from '@sveltejs/kit';
 
 export function generateSessionToken(): string {
 	const bytes = new Uint8Array(20);

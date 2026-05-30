@@ -1,5 +1,4 @@
 import prisma from './client';
-import { addCurrency } from './account';
 
 export type CreateOrderInput = {
 	user_id: number;

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import type { sel as Sel } from '@prisma/client';
 
 	let { sel }: { sel: Sel } = $props();

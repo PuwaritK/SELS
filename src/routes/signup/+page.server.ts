@@ -17,7 +17,7 @@ export const actions = {
 			if (username.length > 20) {
 				throw new Error('Username must be at most 20 characters');
 			}
-			let isExist = await isUsernameExist(username);
+			const isExist = await isUsernameExist(username);
 			if (isExist) {
 				throw new Error('Username already exists');
 			}

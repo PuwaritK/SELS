@@ -9,8 +9,8 @@
 
 <form method="get">
 	<label for="user">Username to find:</label>
-	<input type="text" name="search" value={$page.url.searchParams.get('search')} maxlength="20"/>
-	<button type="submit" class="outline-solid outline-2">Find</button>
+	<input type="text" name="search" value={$page.url.searchParams.get('search')} maxlength="20" />
+	<button type="submit" class="outline-2 outline-solid">Find</button>
 </form>
 {#if data.found === false}
 	<p class="text-red-500">User not found!</p>
@@ -72,5 +72,3 @@
 		</table>
 	</form>
 {/if}
-
-
