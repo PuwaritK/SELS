@@ -1,140 +1,200 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import * as Card from '$lib/components/ui/card';
+	import { Button } from '$lib/components/ui/button';
+	import * as Alert from '$lib/components/ui/alert';
+	import {
+		Gamepad2,
+		Users,
+		Utensils,
+		Timer,
+		CheckCircle2,
+		AlertCircle,
+		ArrowLeft
+	} from '@lucide/svelte';
+
 	let { form, data } = $props();
-	let loadedData = () => data;
-	let feedReady = $state(false);
-	let playReady = $state(false);
-	let showReady = $state(false);
 
-	let feedDiff =
-		new Date(loadedData().lastFeed.getTime() + 60 * 60 * 1000).getTime() - new Date().getTime();
-	let playDiff =
-		new Date(loadedData().lastPlay.getTime() + 60 * 60 * 1000).getTime() - new Date().getTime();
-	let showDiff =
-		new Date(loadedData().lastShow.getTime() + 60 * 60 * 1000).getTime() - new Date().getTime();
+	let now = $state(Date.now());
 
-	let feedTimer = $state('');
-	let playTimer = $state('');
-	let showTimer = $state('');
-
-	let feedInterval: number | null = $state(null);
-	let playInterval: number | null = $state(null);
-	let showInterval: number | null = $state(null);
+	$effect(() => {
+		const interval = setInterval(() => {
+			now = Date.now();
+		}, 1000);
+		return () => clearInterval(interval);
+	});
 
 	function formatTime(diff: number): string {
+		if (diff <= 0) return '00:00:00';
 		const hours = Math.floor(diff / (1000 * 60 * 60));
 		const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 		const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 		return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 	}
 
-	function startTimer(
-		diff: number,
-		setTimer: (value: string) => void,
-		setReady: (value: boolean) => void
-	): number | null {
-		if (diff > 1000 * 60 * 60) {
-			setReady(true);
-			return null;
-		}
+	let feedReady = $derived(new Date(data.lastFeed).getTime() + 60 * 60 * 1000 <= now);
+	let playReady = $derived(new Date(data.lastPlay).getTime() + 60 * 60 * 1000 <= now);
+	let showReady = $derived(new Date(data.lastShow).getTime() + 60 * 60 * 1000 <= now);
 
-		setReady(false);
-		return setInterval(() => {
-			diff -= 1000;
-			if (diff <= 0) {
-				setTimer('00:00:00');
-				setReady(true);
-			} else {
-				setTimer(formatTime(diff));
-			}
-		}, 1000) as unknown as number;
-	}
-
-	if (feedDiff > 1000 * 60 * 60) {
-		feedReady = true;
-	} else {
-		feedInterval = startTimer(
-			feedDiff,
-			(time) => (feedTimer = time),
-			(ready) => (feedReady = ready)
-		);
-	}
-
-	if (playDiff > 1000 * 60 * 60) {
-		playReady = true;
-	} else {
-		playInterval = startTimer(
-			playDiff,
-			(time) => (playTimer = time),
-			(ready) => (playReady = ready)
-		);
-	}
-
-	if (showDiff > 1000 * 60 * 60) {
-		showReady = true;
-	} else {
-		showInterval = startTimer(
-			showDiff,
-			(time) => (showTimer = time),
-			(ready) => (showReady = ready)
-		);
-	}
+	let feedTimer = $derived(formatTime(new Date(data.lastFeed).getTime() + 60 * 60 * 1000 - now));
+	let playTimer = $derived(formatTime(new Date(data.lastPlay).getTime() + 60 * 60 * 1000 - now));
+	let showTimer = $derived(formatTime(new Date(data.lastShow).getTime() + 60 * 60 * 1000 - now));
 </script>
 
-<div class="h-dvh bg-green-50 pt-10">
-	<form method="post" use:enhance>
-		<div class="flex min-h-60 flex-row justify-evenly gap-10 align-middle">
-			<div>
-				<button
-					type="submit"
-					class="mb-2 size-40 rounded-lg bg-red-100 text-xl outline-1 transition-all outline-solid hover:scale-110"
-					name="click"
-					value="play">Play with Sels</button
-				>
-				{#if form?.playResult}
-					<p class="text-green-400">Play Successful, gained {form.playResult} SPC.</p>
-				{/if}
-				{#if data.validPlay === false || form?.validPlay === false}
-					<p class="text-red-400">Play on cooldown.</p>
-					<p id="play" class="min-w-12">Time until play: {playTimer}</p>
-				{:else}
-					<p class="text-green-400">Play Ready!</p>
-				{/if}
-			</div>
-			<div>
-				<button
-					type="submit"
-					class="mb-2 size-40 rounded-lg bg-pink-100 text-xl outline-1 transition-all outline-solid hover:scale-110"
-					name="click"
-					value="show">Host Sels show</button
-				>
-				{#if form?.showResult}
-					<p class="text-green-400">Show Successful, gained {form.showResult} SPC.</p>
-				{/if}
-				{#if data.validShow === false || form?.validShow === false}
-					<p class="text-red-400">Show on cooldown.</p>
-					<p id="show" class="min-w-12">Time until show: {showTimer}</p>
-				{:else}
-					<p class="text-green-400">Show Ready!</p>
-				{/if}
-			</div>
-			<div>
-				<button
-					type="submit"
-					class="mb-2 size-40 rounded-lg bg-blue-100 text-xl outline-1 transition-all outline-solid hover:scale-110"
-					name="click"
-					value="feed">Feed Sels</button
-				>
-				{#if form?.feedResult}
-					<p class="text-green-400">Feed Successful, paid {form.feedResult} SPC.</p>
-				{/if}
-				{#if data.validFeed === false || form?.validFeed === false}
-					<p class="text-red-400">Feed on cooldown.</p>
-					<p id="feed" class="min-w-12">Time until feed: {feedTimer}</p>
-				{:else}
-					<p class="text-green-400">Feed Ready!</p>
-				{/if}
-			</div>
+<div class="container mx-auto max-w-4xl space-y-8 px-4 py-10">
+	<div class="flex items-center gap-4">
+		<Button href="/sels/profile" variant="ghost" size="icon">
+			<ArrowLeft class="h-4 w-4" />
+		</Button>
+		<div class="space-y-1">
+			<h1 class="text-3xl font-bold">Manage Your Sels</h1>
+			<p class="text-muted-foreground">Interact with your Sels to earn rewards and keep them happy.</p>
 		</div>
+	</div>
+
+	{#if form?.successPlay || form?.successShow || form?.successFeed}
+		<Alert.Root class="border-primary/20 bg-primary/10">
+			<CheckCircle2 class="h-4 w-4" />
+			<Alert.Title>Action Successful!</Alert.Title>
+			<Alert.Description>
+				{#if form.successPlay} Gained {form.playResult} SPC from playing. {/if}
+				{#if form.successShow} Gained {form.showResult} SPC from the show. {/if}
+				{#if form.successFeed} Paid {form.feedResult} SPC to feed your Sels. {/if}
+			</Alert.Description>
+		</Alert.Root>
+	{/if}
+
+	<form method="post" use:enhance class="grid gap-6 md:grid-cols-3">
+		<!-- Play Card -->
+		<Card.Root class="flex h-full flex-col">
+			<Card.Header>
+				<div class="flex items-center justify-between">
+					<div class="rounded-lg bg-red-100 p-2 dark:bg-red-900/30">
+						<Gamepad2 class="h-6 w-6 text-red-600 dark:text-red-400" />
+					</div>
+					{#if !playReady}
+						<div class="text-muted-foreground flex items-center gap-1.5 text-xs font-medium">
+							<Timer class="h-3 w-3" />
+							{playTimer}
+						</div>
+					{/if}
+				</div>
+				<Card.Title class="mt-4">Play with Sels</Card.Title>
+				<Card.Description>Spend time with your Sels to earn SPC.</Card.Description>
+			</Card.Header>
+			<Card.Content class="flex-grow">
+				{#if !playReady}
+					<p class="text-destructive flex items-center gap-1 text-sm font-medium">
+						<AlertCircle class="h-4 w-4" />
+						On Cooldown
+					</p>
+				{:else}
+					<p class="text-primary flex items-center gap-1 text-sm font-medium">
+						<CheckCircle2 class="h-4 w-4" />
+						Ready to Play!
+					</p>
+				{/if}
+			</Card.Content>
+			<Card.Footer>
+				<Button
+					type="submit"
+					name="click"
+					value="play"
+					class="w-full"
+					variant={playReady ? 'default' : 'outline'}
+					disabled={!playReady}
+				>
+					Play Now
+				</Button>
+			</Card.Footer>
+		</Card.Root>
+
+		<!-- Show Card -->
+		<Card.Root class="flex h-full flex-col">
+			<Card.Header>
+				<div class="flex items-center justify-between">
+					<div class="rounded-lg bg-pink-100 p-2 dark:bg-pink-900/30">
+						<Users class="h-6 w-6 text-pink-600 dark:text-pink-400" />
+					</div>
+					{#if !showReady}
+						<div class="text-muted-foreground flex items-center gap-1.5 text-xs font-medium">
+							<Timer class="h-3 w-3" />
+							{showTimer}
+						</div>
+					{/if}
+				</div>
+				<Card.Title class="mt-4">Host Sel Show</Card.Title>
+				<Card.Description>Showcase your Sels to the public for rewards.</Card.Description>
+			</Card.Header>
+			<Card.Content class="flex-grow">
+				{#if !showReady}
+					<p class="text-destructive flex items-center gap-1 text-sm font-medium">
+						<AlertCircle class="h-4 w-4" />
+						On Cooldown
+					</p>
+				{:else}
+					<p class="text-primary flex items-center gap-1 text-sm font-medium">
+						<CheckCircle2 class="h-4 w-4" />
+						Ready for Show!
+					</p>
+				{/if}
+			</Card.Content>
+			<Card.Footer>
+				<Button
+					type="submit"
+					name="click"
+					value="show"
+					class="w-full"
+					variant={showReady ? 'default' : 'outline'}
+					disabled={!showReady}
+				>
+					Host Show
+				</Button>
+			</Card.Footer>
+		</Card.Root>
+
+		<!-- Feed Card -->
+		<Card.Root class="flex h-full flex-col">
+			<Card.Header>
+				<div class="flex items-center justify-between">
+					<div class="rounded-lg bg-blue-100 p-2 dark:bg-blue-900/30">
+						<Utensils class="h-6 w-6 text-blue-600 dark:text-blue-400" />
+					</div>
+					{#if !feedReady}
+						<div class="text-muted-foreground flex items-center gap-1.5 text-xs font-medium">
+							<Timer class="h-3 w-3" />
+							{feedTimer}
+						</div>
+					{/if}
+				</div>
+				<Card.Title class="mt-4">Feed Sels</Card.Title>
+				<Card.Description>Keep your Sels healthy and happy by feeding them.</Card.Description>
+			</Card.Header>
+			<Card.Content class="flex-grow">
+				{#if !feedReady}
+					<p class="text-destructive flex items-center gap-1 text-sm font-medium">
+						<AlertCircle class="h-4 w-4" />
+						On Cooldown
+					</p>
+				{:else}
+					<p class="text-primary flex items-center gap-1 text-sm font-medium">
+						<CheckCircle2 class="h-4 w-4" />
+						Ready to Feed!
+					</p>
+				{/if}
+			</Card.Content>
+			<Card.Footer>
+				<Button
+					type="submit"
+					name="click"
+					value="feed"
+					class="w-full"
+					variant={feedReady ? 'default' : 'outline'}
+					disabled={!feedReady}
+				>
+					Feed All
+				</Button>
+			</Card.Footer>
+		</Card.Root>
 	</form>
 </div>
