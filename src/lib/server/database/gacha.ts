@@ -1,166 +1,121 @@
-import { getAccount, getCurrency, subtractCurrency } from './account';
-import type { account, paradise } from '@prisma/client';
+import type { account } from '@prisma/client';
 import prisma from './client';
-import type { sel } from '@prisma/client';
-import { fail } from '@sveltejs/kit';
+import randomName from 'random-name';
 
-export const randomSel = async (paradise_id: number) => {
-	let randomColor = Math.floor(Math.random() * 16777215).toString(16);
-	let randomType = Math.floor(Math.random() * (7 - 1 + 1) + 1);
-	let randomSex = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+export const randomSelData = (paradise_id: number) => {
+	const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+	const randomType = Math.floor(Math.random() * 7) + 1;
+	let randomSex = Math.floor(Math.random() * 100) + 1;
 	if (randomSex === 100) {
-		// 1% secret third sex
 		randomSex = 3;
 	} else if (randomSex % 2 === 0) {
-		// male
 		randomSex = 1;
 	} else {
-		// female
 		randomSex = 2;
 	}
-	const nameArray: string[] = [
-		'Biku',
-		'Kite',
-		'Hana',
-		'Daiki',
-		'Hanako',
-		'Hiro',
-		'Magao',
-		'Kazuki',
-		'Mango'
-	];
-	let randomName = nameArray[Math.floor(Math.random() * nameArray.length)];
-	let randomTier = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+
+	const generatedName = randomName.first();
+	let randomTier = Math.floor(Math.random() * 100) + 1;
 
 	if (randomTier >= 99) {
-		// legendary
 		randomTier = 5;
 	} else if (randomTier >= 91) {
-		// epic
 		randomTier = 4;
 	} else if (randomTier >= 76) {
-		// rare
 		randomTier = 3;
 	} else if (randomTier >= 51) {
-		// uncommon
 		randomTier = 2;
 	} else {
-		// common
 		randomTier = 1;
 	}
+
 	let selTypeName = '';
 	switch (randomType) {
-		case 1: {
+		case 1:
 			selTypeName = 'Harp seal';
 			break;
-		}
-		case 2: {
+		case 2:
 			selTypeName = 'Grey seal';
 			break;
-		}
-		case 3: {
+		case 3:
 			selTypeName = 'Baikal seal';
 			break;
-		}
-		case 4: {
+		case 4:
 			selTypeName = 'Elephant seal';
 			break;
-		}
-		case 5: {
+		case 5:
 			selTypeName = 'Leopard seal';
 			break;
-		}
-		case 6: {
+		case 6:
 			selTypeName = 'Sea lion';
 			break;
-		}
-		case 7: {
+		case 7:
 			selTypeName = 'Walrus';
 			break;
-		}
 	}
-	let tierName = '';
-	switch (randomTier) {
-		case 1: {
-			tierName = 'Common';
-			break;
-		}
-		case 2: {
-			tierName = 'Uncommon';
-			break;
-		}
-		case 3: {
-			tierName = 'Rare';
-			break;
-		}
-		case 4: {
-			tierName = 'Epic';
-			break;
-		}
-		case 5: {
-			tierName = 'Legendary';
-			break;
-		}
-	}
-	let generatedSel = await prisma.sel.create({
-		data: {
-			name: randomName + ' The ' + selTypeName,
-			type_id: randomType,
-			colour: '#' + randomColor,
-			sex_id: randomSex,
-			dob: new Date(Date.now()),
-			weight: 8,
-			price: 0,
-			tier_id: randomTier,
-			paradise_id
-		}
+
+	return {
+		name: generatedName + ' The ' + selTypeName,
+		type_id: randomType,
+		colour: '#' + randomColor.padStart(6, '0'),
+		sex_id: randomSex,
+		dob: new Date(),
+		weight: 8,
+		price: 0,
+		tier_id: randomTier,
+		paradise_id
+	};
+};
+
+export const randomSel = async (paradise_id: number) => {
+	return await prisma.sel.create({
+		data: randomSelData(paradise_id)
 	});
-	return generatedSel;
 };
 
 export const pullSel = async (account: account, pullAmount: number = 1) => {
-	if (isNaN(pullAmount)) {
-		return;
+	if (isNaN(pullAmount) || pullAmount <= 0) {
+		return 'Invalid pull amount.';
 	}
-	if (pullAmount <= 0) {
-		return;
-	}
+
 	const GACHACOST = 3000;
-	let currency = (await getCurrency(account.user_id))!;
-	let realPullAmount = pullAmount;
-	pullAmount -= Math.floor(pullAmount / 10);
-	let pullCost = GACHACOST * pullAmount;
-	let generatedSel: sel[] = [];
-	let result;
-	if (currency < pullCost) {
-		return (result = 'Insufficient currency.');
-	} else {
-		await subtractCurrency(account.user_id, pullCost);
-		for (let i = 0; i < realPullAmount; i++) {
-			generatedSel.push(await randomSel(account.paradise_id!));
-		}
-		return (result = realPullAmount);
+	// Apply 10% discount for bulk pulls (except for 1x)
+	const effectivePullAmount = pullAmount === 1 ? 1 : pullAmount * 0.9;
+	const pullCost = Math.floor(GACHACOST * effectivePullAmount);
+
+	try {
+		return await prisma.$transaction(async (tx) => {
+			const userAccount = await tx.account.findUnique({
+				where: { user_id: account.user_id },
+				select: { currency: true }
+			});
+
+			if (!userAccount || userAccount.currency < pullCost) {
+				throw new Error('Insufficient currency.');
+			}
+
+			// Deduct currency
+			await tx.account.update({
+				where: { user_id: account.user_id },
+				data: { currency: { decrement: pullCost } }
+			});
+
+			// Generate Sels
+			const selsToCreate = Array.from({ length: pullAmount }, () =>
+				randomSelData(account.paradise_id!)
+			);
+
+			// Use createMany if supported by the provider, but SQLite doesn't support returning values with createMany
+			// and we might want to return the count or objects.
+			// Since we want to ensure atomicity, creating them one by one in the transaction is fine for small amounts.
+			// For performance, we can use createMany and just return the count.
+			await tx.sel.createMany({
+				data: selsToCreate
+			});
+
+			return pullAmount;
+		});
+	} catch (error: any) {
+		return error.message;
 	}
-	// switch (pullAmount) {
-	// 	case 1:
-	// 		pullCost = GACHACOST * pullAmount;
-	// 		if (currency < pullCost) {
-	// 			return (result = 'Insufficient currency.');
-	// 		} else {
-	// 			await subtractCurrency(account.user_id, pullCost);
-	// 			generatedSel.push(await randomSel(account.paradise_id!));
-	// 			return (result = generatedSel);
-	// 		}
-	// 	case 10:
-	// 		pullCost = (GACHACOST * pullAmount * 9) / 10;
-	// 		if (currency < pullCost) {
-	// 			return (result = 'Insufficient currency.');
-	// 		} else {
-	// 			await subtractCurrency(account.user_id, pullCost);
-	// 			for (let i = 0; i < 10; i++) {
-	// 				generatedSel.push(await randomSel(account.paradise_id!));
-	// 			}
-	// 			return (result = generatedSel);
-	// 		}
-	// }
 };
