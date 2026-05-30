@@ -3,7 +3,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Separator } from '$lib/components/ui/separator';
 	import SelCanvas from '$lib/components/SelCanvas.svelte';
-	import { User, Database, Trophy, ArrowRight } from '@lucide/svelte';
+	import { User, Database, Trophy, ArrowRight, Weight, Zap, Info } from '@lucide/svelte';
 
 	let { data } = $props();
 </script>
@@ -83,6 +83,27 @@
 							</div>
 						{/if}
 					</Card.Content>
+					{#if sel}
+						<Card.Header class="space-y-1 p-4">
+							<Card.Title class="truncate text-base">{sel.name || 'Unnamed Sel'}</Card.Title>
+							<Card.Description class="flex items-center gap-1.5 text-xs">
+								<Info class="h-3 w-3" />
+								{sel.type?.type_name} • {sel.sex?.name}
+							</Card.Description>
+						</Card.Header>
+						<Card.Content class="px-4 pt-0 pb-4">
+							<div class="text-muted-foreground flex items-center justify-between text-xs">
+								<div class="flex items-center gap-1">
+									<Weight class="h-3 w-3" />
+									<span>{sel.weight.toFixed(1)}kg</span>
+								</div>
+								<div class="flex items-center gap-1">
+									<Zap class="h-3 w-3" />
+									<span>{sel.show_xp} XP</span>
+								</div>
+							</div>
+						</Card.Content>
+					{/if}
 					<Card.Footer class="bg-muted/30 border-t p-3">
 						<div class="flex w-full items-center justify-between">
 							<span class="text-muted-foreground text-xs font-bold tracking-wider uppercase"
@@ -91,7 +112,7 @@
 							{#if sel}
 								<span
 									class="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-xs font-semibold"
-									>Tier {sel.tier_id}</span
+									>{sel.tier?.name || `Tier ${sel.tier_id}`}</span
 								>
 							{/if}
 						</div>

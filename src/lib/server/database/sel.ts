@@ -113,6 +113,11 @@ export const getSelsWithTierDesc = async (paradise_id: number, numberOfSels: num
 		},
 		orderBy: {
 			tier_id: 'desc'
+		},
+		include: {
+			type: true,
+			sex: true,
+			tier: true
 		}
 	});
 };
