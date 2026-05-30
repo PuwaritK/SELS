@@ -1,4 +1,4 @@
-import { getSelsByParadise, getSelsForSale, updateSelPrice } from '$lib/server/database/sel';
+import { getSelsByParadise, getSelsForSale, updateSelPrice, getUnlistedSelCount } from '$lib/server/database/sel';
 import { executeTrade } from '$lib/server/database/trade';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
@@ -50,6 +50,15 @@ export const actions: Actions = {
 			return fail(400, {
 				success: false,
 				message: 'Price must be greater than 0'
+			});
+		}
+
+		// Prevent listing if user only has one Sel left
+		const unlistedCount = await getUnlistedSelCount(locals.account.paradise_id!);
+		if (unlistedCount <= 1) {
+			return fail(400, {
+				success: false,
+				message: "You can't list your only Sel on sale!"
 			});
 		}
 

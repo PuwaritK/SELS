@@ -125,6 +125,15 @@ export const getSelCount = async (paradise_id: number) => {
 	});
 };
 
+export const getUnlistedSelCount = async (paradise_id: number) => {
+	return await prisma.sel.count({
+		where: {
+			paradise_id,
+			price: 0
+		}
+	});
+};
+
 export const feedAllSel = async (paradise_id: number, user_id: number) => {
 	let account_sels_count = await prisma.sel.count({
 		where: {

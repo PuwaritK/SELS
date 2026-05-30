@@ -23,6 +23,7 @@
 
 	let marketplaceSels = $derived(data.marketplaceSels);
 	let userSels = $derived(data.userSels);
+	let unlistedCount = $derived(userSels.filter((s: any) => s.price === 0).length);
 
 	let selToBuy = $state<any>(null);
 	let buyDialogOpen = $state(false);
@@ -65,9 +66,12 @@
 				<form method="POST" action="?/list" use:enhance class="w-full space-y-2">
 					<input type="hidden" name="selId" value={sel.sel_id} />
 					<div class="flex gap-2">
-						<Input type="number" name="price" placeholder="Price" min="1" required class="h-9" />
-						<Button type="submit" size="sm">List</Button>
+						<Input type="number" name="price" placeholder="Price" min="1" required class="h-9" disabled={unlistedCount <= 1} />
+						<Button type="submit" size="sm" disabled={unlistedCount <= 1}>List</Button>
 					</div>
+					{#if unlistedCount <= 1}
+						<p class="text-[10px] text-destructive text-center">Must keep at least one Sel</p>
+					{/if}
 				</form>
 			{/if}
 		</Card.Footer>
